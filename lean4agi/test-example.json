@@ -1,0 +1,1172 @@
+[
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Topology/Algebra/Monoid.lean",
+    "full_name": "exists_open_nhds_one_split",
+    "start": [475, 1],
+    "end": [479, 61],
+    "traced_tactics": [
+      {
+        "tactic": "have : (fun a : M \u00d7 M => a.1 * a.2) \u207b\u00b9' s \u2208 \ud835\udcdd ((1, 1) : M \u00d7 M) :=\n  tendsto_mul (by simpa only [one_mul] using hs)",
+        "annotated_tactic": [
+          "have : (fun a : M \u00d7 M => a.1 * a.2) \u207b\u00b9' s \u2208 \ud835\udcdd ((1, 1) : M \u00d7 M) :=\n    <a>tendsto_mul</a> (by simpa only [<a>one_mul</a>] using hs)",
+          [
+            {
+              "full_name": "tendsto_mul",
+              "def_path": "Mathlib/Topology/Algebra/Monoid.lean",
+              "def_pos": [113, 9],
+              "def_end_pos": [113, 20]
+            },
+            {
+              "full_name": "one_mul",
+              "def_path": "Mathlib/Algebra/Group/Defs.lean",
+              "def_pos": [464, 9],
+              "def_end_pos": [464, 16]
+            }
+          ]
+        ],
+        "state_before": "\u03b9 : Type u_1\n\u03b1 : Type u_2\nX : Type u_3\nM : Type u_4\nN : Type u_5\ninst\u271d\u00b3 : TopologicalSpace X\ninst\u271d\u00b2 : TopologicalSpace M\ninst\u271d\u00b9 : Monoid M\ninst\u271d : ContinuousMul M\ns : Set M\nhs : s \u2208 \ud835\udcdd 1\n\u22a2 \u2203 V, IsOpen V \u2227 1 \u2208 V \u2227 \u2200 (v : M), v \u2208 V \u2192 \u2200 (w : M), w \u2208 V \u2192 v * w \u2208 s",
+        "state_after": "\u03b9 : Type u_1\n\u03b1 : Type u_2\nX : Type u_3\nM : Type u_4\nN : Type u_5\ninst\u271d\u00b3 : TopologicalSpace X\ninst\u271d\u00b2 : TopologicalSpace M\ninst\u271d\u00b9 : Monoid M\ninst\u271d : ContinuousMul M\ns : Set M\nhs : s \u2208 \ud835\udcdd 1\nthis : (fun a => a.1 * a.2) \u207b\u00b9' s \u2208 \ud835\udcdd (1, 1)\n\u22a2 \u2203 V, IsOpen V \u2227 1 \u2208 V \u2227 \u2200 (v : M), v \u2208 V \u2192 \u2200 (w : M), w \u2208 V \u2192 v * w \u2208 s"
+      },
+      {
+        "tactic": "simpa only [prod_subset_iff] using exists_nhds_square this",
+        "annotated_tactic": [
+          "simpa only [<a>prod_subset_iff</a>] using <a>exists_nhds_square</a> this",
+          [
+            {
+              "full_name": "Set.prod_subset_iff",
+              "def_path": "Mathlib/Data/Set/Prod.lean",
+              "def_pos": [100, 9],
+              "def_end_pos": [100, 24]
+            },
+            {
+              "full_name": "exists_nhds_square",
+              "def_path": "Mathlib/Topology/Constructions.lean",
+              "def_pos": [674, 9],
+              "def_end_pos": [674, 27]
+            }
+          ]
+        ],
+        "state_before": "\u03b9 : Type u_1\n\u03b1 : Type u_2\nX : Type u_3\nM : Type u_4\nN : Type u_5\ninst\u271d\u00b3 : TopologicalSpace X\ninst\u271d\u00b2 : TopologicalSpace M\ninst\u271d\u00b9 : Monoid M\ninst\u271d : ContinuousMul M\ns : Set M\nhs : s \u2208 \ud835\udcdd 1\nthis : (fun a => a.1 * a.2) \u207b\u00b9' s \u2208 \ud835\udcdd (1, 1)\n\u22a2 \u2203 V, IsOpen V \u2227 1 \u2208 V \u2227 \u2200 (v : M), v \u2208 V \u2192 \u2200 (w : M), w \u2208 V \u2192 v * w \u2208 s",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "simpa only [one_mul] using hs",
+        "annotated_tactic": [
+          "simpa only [<a>one_mul</a>] using hs",
+          [
+            {
+              "full_name": "one_mul",
+              "def_path": "Mathlib/Algebra/Group/Defs.lean",
+              "def_pos": [464, 9],
+              "def_end_pos": [464, 16]
+            }
+          ]
+        ],
+        "state_before": "\u03b9 : Type u_1\n\u03b1 : Type u_2\nX : Type u_3\nM : Type u_4\nN : Type u_5\ninst\u271d\u00b3 : TopologicalSpace X\ninst\u271d\u00b2 : TopologicalSpace M\ninst\u271d\u00b9 : Monoid M\ninst\u271d : ContinuousMul M\ns : Set M\nhs : s \u2208 \ud835\udcdd 1\n\u22a2 s \u2208 \ud835\udcdd (1 * 1)",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Geometry/Manifold/ContMDiff.lean",
+    "full_name": "ContMDiffAt.comp_of_eq",
+    "start": [1039, 1],
+    "end": [1041, 31],
+    "traced_tactics": [
+      {
+        "tactic": "subst hx",
+        "annotated_tactic": ["subst hx", []],
+        "state_before": "\ud835\udd5c : Type u_1\ninst\u271d\u00b3\u2077 : NontriviallyNormedField \ud835\udd5c\nE : Type u_2\ninst\u271d\u00b3\u2076 : NormedAddCommGroup E\ninst\u271d\u00b3\u2075 : NormedSpace \ud835\udd5c E\nH : Type u_3\ninst\u271d\u00b3\u2074 : TopologicalSpace H\nI : ModelWithCorners \ud835\udd5c E H\nM : Type u_4\ninst\u271d\u00b3\u00b3 : TopologicalSpace M\ninst\u271d\u00b3\u00b2 : ChartedSpace H M\ninst\u271d\u00b3\u00b9 : SmoothManifoldWithCorners I M\nE' : Type u_5\ninst\u271d\u00b3\u2070 : NormedAddCommGroup E'\ninst\u271d\u00b2\u2079 : NormedSpace \ud835\udd5c E'\nH' : Type u_6\ninst\u271d\u00b2\u2078 : TopologicalSpace H'\nI' : ModelWithCorners \ud835\udd5c E' H'\nM' : Type u_7\ninst\u271d\u00b2\u2077 : TopologicalSpace M'\ninst\u271d\u00b2\u2076 : ChartedSpace H' M'\ninst\u271d\u00b2\u2075 : SmoothManifoldWithCorners I' M'\nE'' : Type u_8\ninst\u271d\u00b2\u2074 : NormedAddCommGroup E''\ninst\u271d\u00b2\u00b3 : NormedSpace \ud835\udd5c E''\nH'' : Type u_9\ninst\u271d\u00b2\u00b2 : TopologicalSpace H''\nI'' : ModelWithCorners \ud835\udd5c E'' H''\nM'' : Type u_10\ninst\u271d\u00b2\u00b9 : TopologicalSpace M''\ninst\u271d\u00b2\u2070 : ChartedSpace H'' M''\nF : Type u_11\ninst\u271d\u00b9\u2079 : NormedAddCommGroup F\ninst\u271d\u00b9\u2078 : NormedSpace \ud835\udd5c F\nG : Type u_12\ninst\u271d\u00b9\u2077 : TopologicalSpace G\nJ : ModelWithCorners \ud835\udd5c F G\nN : Type u_13\ninst\u271d\u00b9\u2076 : TopologicalSpace N\ninst\u271d\u00b9\u2075 : ChartedSpace G N\ninst\u271d\u00b9\u2074 : SmoothManifoldWithCorners J N\nF' : Type u_14\ninst\u271d\u00b9\u00b3 : NormedAddCommGroup F'\ninst\u271d\u00b9\u00b2 : NormedSpace \ud835\udd5c F'\nG' : Type u_15\ninst\u271d\u00b9\u00b9 : TopologicalSpace G'\nJ' : ModelWithCorners \ud835\udd5c F' G'\nN' : Type u_16\ninst\u271d\u00b9\u2070 : TopologicalSpace N'\ninst\u271d\u2079 : ChartedSpace G' N'\ninst\u271d\u2078 : SmoothManifoldWithCorners J' N'\nF\u2081 : Type u_17\ninst\u271d\u2077 : NormedAddCommGroup F\u2081\ninst\u271d\u2076 : NormedSpace \ud835\udd5c F\u2081\nF\u2082 : Type u_18\ninst\u271d\u2075 : NormedAddCommGroup F\u2082\ninst\u271d\u2074 : NormedSpace \ud835\udd5c F\u2082\nF\u2083 : Type u_19\ninst\u271d\u00b3 : NormedAddCommGroup F\u2083\ninst\u271d\u00b2 : NormedSpace \ud835\udd5c F\u2083\nF\u2084 : Type u_20\ninst\u271d\u00b9 : NormedAddCommGroup F\u2084\ninst\u271d : NormedSpace \ud835\udd5c F\u2084\ne : LocalHomeomorph M H\ne' : LocalHomeomorph M' H'\nf f\u2081 : M \u2192 M'\ns s\u2081 t : Set M\nx\u271d : M\nm n : \u2115\u221e\ng : M' \u2192 M''\nx : M\ny : M'\nhg : ContMDiffAt I' I'' n g y\nhf : ContMDiffAt I I' n f x\nhx : f x = y\n\u22a2 ContMDiffAt I I'' n (g \u2218 f) x",
+        "state_after": "\ud835\udd5c : Type u_1\ninst\u271d\u00b3\u2077 : NontriviallyNormedField \ud835\udd5c\nE : Type u_2\ninst\u271d\u00b3\u2076 : NormedAddCommGroup E\ninst\u271d\u00b3\u2075 : NormedSpace \ud835\udd5c E\nH : Type u_3\ninst\u271d\u00b3\u2074 : TopologicalSpace H\nI : ModelWithCorners \ud835\udd5c E H\nM : Type u_4\ninst\u271d\u00b3\u00b3 : TopologicalSpace M\ninst\u271d\u00b3\u00b2 : ChartedSpace H M\ninst\u271d\u00b3\u00b9 : SmoothManifoldWithCorners I M\nE' : Type u_5\ninst\u271d\u00b3\u2070 : NormedAddCommGroup E'\ninst\u271d\u00b2\u2079 : NormedSpace \ud835\udd5c E'\nH' : Type u_6\ninst\u271d\u00b2\u2078 : TopologicalSpace H'\nI' : ModelWithCorners \ud835\udd5c E' H'\nM' : Type u_7\ninst\u271d\u00b2\u2077 : TopologicalSpace M'\ninst\u271d\u00b2\u2076 : ChartedSpace H' M'\ninst\u271d\u00b2\u2075 : SmoothManifoldWithCorners I' M'\nE'' : Type u_8\ninst\u271d\u00b2\u2074 : NormedAddCommGroup E''\ninst\u271d\u00b2\u00b3 : NormedSpace \ud835\udd5c E''\nH'' : Type u_9\ninst\u271d\u00b2\u00b2 : TopologicalSpace H''\nI'' : ModelWithCorners \ud835\udd5c E'' H''\nM'' : Type u_10\ninst\u271d\u00b2\u00b9 : TopologicalSpace M''\ninst\u271d\u00b2\u2070 : ChartedSpace H'' M''\nF : Type u_11\ninst\u271d\u00b9\u2079 : NormedAddCommGroup F\ninst\u271d\u00b9\u2078 : NormedSpace \ud835\udd5c F\nG : Type u_12\ninst\u271d\u00b9\u2077 : TopologicalSpace G\nJ : ModelWithCorners \ud835\udd5c F G\nN : Type u_13\ninst\u271d\u00b9\u2076 : TopologicalSpace N\ninst\u271d\u00b9\u2075 : ChartedSpace G N\ninst\u271d\u00b9\u2074 : SmoothManifoldWithCorners J N\nF' : Type u_14\ninst\u271d\u00b9\u00b3 : NormedAddCommGroup F'\ninst\u271d\u00b9\u00b2 : NormedSpace \ud835\udd5c F'\nG' : Type u_15\ninst\u271d\u00b9\u00b9 : TopologicalSpace G'\nJ' : ModelWithCorners \ud835\udd5c F' G'\nN' : Type u_16\ninst\u271d\u00b9\u2070 : TopologicalSpace N'\ninst\u271d\u2079 : ChartedSpace G' N'\ninst\u271d\u2078 : SmoothManifoldWithCorners J' N'\nF\u2081 : Type u_17\ninst\u271d\u2077 : NormedAddCommGroup F\u2081\ninst\u271d\u2076 : NormedSpace \ud835\udd5c F\u2081\nF\u2082 : Type u_18\ninst\u271d\u2075 : NormedAddCommGroup F\u2082\ninst\u271d\u2074 : NormedSpace \ud835\udd5c F\u2082\nF\u2083 : Type u_19\ninst\u271d\u00b3 : NormedAddCommGroup F\u2083\ninst\u271d\u00b2 : NormedSpace \ud835\udd5c F\u2083\nF\u2084 : Type u_20\ninst\u271d\u00b9 : NormedAddCommGroup F\u2084\ninst\u271d : NormedSpace \ud835\udd5c F\u2084\ne : LocalHomeomorph M H\ne' : LocalHomeomorph M' H'\nf f\u2081 : M \u2192 M'\ns s\u2081 t : Set M\nx\u271d : M\nm n : \u2115\u221e\ng : M' \u2192 M''\nx : M\nhf : ContMDiffAt I I' n f x\nhg : ContMDiffAt I' I'' n g (f x)\n\u22a2 ContMDiffAt I I'' n (g \u2218 f) x"
+      },
+      {
+        "tactic": "exact hg.comp x hf",
+        "annotated_tactic": ["exact hg.comp x hf", []],
+        "state_before": "\ud835\udd5c : Type u_1\ninst\u271d\u00b3\u2077 : NontriviallyNormedField \ud835\udd5c\nE : Type u_2\ninst\u271d\u00b3\u2076 : NormedAddCommGroup E\ninst\u271d\u00b3\u2075 : NormedSpace \ud835\udd5c E\nH : Type u_3\ninst\u271d\u00b3\u2074 : TopologicalSpace H\nI : ModelWithCorners \ud835\udd5c E H\nM : Type u_4\ninst\u271d\u00b3\u00b3 : TopologicalSpace M\ninst\u271d\u00b3\u00b2 : ChartedSpace H M\ninst\u271d\u00b3\u00b9 : SmoothManifoldWithCorners I M\nE' : Type u_5\ninst\u271d\u00b3\u2070 : NormedAddCommGroup E'\ninst\u271d\u00b2\u2079 : NormedSpace \ud835\udd5c E'\nH' : Type u_6\ninst\u271d\u00b2\u2078 : TopologicalSpace H'\nI' : ModelWithCorners \ud835\udd5c E' H'\nM' : Type u_7\ninst\u271d\u00b2\u2077 : TopologicalSpace M'\ninst\u271d\u00b2\u2076 : ChartedSpace H' M'\ninst\u271d\u00b2\u2075 : SmoothManifoldWithCorners I' M'\nE'' : Type u_8\ninst\u271d\u00b2\u2074 : NormedAddCommGroup E''\ninst\u271d\u00b2\u00b3 : NormedSpace \ud835\udd5c E''\nH'' : Type u_9\ninst\u271d\u00b2\u00b2 : TopologicalSpace H''\nI'' : ModelWithCorners \ud835\udd5c E'' H''\nM'' : Type u_10\ninst\u271d\u00b2\u00b9 : TopologicalSpace M''\ninst\u271d\u00b2\u2070 : ChartedSpace H'' M''\nF : Type u_11\ninst\u271d\u00b9\u2079 : NormedAddCommGroup F\ninst\u271d\u00b9\u2078 : NormedSpace \ud835\udd5c F\nG : Type u_12\ninst\u271d\u00b9\u2077 : TopologicalSpace G\nJ : ModelWithCorners \ud835\udd5c F G\nN : Type u_13\ninst\u271d\u00b9\u2076 : TopologicalSpace N\ninst\u271d\u00b9\u2075 : ChartedSpace G N\ninst\u271d\u00b9\u2074 : SmoothManifoldWithCorners J N\nF' : Type u_14\ninst\u271d\u00b9\u00b3 : NormedAddCommGroup F'\ninst\u271d\u00b9\u00b2 : NormedSpace \ud835\udd5c F'\nG' : Type u_15\ninst\u271d\u00b9\u00b9 : TopologicalSpace G'\nJ' : ModelWithCorners \ud835\udd5c F' G'\nN' : Type u_16\ninst\u271d\u00b9\u2070 : TopologicalSpace N'\ninst\u271d\u2079 : ChartedSpace G' N'\ninst\u271d\u2078 : SmoothManifoldWithCorners J' N'\nF\u2081 : Type u_17\ninst\u271d\u2077 : NormedAddCommGroup F\u2081\ninst\u271d\u2076 : NormedSpace \ud835\udd5c F\u2081\nF\u2082 : Type u_18\ninst\u271d\u2075 : NormedAddCommGroup F\u2082\ninst\u271d\u2074 : NormedSpace \ud835\udd5c F\u2082\nF\u2083 : Type u_19\ninst\u271d\u00b3 : NormedAddCommGroup F\u2083\ninst\u271d\u00b2 : NormedSpace \ud835\udd5c F\u2083\nF\u2084 : Type u_20\ninst\u271d\u00b9 : NormedAddCommGroup F\u2084\ninst\u271d : NormedSpace \ud835\udd5c F\u2084\ne : LocalHomeomorph M H\ne' : LocalHomeomorph M' H'\nf f\u2081 : M \u2192 M'\ns s\u2081 t : Set M\nx\u271d : M\nm n : \u2115\u221e\ng : M' \u2192 M''\nx : M\nhf : ContMDiffAt I I' n f x\nhg : ContMDiffAt I' I'' n g (f x)\n\u22a2 ContMDiffAt I I'' n (g \u2218 f) x",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/LinearAlgebra/AffineSpace/Midpoint.lean",
+    "full_name": "midpoint_vsub",
+    "start": [133, 1],
+    "end": [137, 44],
+    "traced_tactics": [
+      {
+        "tactic": "rw [\u2190 vsub_sub_vsub_cancel_right p\u2081 p p\u2082, smul_sub, sub_eq_add_neg, \u2190 smul_neg,\n  neg_vsub_eq_vsub_rev, add_assoc, invOf_two_smul_add_invOf_two_smul, \u2190 vadd_vsub_assoc,\n  midpoint_comm, midpoint, lineMap_apply]",
+        "annotated_tactic": [
+          "rw [\u2190 <a>vsub_sub_vsub_cancel_right</a> p\u2081 p p\u2082, <a>smul_sub</a>, <a>sub_eq_add_neg</a>, \u2190 <a>smul_neg</a>,\n    <a>neg_vsub_eq_vsub_rev</a>, <a>add_assoc</a>, <a>invOf_two_smul_add_invOf_two_smul</a>, \u2190 <a>vadd_vsub_assoc</a>,\n    <a>midpoint_comm</a>, <a>midpoint</a>, <a>lineMap_apply</a>]",
+          [
+            {
+              "full_name": "vsub_sub_vsub_cancel_right",
+              "def_path": "Mathlib/Algebra/AddTorsor.lean",
+              "def_pos": [174, 9],
+              "def_end_pos": [174, 35]
+            },
+            {
+              "full_name": "smul_sub",
+              "def_path": "Mathlib/GroupTheory/GroupAction/Defs.lean",
+              "def_pos": [988, 9],
+              "def_end_pos": [988, 17]
+            },
+            {
+              "full_name": "sub_eq_add_neg",
+              "def_path": "Mathlib/Algebra/Group/Defs.lean",
+              "def_pos": [975, 3],
+              "def_end_pos": [975, 14]
+            },
+            {
+              "full_name": "smul_neg",
+              "def_path": "Mathlib/GroupTheory/GroupAction/Defs.lean",
+              "def_pos": [984, 9],
+              "def_end_pos": [984, 17]
+            },
+            {
+              "full_name": "neg_vsub_eq_vsub_rev",
+              "def_path": "Mathlib/Algebra/AddTorsor.lean",
+              "def_pos": [156, 9],
+              "def_end_pos": [156, 29]
+            },
+            {
+              "full_name": "add_assoc",
+              "def_path": "Mathlib/Algebra/Group/Defs.lean",
+              "def_pos": [263, 3],
+              "def_end_pos": [263, 14]
+            },
+            {
+              "full_name": "invOf_two_smul_add_invOf_two_smul",
+              "def_path": "Mathlib/Algebra/Module/Basic.lean",
+              "def_pos": [111, 9],
+              "def_end_pos": [111, 42]
+            },
+            {
+              "full_name": "vadd_vsub_assoc",
+              "def_path": "Mathlib/Algebra/AddTorsor.lean",
+              "def_pos": [119, 9],
+              "def_end_pos": [119, 24]
+            },
+            {
+              "full_name": "midpoint_comm",
+              "def_path": "Mathlib/LinearAlgebra/AffineSpace/Midpoint.lean",
+              "def_pos": [73, 9],
+              "def_end_pos": [73, 22]
+            },
+            {
+              "full_name": "midpoint",
+              "def_path": "Mathlib/LinearAlgebra/AffineSpace/Midpoint.lean",
+              "def_pos": [43, 5],
+              "def_end_pos": [43, 13]
+            },
+            {
+              "full_name": "AffineMap.lineMap_apply",
+              "def_path": "Mathlib/LinearAlgebra/AffineSpace/AffineMap.lean",
+              "def_pos": [514, 9],
+              "def_end_pos": [514, 22]
+            }
+          ]
+        ],
+        "state_before": "R : Type u_1\nV : Type u_2\nV' : Type u_3\nP : Type u_4\nP' : Type u_5\ninst\u271d\u2077 : Ring R\ninst\u271d\u2076 : Invertible 2\ninst\u271d\u2075 : AddCommGroup V\ninst\u271d\u2074 : Module R V\ninst\u271d\u00b3 : AddTorsor V P\ninst\u271d\u00b2 : AddCommGroup V'\ninst\u271d\u00b9 : Module R V'\ninst\u271d : AddTorsor V' P'\nx y z p\u2081 p\u2082 p : P\n\u22a2 midpoint R p\u2081 p\u2082 -\u1d65 p = \u215f2 \u2022 (p\u2081 -\u1d65 p) + \u215f2 \u2022 (p\u2082 -\u1d65 p)",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/ModelTheory/Satisfiability.lean",
+    "full_name": "FirstOrder.Language.Theory.models_iff_finset_models",
+    "start": [367, 1],
+    "end": [381, 38],
+    "traced_tactics": [
+      {
+        "tactic": "simp only [models_iff_not_satisfiable]",
+        "annotated_tactic": [
+          "simp only [<a>models_iff_not_satisfiable</a>]",
+          [
+            {
+              "full_name": "FirstOrder.Language.Theory.models_iff_not_satisfiable",
+              "def_path": "Mathlib/ModelTheory/Satisfiability.lean",
+              "def_pos": [326, 9],
+              "def_end_pos": [326, 35]
+            }
+          ]
+        ],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\n\u22a2 T \u22a8\u1d47 \u03c6 \u2194 \u2203 T0, \u2191T0 \u2286 T \u2227 \u2191T0 \u22a8\u1d47 \u03c6",
+        "state_after": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\n\u22a2 \u00acIsSatisfiable (T \u222a {Formula.not \u03c6}) \u2194 \u2203 T0, \u2191T0 \u2286 T \u2227 \u00acIsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})"
+      },
+      {
+        "tactic": "rw [\u2190 not_iff_not, not_not, isSatisfiable_iff_isFinitelySatisfiable, IsFinitelySatisfiable]",
+        "annotated_tactic": [
+          "rw [\u2190 <a>not_iff_not</a>, <a>not_not</a>, <a>isSatisfiable_iff_isFinitelySatisfiable</a>, <a>IsFinitelySatisfiable</a>]",
+          [
+            {
+              "full_name": "not_iff_not",
+              "def_path": "Mathlib/Logic/Basic.lean",
+              "def_pos": [439, 9],
+              "def_end_pos": [439, 20]
+            },
+            {
+              "full_name": "Classical.not_not",
+              "def_path": "lake-packages/std/Std/Logic.lean",
+              "def_pos": [683, 24],
+              "def_end_pos": [683, 31]
+            },
+            {
+              "full_name": "FirstOrder.Language.Theory.isSatisfiable_iff_isFinitelySatisfiable",
+              "def_path": "Mathlib/ModelTheory/Satisfiability.lean",
+              "def_pos": [107, 9],
+              "def_end_pos": [107, 48]
+            },
+            {
+              "full_name": "FirstOrder.Language.Theory.IsFinitelySatisfiable",
+              "def_path": "Mathlib/ModelTheory/Satisfiability.lean",
+              "def_pos": [69, 5],
+              "def_end_pos": [69, 26]
+            }
+          ]
+        ],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\n\u22a2 \u00acIsSatisfiable (T \u222a {Formula.not \u03c6}) \u2194 \u2203 T0, \u2191T0 \u2286 T \u2227 \u00acIsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})",
+        "state_after": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0) \u2194\n    \u00ac\u2203 T0, \u2191T0 \u2286 T \u2227 \u00acIsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})"
+      },
+      {
+        "tactic": "push_neg",
+        "annotated_tactic": ["push_neg", []],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0) \u2194\n    \u00ac\u2203 T0, \u2191T0 \u2286 T \u2227 \u00acIsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})",
+        "state_after": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0) \u2194\n    \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})"
+      },
+      {
+        "tactic": "letI := Classical.decEq (Sentence L)",
+        "annotated_tactic": [
+          "letI := <a>Classical.decEq</a> (<a>Sentence</a> L)",
+          [
+            {
+              "full_name": "Classical.decEq",
+              "def_path": "Mathlib/Logic/Basic.lean",
+              "def_pos": [983, 19],
+              "def_end_pos": [983, 24]
+            },
+            {
+              "full_name": "FirstOrder.Language.Sentence",
+              "def_path": "Mathlib/ModelTheory/Syntax.lean",
+              "def_pos": [331, 5],
+              "def_end_pos": [331, 13]
+            }
+          ]
+        ],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0) \u2194\n    \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})",
+        "state_after": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0) \u2194\n    \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})"
+      },
+      {
+        "tactic": "constructor",
+        "annotated_tactic": ["constructor", []],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0) \u2194\n    \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})",
+        "state_after": "case mp\nL : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0) \u2192\n    \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})\n\ncase mpr\nL : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})) \u2192\n    \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0"
+      },
+      {
+        "tactic": "intro h T0 hT0",
+        "annotated_tactic": ["intro h T0 hT0", []],
+        "state_before": "case mp\nL : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0) \u2192\n    \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})",
+        "state_after": "case mp\nL : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T\n\u22a2 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})"
+      },
+      {
+        "tactic": "simpa using h (T0 \u222a {Formula.not \u03c6})\n  (by\n    simp only [Finset.coe_union, Finset.coe_singleton]\n    exact Set.union_subset_union hT0 (Set.Subset.refl _))",
+        "annotated_tactic": [
+          "simpa using h (T0 \u222a {<a>Formula.not</a> \u03c6})\n      (by\n        simp only [<a>Finset.coe_union</a>, <a>Finset.coe_singleton</a>]\n        exact <a>Set.union_subset_union</a> hT0 (<a>Set.Subset.refl</a> _))",
+          [
+            {
+              "full_name": "FirstOrder.Language.Formula.not",
+              "def_path": "Mathlib/ModelTheory/Syntax.lean",
+              "def_pos": [1031, 25],
+              "def_end_pos": [1031, 28]
+            },
+            {
+              "full_name": "Finset.coe_union",
+              "def_path": "Mathlib/Data/Finset/Basic.lean",
+              "def_pos": [1399, 9],
+              "def_end_pos": [1399, 18]
+            },
+            {
+              "full_name": "Finset.coe_singleton",
+              "def_path": "Mathlib/Data/Finset/Basic.lean",
+              "def_pos": [725, 9],
+              "def_end_pos": [725, 22]
+            },
+            {
+              "full_name": "Set.union_subset_union",
+              "def_path": "Mathlib/Data/Set/Basic.lean",
+              "def_pos": [846, 9],
+              "def_end_pos": [846, 27]
+            },
+            {
+              "full_name": "Set.Subset.refl",
+              "def_path": "Mathlib/Data/Set/Basic.lean",
+              "def_pos": [354, 9],
+              "def_end_pos": [354, 20]
+            }
+          ]
+        ],
+        "state_before": "case mp\nL : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T\n\u22a2 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "simp only [Finset.coe_union, Finset.coe_singleton]",
+        "annotated_tactic": [
+          "simp only [<a>Finset.coe_union</a>, <a>Finset.coe_singleton</a>]",
+          [
+            {
+              "full_name": "Finset.coe_union",
+              "def_path": "Mathlib/Data/Finset/Basic.lean",
+              "def_pos": [1399, 9],
+              "def_end_pos": [1399, 18]
+            },
+            {
+              "full_name": "Finset.coe_singleton",
+              "def_path": "Mathlib/Data/Finset/Basic.lean",
+              "def_pos": [725, 9],
+              "def_end_pos": [725, 22]
+            }
+          ]
+        ],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T\n\u22a2 \u2191(T0 \u222a {Formula.not \u03c6}) \u2286 T \u222a {Formula.not \u03c6}",
+        "state_after": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T\n\u22a2 \u2191T0 \u222a {Formula.not \u03c6} \u2286 T \u222a {Formula.not \u03c6}"
+      },
+      {
+        "tactic": "exact Set.union_subset_union hT0 (Set.Subset.refl _)",
+        "annotated_tactic": [
+          "exact <a>Set.union_subset_union</a> hT0 (<a>Set.Subset.refl</a> _)",
+          [
+            {
+              "full_name": "Set.union_subset_union",
+              "def_path": "Mathlib/Data/Set/Basic.lean",
+              "def_pos": [846, 9],
+              "def_end_pos": [846, 27]
+            },
+            {
+              "full_name": "Set.Subset.refl",
+              "def_path": "Mathlib/Data/Set/Basic.lean",
+              "def_pos": [354, 9],
+              "def_end_pos": [354, 20]
+            }
+          ]
+        ],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T\n\u22a2 \u2191T0 \u222a {Formula.not \u03c6} \u2286 T \u222a {Formula.not \u03c6}",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "intro h T0 hT0",
+        "annotated_tactic": ["intro h T0 hT0", []],
+        "state_before": "case mpr\nL : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\n\u22a2 (\u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})) \u2192\n    \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u222a {Formula.not \u03c6} \u2192 IsSatisfiable \u2191T0",
+        "state_after": "case mpr\nL : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T \u222a {Formula.not \u03c6}\n\u22a2 IsSatisfiable \u2191T0"
+      },
+      {
+        "tactic": "exact IsSatisfiable.mono (h (T0.erase (Formula.not \u03c6))\n  (by simpa using hT0)) (by simp)",
+        "annotated_tactic": [
+          "exact <a>IsSatisfiable.mono</a> (h (T0.erase (<a>Formula.not</a> \u03c6))\n      (by simpa using hT0)) (by simp)",
+          [
+            {
+              "full_name": "FirstOrder.Language.Theory.IsSatisfiable.mono",
+              "def_path": "Mathlib/ModelTheory/Satisfiability.lean",
+              "def_pos": [80, 9],
+              "def_end_pos": [80, 27]
+            },
+            {
+              "full_name": "FirstOrder.Language.Formula.not",
+              "def_path": "Mathlib/ModelTheory/Syntax.lean",
+              "def_pos": [1031, 25],
+              "def_end_pos": [1031, 28]
+            }
+          ]
+        ],
+        "state_before": "case mpr\nL : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T \u222a {Formula.not \u03c6}\n\u22a2 IsSatisfiable \u2191T0",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "simpa using hT0",
+        "annotated_tactic": ["simpa using hT0", []],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T \u222a {Formula.not \u03c6}\n\u22a2 \u2191(Finset.erase T0 (Formula.not \u03c6)) \u2286 T",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "simp",
+        "annotated_tactic": ["simp", []],
+        "state_before": "L : Language\nT : Theory L\n\u03b1 : Type w\nn : \u2115\n\u03c6 : Sentence L\nthis : DecidableEq (Sentence L) := Classical.decEq (Sentence L)\nh : \u2200 (T0 : Finset (Sentence L)), \u2191T0 \u2286 T \u2192 IsSatisfiable (\u2191T0 \u222a {Formula.not \u03c6})\nT0 : Finset (Sentence L)\nhT0 : \u2191T0 \u2286 T \u222a {Formula.not \u03c6}\n\u22a2 \u2191T0 \u2286 \u2191(Finset.erase T0 (Formula.not \u03c6)) \u222a {Formula.not \u03c6}",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Data/Polynomial/Laurent.lean",
+    "full_name": "LaurentPolynomial.isUnit_T",
+    "start": [284, 1],
+    "end": [285, 25],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Data/Nat/PartENat.lean",
+    "full_name": "PartENat.toWithTop_some",
+    "start": [571, 1],
+    "end": [572, 6],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Data/Finset/Pointwise.lean",
+    "full_name": "Finset.coe_smul",
+    "start": [1283, 1],
+    "end": [1284, 19],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Topology/Homotopy/HomotopyGroup.lean",
+    "full_name": "GenLoop.continuous_fromLoop",
+    "start": [240, 1],
+    "end": [244, 6],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Init/Data/Int/Basic.lean",
+    "full_name": "Int.neg_eq_neg",
+    "start": [77, 11],
+    "end": [77, 80],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Data/Matrix/Block.lean",
+    "full_name": "Matrix.blockDiagonal'_diagonal",
+    "start": [718, 1],
+    "end": [724, 15],
+    "traced_tactics": [
+      {
+        "tactic": "ext \u27e8i, k\u27e9 \u27e8j, k'\u27e9",
+        "annotated_tactic": ["ext \u27e8i, k\u27e9 \u27e8j, k'\u27e9", []],
+        "state_before": "l : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\n\u22a2 (blockDiagonal' fun k => diagonal (d k)) = diagonal fun ik => d ik.fst ik.snd",
+        "state_after": "case a.mk.h.mk\nl : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\ni : o\nk : m' i\nj : o\nk' : m' j\n\u22a2 blockDiagonal' (fun k => diagonal (d k)) { fst := i, snd := k } { fst := j, snd := k' } =\n    diagonal (fun ik => d ik.fst ik.snd) { fst := i, snd := k } { fst := j, snd := k' }"
+      },
+      {
+        "tactic": "simp only [blockDiagonal'_apply, diagonal]",
+        "annotated_tactic": [
+          "simp only [<a>blockDiagonal'_apply</a>, <a>diagonal</a>]",
+          [
+            {
+              "full_name": "Matrix.blockDiagonal'_apply",
+              "def_path": "Mathlib/Data/Matrix/Block.lean",
+              "def_pos": [666, 9],
+              "def_end_pos": [666, 29]
+            },
+            {
+              "full_name": "Matrix.diagonal",
+              "def_path": "Mathlib/Data/Matrix/Basic.lean",
+              "def_pos": [420, 5],
+              "def_end_pos": [420, 13]
+            }
+          ]
+        ],
+        "state_before": "case a.mk.h.mk\nl : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\ni : o\nk : m' i\nj : o\nk' : m' j\n\u22a2 blockDiagonal' (fun k => diagonal (d k)) { fst := i, snd := k } { fst := j, snd := k' } =\n    diagonal (fun ik => d ik.fst ik.snd) { fst := i, snd := k } { fst := j, snd := k' }",
+        "state_after": "case a.mk.h.mk\nl : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\ni : o\nk : m' i\nj : o\nk' : m' j\n\u22a2 (if h : i = j then\n      \u2191of (fun i_1 j => if i_1 = j then d i i_1 else 0) k\n        (cast (_ : m' { fst := j, snd := k' }.fst = m' { fst := i, snd := k }.fst) k')\n    else 0) =\n    \u2191of (fun i j => if i = j then d i.fst i.snd else 0) { fst := i, snd := k } { fst := j, snd := k' }"
+      },
+      {
+        "tactic": "obtain rfl | hij := Decidable.eq_or_ne i j",
+        "annotated_tactic": [
+          "obtain rfl | hij := <a>Decidable.eq_or_ne</a> i j",
+          [
+            {
+              "full_name": "Decidable.eq_or_ne",
+              "def_path": "Mathlib/Logic/Basic.lean",
+              "def_pos": [203, 9],
+              "def_end_pos": [203, 27]
+            }
+          ]
+        ],
+        "state_before": "case a.mk.h.mk\nl : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\ni : o\nk : m' i\nj : o\nk' : m' j\n\u22a2 (if h : i = j then\n      \u2191of (fun i_1 j => if i_1 = j then d i i_1 else 0) k\n        (cast (_ : m' { fst := j, snd := k' }.fst = m' { fst := i, snd := k }.fst) k')\n    else 0) =\n    \u2191of (fun i j => if i = j then d i.fst i.snd else 0) { fst := i, snd := k } { fst := j, snd := k' }",
+        "state_after": "case a.mk.h.mk.inl\nl : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\ni : o\nk k' : m' i\n\u22a2 (if h : i = i then\n      \u2191of (fun i_1 j => if i_1 = j then d i i_1 else 0) k\n        (cast (_ : m' { fst := i, snd := k' }.fst = m' { fst := i, snd := k }.fst) k')\n    else 0) =\n    \u2191of (fun i j => if i = j then d i.fst i.snd else 0) { fst := i, snd := k } { fst := i, snd := k' }\n\ncase a.mk.h.mk.inr\nl : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\ni : o\nk : m' i\nj : o\nk' : m' j\nhij : i \u2260 j\n\u22a2 (if h : i = j then\n      \u2191of (fun i_1 j => if i_1 = j then d i i_1 else 0) k\n        (cast (_ : m' { fst := j, snd := k' }.fst = m' { fst := i, snd := k }.fst) k')\n    else 0) =\n    \u2191of (fun i j => if i = j then d i.fst i.snd else 0) { fst := i, snd := k } { fst := j, snd := k' }"
+      },
+      {
+        "tactic": "simp",
+        "annotated_tactic": ["simp", []],
+        "state_before": "case a.mk.h.mk.inl\nl : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\ni : o\nk k' : m' i\n\u22a2 (if h : i = i then\n      \u2191of (fun i_1 j => if i_1 = j then d i i_1 else 0) k\n        (cast (_ : m' { fst := i, snd := k' }.fst = m' { fst := i, snd := k }.fst) k')\n    else 0) =\n    \u2191of (fun i j => if i = j then d i.fst i.snd else 0) { fst := i, snd := k } { fst := i, snd := k' }",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "simp [hij]",
+        "annotated_tactic": ["simp [hij]", []],
+        "state_before": "case a.mk.h.mk.inr\nl : Type u_1\nm : Type u_2\nn : Type u_3\no : Type u_4\np : Type u_5\nq : Type u_6\nm' : o \u2192 Type u_7\nn' : o \u2192 Type u_8\np' : o \u2192 Type u_9\nR : Type u_10\nS : Type u_11\n\u03b1 : Type u_12\n\u03b2 : Type u_13\ninst\u271d\u00b3 : DecidableEq o\ninst\u271d\u00b2 : Zero \u03b1\ninst\u271d\u00b9 : Zero \u03b2\ninst\u271d : (i : o) \u2192 DecidableEq (m' i)\nd : (i : o) \u2192 m' i \u2192 \u03b1\ni : o\nk : m' i\nj : o\nk' : m' j\nhij : i \u2260 j\n\u22a2 (if h : i = j then\n      \u2191of (fun i_1 j => if i_1 = j then d i i_1 else 0) k\n        (cast (_ : m' { fst := j, snd := k' }.fst = m' { fst := i, snd := k }.fst) k')\n    else 0) =\n    \u2191of (fun i j => if i = j then d i.fst i.snd else 0) { fst := i, snd := k } { fst := j, snd := k' }",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Data/Polynomial/Degree/Definitions.lean",
+    "full_name": "Polynomial.degree_sum_fin_lt",
+    "start": [1180, 1],
+    "end": [1184, 75],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Data/Complex/Exponential.lean",
+    "full_name": "Real.exp_zero",
+    "start": [1135, 1],
+    "end": [1135, 51],
+    "traced_tactics": [
+      {
+        "tactic": "simp [Real.exp]",
+        "annotated_tactic": [
+          "simp [<a>Real.exp</a>]",
+          [
+            {
+              "full_name": "Real.exp",
+              "def_path": "Mathlib/Data/Complex/Exponential.lean",
+              "def_pos": [434, 12],
+              "def_end_pos": [434, 15]
+            }
+          ]
+        ],
+        "state_before": "x y : \u211d\n\u22a2 rexp 0 = 1",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Combinatorics/SimpleGraph/Connectivity.lean",
+    "full_name": "SimpleGraph.Walk.edges_bypass_subset",
+    "start": [1508, 1],
+    "end": [1509, 42],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/AlgebraicGeometry/PrimeSpectrum/Basic.lean",
+    "full_name": "PrimeSpectrum.closedEmbedding_comap_of_surjective",
+    "start": [739, 1],
+    "end": [742, 64],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/LinearAlgebra/Matrix/Transvection.lean",
+    "full_name": "Matrix.Pivot.isTwoBlockDiagonal_listTransvecCol_mul_mul_listTransvecRow",
+    "start": [521, 1],
+    "end": [530, 83],
+    "traced_tactics": [
+      {
+        "tactic": "constructor",
+        "annotated_tactic": ["constructor", []],
+        "state_before": "n : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\n\u22a2 IsTwoBlockDiagonal (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M))",
+        "state_after": "case left\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\n\u22a2 toBlocks\u2081\u2082 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) = 0\n\ncase right\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\n\u22a2 toBlocks\u2082\u2081 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) = 0"
+      },
+      {
+        "tactic": "ext i j",
+        "annotated_tactic": ["ext i j", []],
+        "state_before": "case left\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\n\u22a2 toBlocks\u2081\u2082 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) = 0",
+        "state_after": "case left.a.h\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Fin r\nj : Unit\n\u22a2 toBlocks\u2081\u2082 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) i j = OfNat.ofNat 0 i j"
+      },
+      {
+        "tactic": "have : j = unit := by simp only [eq_iff_true_of_subsingleton]",
+        "annotated_tactic": [
+          "have : j = <a>unit</a> := by simp only [<a>eq_iff_true_of_subsingleton</a>]",
+          [
+            {
+              "full_name": "Unit.unit",
+              "def_path": "lake-packages/lean4/src/lean/Init/Prelude.lean",
+              "def_pos": [135, 25],
+              "def_end_pos": [135, 34]
+            },
+            {
+              "full_name": "eq_iff_true_of_subsingleton",
+              "def_path": "lake-packages/std/Std/Logic.lean",
+              "def_pos": [790, 9],
+              "def_end_pos": [790, 36]
+            }
+          ]
+        ],
+        "state_before": "case left.a.h\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Fin r\nj : Unit\n\u22a2 toBlocks\u2081\u2082 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) i j = OfNat.ofNat 0 i j",
+        "state_after": "case left.a.h\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Fin r\nj : Unit\nthis : j = ()\n\u22a2 toBlocks\u2081\u2082 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) i j = OfNat.ofNat 0 i j"
+      },
+      {
+        "tactic": "simp [toBlocks\u2081\u2082, this, listTransvecCol_mul_mul_listTransvecRow_last_row M hM]",
+        "annotated_tactic": [
+          "simp [<a>toBlocks\u2081\u2082</a>, this, <a>listTransvecCol_mul_mul_listTransvecRow_last_row</a> M hM]",
+          [
+            {
+              "full_name": "Matrix.toBlocks\u2081\u2082",
+              "def_path": "Mathlib/Data/Matrix/Block.lean",
+              "def_pos": [82, 5],
+              "def_end_pos": [82, 15]
+            },
+            {
+              "full_name": "Matrix.Pivot.listTransvecCol_mul_mul_listTransvecRow_last_row",
+              "def_path": "Mathlib/LinearAlgebra/Matrix/Transvection.lean",
+              "def_pos": [509, 9],
+              "def_end_pos": [509, 57]
+            }
+          ]
+        ],
+        "state_before": "case left.a.h\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Fin r\nj : Unit\nthis : j = ()\n\u22a2 toBlocks\u2081\u2082 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) i j = OfNat.ofNat 0 i j",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "simp only [eq_iff_true_of_subsingleton]",
+        "annotated_tactic": [
+          "simp only [<a>eq_iff_true_of_subsingleton</a>]",
+          [
+            {
+              "full_name": "eq_iff_true_of_subsingleton",
+              "def_path": "lake-packages/std/Std/Logic.lean",
+              "def_pos": [790, 9],
+              "def_end_pos": [790, 36]
+            }
+          ]
+        ],
+        "state_before": "n : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Fin r\nj : Unit\n\u22a2 j = ()",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "ext i j",
+        "annotated_tactic": ["ext i j", []],
+        "state_before": "case right\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\n\u22a2 toBlocks\u2082\u2081 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) = 0",
+        "state_after": "case right.a.h\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Unit\nj : Fin r\n\u22a2 toBlocks\u2082\u2081 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) i j = OfNat.ofNat 0 i j"
+      },
+      {
+        "tactic": "have : i = unit := by simp only [eq_iff_true_of_subsingleton]",
+        "annotated_tactic": [
+          "have : i = <a>unit</a> := by simp only [<a>eq_iff_true_of_subsingleton</a>]",
+          [
+            {
+              "full_name": "Unit.unit",
+              "def_path": "lake-packages/lean4/src/lean/Init/Prelude.lean",
+              "def_pos": [135, 25],
+              "def_end_pos": [135, 34]
+            },
+            {
+              "full_name": "eq_iff_true_of_subsingleton",
+              "def_path": "lake-packages/std/Std/Logic.lean",
+              "def_pos": [790, 9],
+              "def_end_pos": [790, 36]
+            }
+          ]
+        ],
+        "state_before": "case right.a.h\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Unit\nj : Fin r\n\u22a2 toBlocks\u2082\u2081 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) i j = OfNat.ofNat 0 i j",
+        "state_after": "case right.a.h\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Unit\nj : Fin r\nthis : i = ()\n\u22a2 toBlocks\u2082\u2081 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) i j = OfNat.ofNat 0 i j"
+      },
+      {
+        "tactic": "simp [toBlocks\u2082\u2081, this, listTransvecCol_mul_mul_listTransvecRow_last_col M hM]",
+        "annotated_tactic": [
+          "simp [<a>toBlocks\u2082\u2081</a>, this, <a>listTransvecCol_mul_mul_listTransvecRow_last_col</a> M hM]",
+          [
+            {
+              "full_name": "Matrix.toBlocks\u2082\u2081",
+              "def_path": "Mathlib/Data/Matrix/Block.lean",
+              "def_pos": [88, 5],
+              "def_end_pos": [88, 15]
+            },
+            {
+              "full_name": "Matrix.Pivot.listTransvecCol_mul_mul_listTransvecRow_last_col",
+              "def_path": "Mathlib/LinearAlgebra/Matrix/Transvection.lean",
+              "def_pos": [497, 9],
+              "def_end_pos": [497, 57]
+            }
+          ]
+        ],
+        "state_before": "case right.a.h\nn : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Unit\nj : Fin r\nthis : i = ()\n\u22a2 toBlocks\u2082\u2081 (List.prod (listTransvecCol M) * M * List.prod (listTransvecRow M)) i j = OfNat.ofNat 0 i j",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "simp only [eq_iff_true_of_subsingleton]",
+        "annotated_tactic": [
+          "simp only [<a>eq_iff_true_of_subsingleton</a>]",
+          [
+            {
+              "full_name": "eq_iff_true_of_subsingleton",
+              "def_path": "lake-packages/std/Std/Logic.lean",
+              "def_pos": [790, 9],
+              "def_end_pos": [790, 36]
+            }
+          ]
+        ],
+        "state_before": "n : Type u_1\np : Type u_2\nR : Type u\u2082\n\ud835\udd5c : Type u_3\ninst\u271d\u00b3 : Field \ud835\udd5c\ninst\u271d\u00b2 : DecidableEq n\ninst\u271d\u00b9 : DecidableEq p\ninst\u271d : CommRing R\nr : \u2115\nM : Matrix (Fin r \u2295 Unit) (Fin r \u2295 Unit) \ud835\udd5c\nhM : M (inr ()) (inr ()) \u2260 0\ni : Unit\nj : Fin r\n\u22a2 i = ()",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/MeasureTheory/Covering/Differentiation.lean",
+    "full_name": "VitaliFamily.ae_tendsto_measure_inter_div",
+    "start": [752, 1],
+    "end": [770, 55],
+    "traced_tactics": [
+      {
+        "tactic": "let t := toMeasurable \u03bc s",
+        "annotated_tactic": [
+          "let t := <a>toMeasurable</a> \u03bc s",
+          [
+            {
+              "full_name": "MeasureTheory.toMeasurable",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpaceDef.lean",
+              "def_pos": [626, 17],
+              "def_end_pos": [626, 29]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)",
+        "state_after": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)"
+      },
+      {
+        "tactic": "have A :\n  \u2200\u1d50 x \u2202\u03bc.restrict s,\n    Tendsto (fun a => \u03bc (t \u2229 a) / \u03bc a) (v.filterAt x) (\ud835\udcdd (t.indicator 1 x)) := by\n  apply ae_mono restrict_le_self\n  apply ae_tendsto_measure_inter_div_of_measurableSet\n  exact measurableSet_toMeasurable _ _",
+        "annotated_tactic": [
+          "have A :\n    \u2200\u1d50 x \u2202\u03bc.restrict s,\n      <a>Tendsto</a> (fun a => \u03bc (t \u2229 a) / \u03bc a) (v.filterAt x) (\ud835\udcdd (t.indicator 1 x)) := by\n    apply <a>ae_mono</a> <a>restrict_le_self</a>\n    apply <a>ae_tendsto_measure_inter_div_of_measurableSet</a>\n    exact <a>measurableSet_toMeasurable</a> _ _",
+          [
+            {
+              "full_name": "Filter.Tendsto",
+              "def_path": "Mathlib/Order/Filter/Basic.lean",
+              "def_pos": [2939, 5],
+              "def_end_pos": [2939, 12]
+            },
+            {
+              "full_name": "MeasureTheory.ae_mono",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [2456, 9],
+              "def_end_pos": [2456, 16]
+            },
+            {
+              "full_name": "MeasureTheory.Measure.restrict_le_self",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [1578, 9],
+              "def_end_pos": [1578, 25]
+            },
+            {
+              "full_name": "VitaliFamily.ae_tendsto_measure_inter_div_of_measurableSet",
+              "def_path": "Mathlib/MeasureTheory/Covering/Differentiation.lean",
+              "def_pos": [739, 9],
+              "def_end_pos": [739, 54]
+            },
+            {
+              "full_name": "MeasureTheory.measurableSet_toMeasurable",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpaceDef.lean",
+              "def_pos": [645, 9],
+              "def_end_pos": [645, 35]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)",
+        "state_after": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)"
+      },
+      {
+        "tactic": "have B : \u2200\u1d50 x \u2202\u03bc.restrict s, t.indicator 1 x = (1 : \u211d\u22650\u221e) := by\n  refine' ae_restrict_of_ae_restrict_of_subset (subset_toMeasurable \u03bc s) _\n  filter_upwards [ae_restrict_mem (measurableSet_toMeasurable \u03bc s)] with _ hx\n  simp only [hx, Pi.one_apply, indicator_of_mem]",
+        "annotated_tactic": [
+          "have B : \u2200\u1d50 x \u2202\u03bc.restrict s, t.indicator 1 x = (1 : \u211d\u22650\u221e) := by\n    refine' <a>ae_restrict_of_ae_restrict_of_subset</a> (<a>subset_toMeasurable</a> \u03bc s) _\n    filter_upwards [<a>ae_restrict_mem</a> (<a>measurableSet_toMeasurable</a> \u03bc s)] with _ hx\n    simp only [hx, <a>Pi.one_apply</a>, <a>indicator_of_mem</a>]",
+          [
+            {
+              "full_name": "MeasureTheory.ae_restrict_of_ae_restrict_of_subset",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [2606, 9],
+              "def_end_pos": [2606, 45]
+            },
+            {
+              "full_name": "MeasureTheory.subset_toMeasurable",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpaceDef.lean",
+              "def_pos": [633, 9],
+              "def_end_pos": [633, 28]
+            },
+            {
+              "full_name": "MeasureTheory.ae_restrict_mem",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [2586, 9],
+              "def_end_pos": [2586, 24]
+            },
+            {
+              "full_name": "MeasureTheory.measurableSet_toMeasurable",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpaceDef.lean",
+              "def_pos": [645, 9],
+              "def_end_pos": [645, 35]
+            },
+            {
+              "full_name": "Pi.one_apply",
+              "def_path": "Mathlib/Data/Pi/Algebra.lean",
+              "def_pos": [47, 9],
+              "def_end_pos": [47, 18]
+            },
+            {
+              "full_name": "Set.indicator_of_mem",
+              "def_path": "Mathlib/Algebra/IndicatorFunction.lean",
+              "def_pos": [67, 3],
+              "def_end_pos": [67, 14]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)",
+        "state_after": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)"
+      },
+      {
+        "tactic": "filter_upwards [A, B] with x hx h'x",
+        "annotated_tactic": ["filter_upwards [A, B] with x hx h'x", []],
+        "state_before": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)",
+        "state_after": "case h\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nh'x : indicator t 1 x = 1\n\u22a2 Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)"
+      },
+      {
+        "tactic": "rw [h'x] at hx",
+        "annotated_tactic": ["rw [h'x] at hx", []],
+        "state_before": "case h\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nh'x : indicator t 1 x = 1\n\u22a2 Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)",
+        "state_after": "case h\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)\nh'x : indicator t 1 x = 1\n\u22a2 Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)"
+      },
+      {
+        "tactic": "apply hx.congr' _",
+        "annotated_tactic": ["apply hx.congr' _", []],
+        "state_before": "case h\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)\nh'x : indicator t 1 x = 1\n\u22a2 Tendsto (fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)",
+        "state_after": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)\nh'x : indicator t 1 x = 1\n\u22a2 (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) =\u1da0[filterAt v x] fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a"
+      },
+      {
+        "tactic": "filter_upwards [v.eventually_filterAt_measurableSet x] with _ ha",
+        "annotated_tactic": [
+          "filter_upwards [v.eventually_filterAt_measurableSet x] with _ ha",
+          []
+        ],
+        "state_before": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)\nh'x : indicator t 1 x = 1\n\u22a2 (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) =\u1da0[filterAt v x] fun a => \u2191\u2191\u03bc (s \u2229 a) / \u2191\u2191\u03bc a",
+        "state_after": "case h\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)\nh'x : indicator t 1 x = 1\na\u271d : Set \u03b1\nha : MeasurableSet a\u271d\n\u22a2 \u2191\u2191\u03bc (t \u2229 a\u271d) / \u2191\u2191\u03bc a\u271d = \u2191\u2191\u03bc (s \u2229 a\u271d) / \u2191\u2191\u03bc a\u271d"
+      },
+      {
+        "tactic": "congr 1",
+        "annotated_tactic": ["congr 1", []],
+        "state_before": "case h\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)\nh'x : indicator t 1 x = 1\na\u271d : Set \u03b1\nha : MeasurableSet a\u271d\n\u22a2 \u2191\u2191\u03bc (t \u2229 a\u271d) / \u2191\u2191\u03bc a\u271d = \u2191\u2191\u03bc (s \u2229 a\u271d) / \u2191\u2191\u03bc a\u271d",
+        "state_after": "case h.e_a\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)\nh'x : indicator t 1 x = 1\na\u271d : Set \u03b1\nha : MeasurableSet a\u271d\n\u22a2 \u2191\u2191\u03bc (t \u2229 a\u271d) = \u2191\u2191\u03bc (s \u2229 a\u271d)"
+      },
+      {
+        "tactic": "exact measure_toMeasurable_inter_of_sigmaFinite ha _",
+        "annotated_tactic": [
+          "exact <a>measure_toMeasurable_inter_of_sigmaFinite</a> ha _",
+          [
+            {
+              "full_name": "MeasureTheory.Measure.measure_toMeasurable_inter_of_sigmaFinite",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [3608, 9],
+              "def_end_pos": [3608, 50]
+            }
+          ]
+        ],
+        "state_before": "case h.e_a\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\nB : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1\nx : \u03b1\nhx : Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd 1)\nh'x : indicator t 1 x = 1\na\u271d : Set \u03b1\nha : MeasurableSet a\u271d\n\u22a2 \u2191\u2191\u03bc (t \u2229 a\u271d) = \u2191\u2191\u03bc (s \u2229 a\u271d)",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "apply ae_mono restrict_le_self",
+        "annotated_tactic": [
+          "apply <a>ae_mono</a> <a>restrict_le_self</a>",
+          [
+            {
+              "full_name": "MeasureTheory.ae_mono",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [2456, 9],
+              "def_end_pos": [2456, 16]
+            },
+            {
+              "full_name": "MeasureTheory.Measure.restrict_le_self",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [1578, 9],
+              "def_end_pos": [1578, 25]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))",
+        "state_after": "case a\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\n\u22a2 {x | (fun x => Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))) x} \u2208 ae \u03bc"
+      },
+      {
+        "tactic": "apply ae_tendsto_measure_inter_div_of_measurableSet",
+        "annotated_tactic": [
+          "apply <a>ae_tendsto_measure_inter_div_of_measurableSet</a>",
+          [
+            {
+              "full_name": "VitaliFamily.ae_tendsto_measure_inter_div_of_measurableSet",
+              "def_path": "Mathlib/MeasureTheory/Covering/Differentiation.lean",
+              "def_pos": [739, 9],
+              "def_end_pos": [739, 54]
+            }
+          ]
+        ],
+        "state_before": "case a\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\n\u22a2 {x | (fun x => Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))) x} \u2208 ae \u03bc",
+        "state_after": "case a.hs\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\n\u22a2 MeasurableSet t"
+      },
+      {
+        "tactic": "exact measurableSet_toMeasurable _ _",
+        "annotated_tactic": [
+          "exact <a>measurableSet_toMeasurable</a> _ _",
+          [
+            {
+              "full_name": "MeasureTheory.measurableSet_toMeasurable",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpaceDef.lean",
+              "def_pos": [645, 9],
+              "def_end_pos": [645, 35]
+            }
+          ]
+        ],
+        "state_before": "case a.hs\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\n\u22a2 MeasurableSet t",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "refine' ae_restrict_of_ae_restrict_of_subset (subset_toMeasurable \u03bc s) _",
+        "annotated_tactic": [
+          "refine' <a>ae_restrict_of_ae_restrict_of_subset</a> (<a>subset_toMeasurable</a> \u03bc s) _",
+          [
+            {
+              "full_name": "MeasureTheory.ae_restrict_of_ae_restrict_of_subset",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [2606, 9],
+              "def_end_pos": [2606, 45]
+            },
+            {
+              "full_name": "MeasureTheory.subset_toMeasurable",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpaceDef.lean",
+              "def_pos": [633, 9],
+              "def_end_pos": [633, 28]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, indicator t 1 x = 1",
+        "state_after": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc (toMeasurable \u03bc s), indicator t 1 x = 1"
+      },
+      {
+        "tactic": "filter_upwards [ae_restrict_mem (measurableSet_toMeasurable \u03bc s)] with _ hx",
+        "annotated_tactic": [
+          "filter_upwards [<a>ae_restrict_mem</a> (<a>measurableSet_toMeasurable</a> \u03bc s)] with _ hx",
+          [
+            {
+              "full_name": "MeasureTheory.ae_restrict_mem",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpace.lean",
+              "def_pos": [2586, 9],
+              "def_end_pos": [2586, 24]
+            },
+            {
+              "full_name": "MeasureTheory.measurableSet_toMeasurable",
+              "def_path": "Mathlib/MeasureTheory/Measure/MeasureSpaceDef.lean",
+              "def_pos": [645, 9],
+              "def_end_pos": [645, 35]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\n\u22a2 \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc (toMeasurable \u03bc s), indicator t 1 x = 1",
+        "state_after": "case h\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\na\u271d : \u03b1\nhx : a\u271d \u2208 toMeasurable \u03bc s\n\u22a2 indicator t 1 a\u271d = 1"
+      },
+      {
+        "tactic": "simp only [hx, Pi.one_apply, indicator_of_mem]",
+        "annotated_tactic": [
+          "simp only [hx, <a>Pi.one_apply</a>, <a>indicator_of_mem</a>]",
+          [
+            {
+              "full_name": "Pi.one_apply",
+              "def_path": "Mathlib/Data/Pi/Algebra.lean",
+              "def_pos": [47, 9],
+              "def_end_pos": [47, 18]
+            },
+            {
+              "full_name": "Set.indicator_of_mem",
+              "def_path": "Mathlib/Algebra/IndicatorFunction.lean",
+              "def_pos": [67, 3],
+              "def_end_pos": [67, 14]
+            }
+          ]
+        ],
+        "state_before": "case h\n\u03b1 : Type u_1\ninst\u271d\u2075 : MetricSpace \u03b1\nm0 : MeasurableSpace \u03b1\n\u03bc : Measure \u03b1\nv : VitaliFamily \u03bc\nE : Type u_2\ninst\u271d\u2074 : NormedAddCommGroup E\ninst\u271d\u00b3 : SecondCountableTopology \u03b1\ninst\u271d\u00b2 : BorelSpace \u03b1\ninst\u271d\u00b9 : IsLocallyFiniteMeasure \u03bc\n\u03c1 : Measure \u03b1\ninst\u271d : IsLocallyFiniteMeasure \u03c1\ns : Set \u03b1\nt : Set \u03b1 := toMeasurable \u03bc s\nA : \u2200\u1d50 (x : \u03b1) \u2202Measure.restrict \u03bc s, Tendsto (fun a => \u2191\u2191\u03bc (t \u2229 a) / \u2191\u2191\u03bc a) (filterAt v x) (\ud835\udcdd (indicator t 1 x))\na\u271d : \u03b1\nhx : a\u271d \u2208 toMeasurable \u03bc s\n\u22a2 indicator t 1 a\u271d = 1",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Order/Filter/Prod.lean",
+    "full_name": "Filter.tendsto_fst",
+    "start": [136, 1],
+    "end": [137, 33],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Analysis/NormedSpace/Extr.lean",
+    "full_name": "IsMaxOn.norm_add_self",
+    "start": [62, 1],
+    "end": [63, 30],
+    "traced_tactics": []
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Analysis/SpecificLimits/Normed.lean",
+    "full_name": "NormedRing.summable_geometric_of_norm_lt_1",
+    "start": [457, 1],
+    "end": [462, 33],
+    "traced_tactics": [
+      {
+        "tactic": "have h1 : Summable fun n : \u2115 \u21a6 \u2016x\u2016 ^ n := summable_geometric_of_lt_1 (norm_nonneg _) h",
+        "annotated_tactic": [
+          "have h1 : <a>Summable</a> fun n : \u2115 \u21a6 \u2016x\u2016 ^ n := <a>summable_geometric_of_lt_1</a> (<a>norm_nonneg</a> _) h",
+          [
+            {
+              "full_name": "Summable",
+              "def_path": "Mathlib/Topology/Algebra/InfiniteSum/Basic.lean",
+              "def_pos": [62, 5],
+              "def_end_pos": [62, 13]
+            },
+            {
+              "full_name": "summable_geometric_of_lt_1",
+              "def_path": "Mathlib/Analysis/SpecificLimits/Basic.lean",
+              "def_pos": [215, 9],
+              "def_end_pos": [215, 35]
+            },
+            {
+              "full_name": "norm_nonneg",
+              "def_path": "Mathlib/Analysis/Normed/Group/Basic.lean",
+              "def_pos": [500, 30],
+              "def_end_pos": [500, 41]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\n\u03b2 : Type u_2\n\u03b9 : Type u_3\nR : Type u_4\ninst\u271d\u00b9 : NormedRing R\ninst\u271d : CompleteSpace R\nx : R\nh : \u2016x\u2016 < 1\n\u22a2 Summable fun n => x ^ n",
+        "state_after": "\u03b1 : Type u_1\n\u03b2 : Type u_2\n\u03b9 : Type u_3\nR : Type u_4\ninst\u271d\u00b9 : NormedRing R\ninst\u271d : CompleteSpace R\nx : R\nh : \u2016x\u2016 < 1\nh1 : Summable fun n => \u2016x\u2016 ^ n\n\u22a2 Summable fun n => x ^ n"
+      },
+      {
+        "tactic": "refine' summable_of_norm_bounded_eventually _ h1 _",
+        "annotated_tactic": [
+          "refine' <a>summable_of_norm_bounded_eventually</a> _ h1 _",
+          [
+            {
+              "full_name": "summable_of_norm_bounded_eventually",
+              "def_path": "Mathlib/Analysis/Normed/Group/InfiniteSum.lean",
+              "def_pos": [162, 9],
+              "def_end_pos": [162, 44]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\n\u03b2 : Type u_2\n\u03b9 : Type u_3\nR : Type u_4\ninst\u271d\u00b9 : NormedRing R\ninst\u271d : CompleteSpace R\nx : R\nh : \u2016x\u2016 < 1\nh1 : Summable fun n => \u2016x\u2016 ^ n\n\u22a2 Summable fun n => x ^ n",
+        "state_after": "\u03b1 : Type u_1\n\u03b2 : Type u_2\n\u03b9 : Type u_3\nR : Type u_4\ninst\u271d\u00b9 : NormedRing R\ninst\u271d : CompleteSpace R\nx : R\nh : \u2016x\u2016 < 1\nh1 : Summable fun n => \u2016x\u2016 ^ n\n\u22a2 \u2200\u1da0 (i : \u2115) in cofinite, \u2016x ^ i\u2016 \u2264 \u2016x\u2016 ^ i"
+      },
+      {
+        "tactic": "rw [Nat.cofinite_eq_atTop]",
+        "annotated_tactic": [
+          "rw [<a>Nat.cofinite_eq_atTop</a>]",
+          [
+            {
+              "full_name": "Nat.cofinite_eq_atTop",
+              "def_path": "Mathlib/Order/Filter/Cofinite.lean",
+              "def_pos": [156, 9],
+              "def_end_pos": [156, 30]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\n\u03b2 : Type u_2\n\u03b9 : Type u_3\nR : Type u_4\ninst\u271d\u00b9 : NormedRing R\ninst\u271d : CompleteSpace R\nx : R\nh : \u2016x\u2016 < 1\nh1 : Summable fun n => \u2016x\u2016 ^ n\n\u22a2 \u2200\u1da0 (i : \u2115) in cofinite, \u2016x ^ i\u2016 \u2264 \u2016x\u2016 ^ i",
+        "state_after": "\u03b1 : Type u_1\n\u03b2 : Type u_2\n\u03b9 : Type u_3\nR : Type u_4\ninst\u271d\u00b9 : NormedRing R\ninst\u271d : CompleteSpace R\nx : R\nh : \u2016x\u2016 < 1\nh1 : Summable fun n => \u2016x\u2016 ^ n\n\u22a2 \u2200\u1da0 (i : \u2115) in atTop, \u2016x ^ i\u2016 \u2264 \u2016x\u2016 ^ i"
+      },
+      {
+        "tactic": "exact eventually_norm_pow_le x",
+        "annotated_tactic": [
+          "exact <a>eventually_norm_pow_le</a> x",
+          [
+            {
+              "full_name": "eventually_norm_pow_le",
+              "def_path": "Mathlib/Analysis/Normed/Field/Basic.lean",
+              "def_pos": [383, 9],
+              "def_end_pos": [383, 31]
+            }
+          ]
+        ],
+        "state_before": "\u03b1 : Type u_1\n\u03b2 : Type u_2\n\u03b9 : Type u_3\nR : Type u_4\ninst\u271d\u00b9 : NormedRing R\ninst\u271d : CompleteSpace R\nx : R\nh : \u2016x\u2016 < 1\nh1 : Summable fun n => \u2016x\u2016 ^ n\n\u22a2 \u2200\u1da0 (i : \u2115) in atTop, \u2016x ^ i\u2016 \u2264 \u2016x\u2016 ^ i",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/MeasureTheory/Measure/Dirac.lean",
+    "full_name": "MeasureTheory.Measure.restrict_singleton",
+    "start": [67, 1],
+    "end": [73, 13],
+    "traced_tactics": [
+      {
+        "tactic": "ext1 s hs",
+        "annotated_tactic": ["ext1 s hs", []],
+        "state_before": "\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\n\u22a2 restrict \u03bc {a} = \u2191\u2191\u03bc {a} \u2022 dirac a",
+        "state_after": "case h\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s"
+      },
+      {
+        "tactic": "by_cases ha : a \u2208 s",
+        "annotated_tactic": ["by_cases ha : a \u2208 s", []],
+        "state_before": "case h\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s",
+        "state_after": "case pos\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : a \u2208 s\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s\n\ncase neg\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : \u00aca \u2208 s\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s"
+      },
+      {
+        "tactic": "have : s \u2229 {a} = {a} := by simpa",
+        "annotated_tactic": ["have : s \u2229 {a} = {a} := by simpa", []],
+        "state_before": "case pos\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : a \u2208 s\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s",
+        "state_after": "case pos\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : a \u2208 s\nthis : s \u2229 {a} = {a}\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s"
+      },
+      {
+        "tactic": "simp [*]",
+        "annotated_tactic": ["simp [*]", []],
+        "state_before": "case pos\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : a \u2208 s\nthis : s \u2229 {a} = {a}\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "simpa",
+        "annotated_tactic": ["simpa", []],
+        "state_before": "\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : a \u2208 s\n\u22a2 s \u2229 {a} = {a}",
+        "state_after": "no goals"
+      },
+      {
+        "tactic": "have : s \u2229 {a} = \u2205 := inter_singleton_eq_empty.2 ha",
+        "annotated_tactic": [
+          "have : s \u2229 {a} = \u2205 := <a>inter_singleton_eq_empty</a>.2 ha",
+          [
+            {
+              "full_name": "Set.inter_singleton_eq_empty",
+              "def_path": "Mathlib/Data/Set/Basic.lean",
+              "def_pos": [1367, 9],
+              "def_end_pos": [1367, 33]
+            }
+          ]
+        ],
+        "state_before": "case neg\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : \u00aca \u2208 s\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s",
+        "state_after": "case neg\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : \u00aca \u2208 s\nthis : s \u2229 {a} = \u2205\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s"
+      },
+      {
+        "tactic": "simp [*]",
+        "annotated_tactic": ["simp [*]", []],
+        "state_before": "case neg\n\u03b1 : Type u_1\n\u03b2 : Type ?u.7488\ninst\u271d\u00b9 : MeasurableSpace \u03b1\ninst\u271d : MeasurableSpace \u03b2\ns\u271d : Set \u03b1\n\u03bc : Measure \u03b1\na : \u03b1\ns : Set \u03b1\nhs : MeasurableSet s\nha : \u00aca \u2208 s\nthis : s \u2229 {a} = \u2205\n\u22a2 \u2191\u2191(restrict \u03bc {a}) s = \u2191\u2191(\u2191\u2191\u03bc {a} \u2022 dirac a) s",
+        "state_after": "no goals"
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/leanprover-community/mathlib4",
+    "commit": "3ce43c18f614b76e161f911b75a3e1ef641620ff",
+    "file_path": "Mathlib/Data/Rat/Cast/CharZero.lean",
+    "full_name": "Rat.cast_sub",
+    "start": [59, 1],
+    "end": [60, 100],
+    "traced_tactics": []
+  }
+]
