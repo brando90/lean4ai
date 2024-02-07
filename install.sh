@@ -5,9 +5,9 @@ conda info -e
 # -- Activate conda
 conda update -n base -c defaults conda
 pip install --upgrade pip
-conda create -y -n lean4math python=3.10.11
-conda activate lean4math
-#conda remove --name data_quality --all
+conda create -y -n lean4ai python=3.10.11
+conda activate lean4ai
+#conda remove --name lean4ai --all
 
 # -- Install this library from source
 # - Get the code, put it in afs so its available to all machines and symlink it to home in the local machine
