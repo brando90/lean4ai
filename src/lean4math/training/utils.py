@@ -142,6 +142,7 @@ def raw_dataset_2_lm_data(raw_dataset,
     remove_columns = get_column_names(raw_dataset, method_to_remove_columns)  # remove all keys that are not tensors to avoid bugs in collate function in task2vec's pytorch data loader
     # - Get tokenized train data set
     # Note: Setting `batched=True` in the `dataset.map` function of Hugging Face's datasets library processes the data in batches rather than one item at a time, significantly speeding up the tokenization and preprocessing steps.
+    print(desired_dataset_column)
     if isinstance(desired_dataset_column, str):
         tokenize_function = lambda examples: tokenizer(examples[desired_dataset_column])
     if len(desired_dataset_column) == 2:
@@ -149,7 +150,10 @@ def raw_dataset_2_lm_data(raw_dataset,
             data: str = ''
             for key in desired_dataset_column:
                 data += f'{data} {key}: {examples[key]}'
-            return tokenizer(data)
+            data = data[:1024]
+            print(len(data))
+            x = tokenizer(data)
+            return x
     else:
         raise ValueError(f"desired_dataset_column {desired_dataset_column=} not supported")
     tokenized_train_datasets = raw_dataset.map(tokenize_function, batched=True, remove_columns=remove_columns)
@@ -196,7 +200,7 @@ def eval_hf_with_subsample(path, name, split, model, tokenizer, block_size, outp
                            print_str: Optional[str] = None,
                            ):
     eval_dataset = load_dataset(path, name, streaming=streaming, split=split).with_format("torch") 
-    eval_dataset2 = raw_dataset_2_lm_data(eval_dataset, tokenizer, block_size)
+    eval_dataset2 = raw_dataset_2_lm_data(eval_dataset, tokenizer, block_size, desired_dataset_column=["nl_statement", "formal_statement"])
     if max_eval_samples is None:
         eval_batch2 = eval_dataset2 
     else:
