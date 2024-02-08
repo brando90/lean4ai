@@ -23,20 +23,21 @@ def generate_informal_proof(formal_proof, llm, sampling_params):
     - Clearly explain the rationale behind each step of the proof, translating formal operations into narrative form.
     - Be concise, avoiding unnecessary technical terms and details.
 
-    Example:
+    Example:'''
     Formal (Lean): 
-    ```Lean
-    -- Define a formal Lean proof
-    theorem example_theorem : ∀ (A B : set X) (x : X), x ∈ A ∩ B → x ∈ B :=
-    begin
-    intros A B x,
-    intro h,
-    cases h with hA hB,
-    exact hB,
-    end
-    Informal: Imagine we have two sets, A and B, where every element of A is also in B. If we take any other set and find the common elements it shares with A, this group of common elements will also be found in the common elements between the same set and B. It's like saying if A's members are all in B, then A's overlap with anyone else is also part of B's overlap with them.
+    and_left_comm ** a b c : Prop ⊢ a ∧ b ∧ c ↔ b ∧ a ∧ c ** rw [← and_assoc, ← and_assoc, @and_comm a b] ** Qed
 
-    Now, please translate the following formal Lean proof into an informal narrative explanation:
+    Informal: 
+    Theorem: For any propositions a, b, and c, the logical conjunction a ∧ b ∧ c is logically equivalent to b ∧ a ∧ c.
+    Proof:
+    We aim to establish the equivalence of two compound propositions, a ∧ b ∧ c and b ∧ a ∧ c, by demonstrating that the ordering of the propositions a and b within a series of logical conjunctions does not affect the overall truth value when c is also conjoined with them.
+    Associativity of Logical Conjunction: The operation of logical conjunction (∧) is associative. This property allows us to regroup the operands without altering the truth value of the expression. Specifically, we apply the associativity to decompose our expression into a form where the conjunction involving a and b is more explicit. This yields (a ∧ b) ∧ c, emphasizing that a and b are conjoined first, followed by their conjunction with c.
+    Commutativity of Logical Conjunction: Logical conjunction is also commutative, meaning that the order of the operands does not impact the result. Thus, swapping a and b in their conjunction, i.e., a ∧ b becoming b ∧ a, does not change the truth value of their conjunction.
+    Reapplication of Associativity: After swapping a and b, we reassociate them with c to maintain the structure of the conjunction. This step is justified by the associativity of conjunction, which permits the reorganization of the conjunctions without affecting the overall logical equivalence.
+    By applying the principles of associativity and commutativity to the conjunction of propositions a, b, and c, we have demonstrated that a ∧ b ∧ c is logically equivalent to b ∧ a ∧ c. This completes our proof, showing that the specific ordering of propositions a and b in conjunction with c does not alter the truth value of the expression.
+    '''
+    
+    Now, translate the following formal Lean proof into an informal narrative explanation matching the given example:
     """
 
     complete_prompt = f"{task_description}\n{formal_proof}"
