@@ -114,16 +114,20 @@ def group_texts(examples, # if batched=True it's a dict of input_ids, attention_
     # https://huggingface.co/docs/datasets/package_reference/main_classes.html#datasets.Dataset.map    
     """
     # Concatenate all texts.
-    concatenated_examples = {k: list(chain(*examples[k])) for k in examples.keys()}
+    # concatenated_examples = {k: list(chain(examples[k])) for k in examples.keys()}
+    concatenated_examples = {k: examples[k].tolist() for k in examples.keys()}
     total_length = len(concatenated_examples[list(examples.keys())[0]])
     # We drop the small remainder, and if the total_length < block_size  we exclude this batch and return an empty dict.
     # We could add padding if the model supported it instead of this drop, you can customize this part to your needs.
     total_length = (total_length // block_size) * block_size  # rounds down
     # Split by chunks of max_len.
-    result = {
-        k: [t[i : i + block_size] for i in range(0, total_length, block_size)]
-        for k, t in concatenated_examples.items()
-    }
+    if total_length > 0:
+        result = {
+            k: [t[i : i + block_size] for i in range(0, total_length, block_size)]
+            for k, t in concatenated_examples.items()
+        }
+    else:
+        result = concatenated_examples
     result["labels"] = result["input_ids"].copy()
     return result
 
@@ -148,6 +152,8 @@ def raw_dataset_2_lm_data(raw_dataset,
     if len(desired_dataset_column) == 2:
         def tokenize_function(examples):
             data: str = ''
+            print("Desired", desired_dataset_column)
+            print("Actual", examples.keys())
             for key in desired_dataset_column:
                 data += f'{data} {key}: {examples[key]}'
             data = data[:1024]

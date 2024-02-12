@@ -216,7 +216,7 @@ def train():
     print(f'{probabilities=}')
     # - Get raw train data set
     raw_train_datasets = interleave_datasets(train_datasets, probabilities)
-    lm_train_dataset = raw_dataset_2_lm_data(raw_train_datasets, tokenizer, block_size, max_length, num_tokens_trained, num_batches, batch_size, shuffle, seed)
+    lm_train_dataset = raw_dataset_2_lm_data(raw_train_datasets, tokenizer, block_size=block_size, batch_size=batch_size)
     train_dataset = lm_train_dataset
 
     # -- max steps manually decided depending on how many tokens we want to train on
@@ -278,16 +278,6 @@ def train():
     max_eval_samples = None
     metrics = eval_hf_with_subsample('hoskinson-center/proofnet', None, 'validation', model, tokenizer, block_size, output_dir, max_eval_samples=max_eval_samples) 
     print(f'ProoNet ({max_eval_samples=}): {metrics=}')
-
-    # c4 evals first in case of errors
-    print('---- Evaluate model on C4')
-    max_eval_samples=512
-    metrics = eval_hf_with_subsample('c4', 'en', 'validation', model, tokenizer, block_size, output_dir, max_eval_samples=max_eval_samples)
-    print(f'C4 ({max_eval_samples=} val samples): {metrics=}')
-    print('---- Evaluate model on Whole C4')
-    metrics = eval_hf_with_subsample('c4', 'en', 'validation', model, tokenizer, block_size, output_dir, max_eval_samples=None)
-    print(f'C4 whole: {metrics=}')
-    
     # -- Print config to show in log what this run was especially data set
     print(f'{wandb.config=}')
     print('Done!\a')
