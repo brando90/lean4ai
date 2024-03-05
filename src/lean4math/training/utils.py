@@ -146,19 +146,17 @@ def raw_dataset_2_lm_data(raw_dataset,
     remove_columns = get_column_names(raw_dataset, method_to_remove_columns)  # remove all keys that are not tensors to avoid bugs in collate function in task2vec's pytorch data loader
     # - Get tokenized train data set
     # Note: Setting `batched=True` in the `dataset.map` function of Hugging Face's datasets library processes the data in batches rather than one item at a time, significantly speeding up the tokenization and preprocessing steps.
-    print(desired_dataset_column)
     if isinstance(desired_dataset_column, str):
         tokenize_function = lambda examples: tokenizer(examples[desired_dataset_column])
     if len(desired_dataset_column) == 2:
         def tokenize_function(examples):
             data: str = ''
-            print("Desired", desired_dataset_column)
-            print("Actual", examples.keys())
             for key in desired_dataset_column:
                 data += f'{data} {key}: {examples[key]}'
             data = data[:1024]
-            print(len(data))
             x = tokenizer(data)
+            print(data)
+            print(x["input_ids"])
             return x
     else:
         raise ValueError(f"desired_dataset_column {desired_dataset_column=} not supported")

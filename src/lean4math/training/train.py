@@ -93,6 +93,7 @@ def train():
     # path, name, data_files, split = ['UDACA/PileSubsets'], ['pubmed'], [None], ['train']
     # path, name, data_files, split = ['UDACA/PileSubsets', 'UDACA/PileSubsets'], ['uspto', 'pubmed'], [None, None], ['train', 'train']
     path, name, data_files, split = ['AI4M/prompted_informal_v1'], [None], [None], ['train']
+    # path, name, data_files, split = ['hoskinson-center/proofnet'], [None], [None], ['validation']
     # - models
     pretrained_model_name_or_path = 'gpt2'  # this is the smallest model gpt2, 124M params https://huggingface.co/gpt2 
     # pretrained_model_name_or_path = 'meta-llama/Llama-2-7b-hf'
@@ -102,13 +103,13 @@ def train():
     # pretrained_model_name_or_path = 'baby_llama2_v1'
     # pretrained_model_name_or_path = 'get_full_llama7b_reinit'
     # - important training details or it wont run, mem issues maybe
-    max_steps = 2
+    # max_steps = 2
     # max_steps = 300
     # max_steps = 866 # <- CHANGE THIS 12hs with with baby llama2 v1 36m 1, 32
     # max_steps = 1_553  # 22-24hs llama2 full reinit 4*8=32=B 1024=L for 6.3M tokens
     # max_steps = 3_000  # 2.75729 days rate=79.41secs/it toks=49.1M
     # max_steps = 30_000 # 27.5729 days rate=79.41secs/it toks=491M
-    # max_steps = 300_000 # 275.729 days rate=79.41secs/it toks=
+    max_steps = 50 # 275.729 days rate=79.41secs/it toks=
     # max_steps = 5_000
     # max_steps = 61_036  # 3.8 days for B=32 L=512 rate=5.43secs/it for 1B=1e9tokens
     # max_steps = 78_853 # 4.6 days L=512 B=32 r=5.43 ~1.21B 29,999MiB
@@ -206,6 +207,7 @@ def train():
     print(f'vocab_size: {len(tokenizer)=} \nExpected random loss: {math.log(len(tokenizer))=}')
     print(f"CUDA version: {torch.version.cuda=}")
     print(f'{output_dir=}')
+
     eval_hf_with_subsample('hoskinson-center/proofnet', None, 'validation', model, tokenizer, block_size, output_dir, max_eval_samples=2, print_str='> Eval ProofNet mdl before training')
     
     # --- Load datasets
