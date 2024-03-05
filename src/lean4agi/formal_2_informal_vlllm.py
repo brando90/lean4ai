@@ -12,35 +12,39 @@ def generate_informal_proof(formal_proof, llm, sampling_params):
     This function modifies the prompt to include an explicit request to convert the formal proof to informal language.
     Includes error handling to manage potential issues during generation.
     """
-    task_description = """
-    You are tasked with translating formal mathematical proofs, written in the Lean proof assistant language, into informal, narrative explanations. The goal is to make the logic and conclusions of these proofs accessible to individuals with a foundational understanding of mathematics but who may not be familiar with formal proof languages or advanced mathematical concepts. Simplify the language while preserving the logical sequence and integrity of the proofs. Avoid unnecessary jargon and aim for clarity.
+    # task_description = 
+    # """
+    # Objective: Transform the given formal mathematical proof into an informal narrative explanation. Adhere to the following criteria:
+    # 1. Preserve the logical sequence and integrity of the formal proof, accurately reflecting its conclusions and methodology.
+    # 2. Employ precise, yet accessible language tailored to an audience with foundational mathematical knowledge.
+    # 3. Ensure each formal operation is coherently translated into its narrative equivalent, elucidating the proof’s rationale.
+    # 4. Prioritize conciseness and clarity, avoiding superfluous technical jargon and complexities.
+    # Aim: Facilitate comprehension among non-specialists, retaining the proof's original logical essence.
 
-    Instructions:
-    1. Read the formal Lean proof provided below.
-    2. Rewrite the proof as an informal, narrative explanation. Your explanation should:
-    - Accurately reflect the logical sequence and conclusions of the Lean proof.
-    - Use accessible language suitable for an audience with basic mathematical knowledge.
-    - Clearly explain the rationale behind each step of the proof, translating formal operations into narrative form.
-    - Be concise, avoiding unnecessary technical terms and details.
+    # This is an example of a formal proof:
+    # and_left_comm ** a b c : Prop ⊢ a ∧ b ∧ c ↔ b ∧ a ∧ c ** rw [← and_assoc, ← and_assoc, @and_comm a b] ** Qed
 
-    Example:'''
-    Formal (Lean): 
-    and_left_comm ** a b c : Prop ⊢ a ∧ b ∧ c ↔ b ∧ a ∧ c ** rw [← and_assoc, ← and_assoc, @and_comm a b] ** Qed
+    # This is the informal proof that should be returned:
+    # Given three propositions (let's call them statements) a, b, and c, you're trying to prove that 'a and b and c' is really the same thing as 'b and a and c'. It's like saying it doesn't matter if you put on your left shoe before your right shoe, as long as both shoes end up on your feet.
 
-    Informal: 
-    Theorem: For any propositions a, b, and c, the logical conjunction a ∧ b ∧ c is logically equivalent to b ∧ a ∧ c.
-    Proof:
-    We aim to establish the equivalence of two compound propositions, a ∧ b ∧ c and b ∧ a ∧ c, by demonstrating that the ordering of the propositions a and b within a series of logical conjunctions does not affect the overall truth value when c is also conjoined with them.
-    Associativity of Logical Conjunction: The operation of logical conjunction (∧) is associative. This property allows us to regroup the operands without altering the truth value of the expression. Specifically, we apply the associativity to decompose our expression into a form where the conjunction involving a and b is more explicit. This yields (a ∧ b) ∧ c, emphasizing that a and b are conjoined first, followed by their conjunction with c.
-    Commutativity of Logical Conjunction: Logical conjunction is also commutative, meaning that the order of the operands does not impact the result. Thus, swapping a and b in their conjunction, i.e., a ∧ b becoming b ∧ a, does not change the truth value of their conjunction.
-    Reapplication of Associativity: After swapping a and b, we reassociate them with c to maintain the structure of the conjunction. This step is justified by the associativity of conjunction, which permits the reorganization of the conjunctions without affecting the overall logical equivalence.
-    By applying the principles of associativity and commutativity to the conjunction of propositions a, b, and c, we have demonstrated that a ∧ b ∧ c is logically equivalent to b ∧ a ∧ c. This completes our proof, showing that the specific ordering of propositions a and b in conjunction with c does not alter the truth value of the expression.
-    '''
+    # So, here's how you prove it:
+    # 1. First, you group 'a and b' together with c. It's like saying, "Let's deal with my shoes first, then I'll worry about my pants."
+    # 2. Then, you do the same grouping trick but make sure it's clear you're not changing anything about the 'c' part; it's still there, hanging out, waiting for its turn.
+    # 3. Now, here's the slick move: you swap 'a' and 'b'. It's like deciding to put your right shoe on before your left shoe today. No biggie.
+    # 4. And there you have it. Proof done!
+
+    # In fancy proof language, you used rules like 'and_assoc' (which is about how you group things) and 'and_comm' (which is about swapping things around) to show that the order of 'a' and 'b' doesn't mess with the truth of the whole statement when 'c' is also in the mix.
+
+    # So, it's all cool. Whether it's 'a and b and c' or 'b and a and c', it's all the same at the end of the day.	
+
+    # Do not return anything except the informal proof. Here's the formal proof:
+    # """
     
-    Now, translate the following formal Lean proof into an informal narrative explanation matching the given example:
+    task_description = """
+    Convert this following formal proof into a proof using just natural English language. Do not return anything except the informal proof. Here's the formal proof:
     """
-
     complete_prompt = f"{task_description}\n{formal_proof}"
+
     try:
         outputs = llm.generate([complete_prompt], sampling_params)
         generated_text = outputs[0].outputs[0].text  # Assuming each call generates a single response
@@ -50,17 +54,28 @@ def generate_informal_proof(formal_proof, llm, sampling_params):
         return None
 
 def main():
-    llm = LLM(model="mistralai/Mistral-7B-v0.1", dtype="half", seed=42)
-    sampling_params = SamplingParams(temperature=0.5, top_p=0.9)
+    dataset_type = "train"
 
-    dataset = load_dataset("akjadhav/leandojo-lean4-formal-informal-strings-split", split='test')
+    #llm = LLM(model="mosaicml/mpt-7b", dtype="half", seed=42)
+    #llm = LLM(model="HuggingFaceH4/zephyr-7b-alpha", dtype="half", seed=42)
+    
+    llm = LLM(model="morph-labs/morph-prover-v0-7b", dtype="half", seed=42)
+    #llm = LLM(model="meta-llama/Llama-2-7b", dtype="half", seed=42)
+
+    #llm = LLM(model="openai-community/gpt2")
+
+
+    # TODO: play around with the max token length to figure out what's the best
+    sampling_params = SamplingParams(temperature=0.5, top_p=0.9, max_tokens=2000)
+
+    dataset = load_dataset("akjadhav/leandojo-lean4-formal-informal-strings-split", split=dataset_type)
     updated_entries = []
 
     counter = 0
+
     for entry in dataset:
         counter += 1
-        if counter > 5:
-            break
+        if counter > 2: break
 
         formal_proof = entry["formal"]
         informal_proof = generate_informal_proof(formal_proof, llm, sampling_params)
@@ -75,7 +90,7 @@ def main():
             logging.warning(f"Failed to generate informal proof for formal proof: {formal_proof[:30]}...")
 
     updated_dataset_json = json.dumps(updated_entries, ensure_ascii=False, indent=4)
-    with open("updated_dataset.json", "w", encoding="utf-8") as file:
+    with open("updated_dataset_" + dataset_type + ".json", "w", encoding="utf-8") as file:
         file.write(updated_dataset_json)
     logging.info("Updated dataset saved successfully.")
 
