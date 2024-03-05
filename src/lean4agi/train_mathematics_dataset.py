@@ -1,3 +1,7 @@
+# To download MATH dataset
+# wget https://people.eecs.berkeley.edu/~hendrycks/MATH.tar
+# tar -xvzf MATH.tar
+
 import os
 import json
 from datasets import load_dataset, Dataset
