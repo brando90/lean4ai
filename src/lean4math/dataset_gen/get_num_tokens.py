@@ -5,8 +5,8 @@ from datasets import load_dataset
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 
 # Load the validation set from the "hoskinson-center/proofnet" dataset
-# dataset = load_dataset("hoskinson-center/proofnet", split="validation")
-dataset = load_dataset('json', data_files="lean_train.jsonl", split='train')
+dataset = load_dataset("AI4M/prompted_informal_v1", split="train")
+# dataset = load_dataset('json', data_files="lean_train.jsonl", split='train')
 
 # Function to tokenize a batch of texts and return their lengths
 def tokenize_and_compute_length(batch, column_name):
@@ -14,9 +14,9 @@ def tokenize_and_compute_length(batch, column_name):
     return {"num_tokens": [len(token_ids) for token_ids in tokens["input_ids"]]}
 
 # Apply the function to the "nl_statement" column
-nl_statement_lengths = dataset.map(lambda x: tokenize_and_compute_length(x, "input"), batched=True)
+nl_statement_lengths = dataset.map(lambda x: tokenize_and_compute_length(x, "informal"), batched=True)
 # Apply the function to the "formal_statement" column
-formal_statement_lengths = dataset.map(lambda x: tokenize_and_compute_length(x, "output"), batched=True)
+formal_statement_lengths = dataset.map(lambda x: tokenize_and_compute_length(x, "formal"), batched=True)
 
 # Print the total number of tokens for each column
 total_nl_tokens = sum(nl_statement_lengths["num_tokens"])
