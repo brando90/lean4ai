@@ -66,7 +66,7 @@ def generate_informal_proof(formal_proof):
 
     client = anthropic.Anthropic(
         # defaults to os.environ.get("ANTHROPIC_API_KEY")
-        api_key="key",
+        api_key="sk-ant-api03--........key",
     )
 
     message = client.messages.create(
@@ -112,9 +112,11 @@ def main():
 
     counter = 0
 
-    for entry in dataset:
+    for index, entry in enumerate(dataset):
+        if index < 2:  # Skip the first x entries
+            continue
         counter += 1
-        if counter > 20: break
+        if counter > 25: break
 
         formal_proof = entry["formal"]
         content_blocks = generate_informal_proof(formal_proof)  # This should return ContentBlock objects
@@ -132,7 +134,7 @@ def main():
     # updated_dataset_json = json.dumps(updated_entries, ensure_ascii=False, indent=4)
     updated_dataset_json = json.dumps(updated_entries, ensure_ascii=False, indent=4)
 
-    with open("claude_updated_dataset_" + dataset_type + ".json", "w", encoding="utf-8") as file:
+    with open("claude_working_updated_dataset_" + dataset_type + ".json", "w", encoding="utf-8") as file:
         file.write(updated_dataset_json)
     logging.info("Updated dataset saved successfully.")
     logging.info("Updated dataset saved successfully.")
