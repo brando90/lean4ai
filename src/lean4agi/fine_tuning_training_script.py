@@ -25,7 +25,9 @@ def load_our_dataset(file_path):
     return dataset 
 
 # Load and prepare datasets
-train_dataset_directory = 'updated_dataset_train.json'
+#train_dataset_directory = 'updated_dataset_train.json'
+train_dataset_directory = '250ktokendataset.json'
+
 test_dataset_directory = 'MATH/test/counting_and_probability'
 train_data = load_our_dataset(train_dataset_directory)
 test_data = load_hendricks_math_dataset(test_dataset_directory)
@@ -44,11 +46,13 @@ tokenized_test_dataset = test_dataset.map(tokenize_function, batched=True)
 model = GPT2LMHeadModel.from_pretrained('gpt2')
 training_args = TrainingArguments(
     output_dir='./results',
-    num_train_epochs=10,
+    num_train_epochs=15,
     per_device_train_batch_size=2,
     per_device_eval_batch_size=2,
     logging_dir='./logs',
     evaluation_strategy="epoch",
+    logging_strategy="steps",  # Log based on steps
+    logging_steps=50,  # Log the loss every 50 steps
 )
 trainer = Trainer(
     model=model,
