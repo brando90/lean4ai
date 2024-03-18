@@ -5,14 +5,14 @@ Author: Jakob Nordhagen
 
 """
 import transformers
-from transformers import GPT2LMHeadModel, GPT2Tokenizer, Trainer
+from transformers import Trainer
 import torch
 import torch.nn as nn
 from typing import Any, Callable, Dict, List, Union
 
 
 class UnsupervisedTrainer(Trainer):
-    def __init__(self, model: GPT2LMHeadModel, tokenizer: GPT2Tokenizer, *args, **kwargs):
+    def __init__(self, model, tokenizer, *args, **kwargs):
         super().__init__(model, *args, **kwargs)
         self.tokenizer = tokenizer
         self.model = model
