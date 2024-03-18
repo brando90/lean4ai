@@ -20,7 +20,7 @@ def main():
     model_path = f"saved_models/{name}"
 
     # Load saved model and tokenizer
-    model = GPT2LMHeadModel.from_pretrained(model_path)
+    model = GPT2LMHeadModel.from_pretrained(model_path, pad_token_id=50256)
     tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
 
     tokenizer.add_special_tokens({'pad_token': '[PAD]'})
@@ -30,22 +30,17 @@ def main():
     # Load dataset
     dataset = load_dataset('hoskinson-center/proofnet', split='test')
 
+    device = "cuda:0"
+    model.to(device)
+
     while True: 
-        text = input("\nEnter a theorem statement:\n").strip()
+        input_text = input("\nEnter a theorem statement:\n").strip()
+        # input_text += tokenizer.eos_token
+        input_ids = tokenizer.encode(input_text, return_tensors="pt", padding=True, truncation=True).to(model.device)
+        output = model.generate(input_ids, max_length=512, attention_mask=input_ids.ne(0))
+        translated_text = tokenizer.decode(output[0], skip_special_tokens=True)
 
-        text += "<SEP>"
-
-        tokens = tokenizer(text, return_tensors="pt").to(device)
-
-        output = model.generate(input_ids=tokens["input_ids"], attention_mask=tokens["attention_mask"], do_sample=False, max_new_tokens=150)
-
-        decoded_texts = tokenizer.batch_decode(output, skip_special_tokens=False)[0]
-
-        decoded_texts = decoded_texts[len(text)+2:]
-
-        decoded_texts = decoded_texts.replace("<|endoftext|>", "")
-
-        print("\n\n" + decoded_texts)
+        print("\n\n" + translated_text)
 
 
 if __name__ == '__main__':
