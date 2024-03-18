@@ -6,13 +6,10 @@ Author: Jakob Nordhagen
 """
 import argparse
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArguments
-from datasets import load_dataset, Dataset
-from dataset_utils import NlFormalDataset, data_collator
-import torch
-import torch.nn as nn
-from torch.nn import CrossEntropyLoss
-from typing import Any, Callable, Dict, List, Union
+from datasets import load_dataset
+from dataset_utils import preprocess_inputs
 from unsupervised_trainer import UnsupervisedTrainer
+import time
 
 def main():
     # Get model name from args
@@ -30,28 +27,12 @@ def main():
     model.resize_token_embeddings(len(tokenizer))
 
     # Dataset
-    test_dataset = load_dataset('hoskinson-center/proofnet')
-
-    # Preprocessing function to prepare inputs and labels (written by Michael)
-    def preprocess_function(examples):
-        # Combine the "informal" and "formal" fields into a single input
-        # Format: "<informal> <sep> <formal>", where <sep> is a special token like <|endoftext|>
-        inputs = [examples["nl_statement"][i] + tokenizer.eos_token + examples["formal_statement"][i] for i in range(len(examples["nl_statement"]))]
-        model_inputs = tokenizer(inputs, max_length=512, padding="max_length", truncation=True, return_tensors="pt")
-        
-        # Labels are the input_ids with -100 assigned to tokens we don't want to include in the loss
-        # Here, we want to exclude the input part from the loss so it's only calculated on the "formal" part
-        labels = model_inputs.input_ids.clone()
-        labels[labels == tokenizer.pad_token_id] = -100  # Don't compute loss on padding tokens
-        model_inputs["labels"] = labels
-        return model_inputs
-
-    test_dataset = test_dataset.map(preprocess_function, batched=True, remove_columns=["nl_statement", "formal_statement"])
+    test_dataset = load_dataset('hoskinson-center/proofnet', split='test')
+    test_dataset = test_dataset.map(preprocess_inputs, batched=True, remove_columns=["nl_statement", "formal_statement"], fn_kwargs={"tokenizer": tokenizer})
 
     # Training arguments
     training_args = TrainingArguments(
-        output_dir="./results",          # Output directory for model predictions and checkpoints
-        evaluation_strategy="epoch",     # Evaluate each `logging_steps`
+        output_dir='results',
         learning_rate=5e-5,              # Learning rate
         per_device_train_batch_size=4,   # Batch size per device during training
         per_device_eval_batch_size=4,    # Batch size for evaluation
@@ -69,9 +50,16 @@ def main():
         tokenizer=tokenizer
     )
 
-    # Run eval
+    print(f"---------Starting evaluation on model {name}")
+    start_time = time.time()
     results = trainer.evaluate(test_dataset)
+    elapsed_time = time.time() - start_time
     print(results)
+    hours, minutes, seconds = int(elapsed_time // 3600), int((elapsed_time % 3600) // 60), int(elapsed_time % 60)
+
+    print(f"---------Finished eval---------")
+    print(f"Time elapsed: {hours} hr, {minutes} min, {seconds} sec")
+    print(f"ProofNet eval loss: {results['eval_loss']}")
 
 if __name__ == '__main__':
     main()

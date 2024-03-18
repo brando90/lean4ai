@@ -7,16 +7,25 @@ Authors: Michael Souliman, Jakob Nordhagen
 from datasets import load_dataset, Dataset
 
 
-def load_train_dataset(dataset_path):
+def load_train_dataset(dataset_path, tokenizer):
     """
     Loads and preprocesses the train dataset (LeanDojo Benchmark 4).
-    I believe this is just mathlib4.
     Dataset download link https://zenodo.org/records/10114185
     """
     dataset = load_dataset('json', data_files={'train': dataset_path}, split='train')
     # Parse theorems out of nested JSON structure
     theorems = [thm['code'] for lst in dataset['premises'] for thm in lst if thm['code'].startswith('theorem')]
-    train_dataset = Dataset.from_dict({'formal': theorems})
+    formal_dataset = Dataset.from_dict({'formal': theorems})
+
+    def preprocess(examples):
+        inputs = [examples['formal'][i] for i in range(len(examples['formal']))]
+        model_inputs = tokenizer(inputs, max_length=512, padding="max_length", truncation=True, return_tensors="pt")
+        labels = model_inputs.input_ids.clone()
+        labels[labels == tokenizer.pad_token_id] = -100  # Don't compute loss on padding tokens
+        model_inputs["labels"] = labels
+        return model_inputs
+
+    train_dataset = formal_dataset.map(preprocess, batched=True, remove_columns=["formal"])
     return train_dataset
 
 def preprocess_inputs(examples, tokenizer):

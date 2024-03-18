@@ -9,7 +9,7 @@ Model saved to ./saved_models/<name>
 """
 import argparse
 import transformers
-from transformers import GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArguments
+from transformers import AutoTokenizer, AutoModelForCausalLM, GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArguments
 from datasets import load_dataset
 import torch
 import torch.nn as nn
@@ -30,12 +30,16 @@ def main():
     model_name = 'gpt2'
     model = GPT2LMHeadModel.from_pretrained(model_name, pad_token_id=50256)
     tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+
+    # tokenizer = AutoTokenizer.from_pretrained("google/gemma-2b")
+    # model = AutoModelForCausalLM.from_pretrained("google/gemma-2b")
+
     tokenizer.add_special_tokens({'pad_token': '[PAD]'})
     model.resize_token_embeddings(len(tokenizer))
 
     # Load and preprocess datasets
     dataset_path = "./data/corpus.jsonl"
-    train_dataset = load_train_dataset(dataset_path)
+    train_dataset = load_train_dataset(dataset_path, tokenizer)
 
     val_dataset_path = "hoskinson-center/proofnet"
     test_dataset_path = "hoskinson-center/proofnet"
@@ -49,21 +53,21 @@ def main():
     training_args = TrainingArguments(
         output_dir=f"./runs/{run_name}",  # Output directory for model predictions and checkpoints
         learning_rate=5e-5,               # Learning rate
-        per_device_train_batch_size=16,    # Batch size per device during training
+        per_device_train_batch_size=4,    # Batch size per device during training
         per_device_eval_batch_size=4,     # Batch size for evaluation
         weight_decay=0.01,                # Strength of weight decay
         evaluation_strategy="steps",      # Evaluate every `eval_steps` steps
         eval_steps=20,
         save_total_limit=5,               # Limit the total amount of checkpoints
-        num_train_epochs=10,               # Total number of training epochs
-        # max_steps=10,                     # Limit to x training steps
+        num_train_epochs=3,               # Total number of training epochs
+        max_steps=3,                   # Limit to x training steps
     )
 
     # Set up Trainer
     trainer = UnsupervisedTrainer(
         model=model, 
         args=training_args,
-        train_dataset=val_dataset,
+        train_dataset=train_dataset,
         eval_dataset=test_dataset,
         tokenizer=tokenizer
     )
@@ -73,7 +77,7 @@ def main():
     print(results)
 
     # Train the model and time training
-    print(f"---------Starting training. Run name: {run_name}")
+    print(f"---------Starting training. Run name: {run_name}---------")
     start_time = time.time()
     trainer.train()
     elapsed_time = time.time() - start_time
