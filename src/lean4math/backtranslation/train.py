@@ -49,14 +49,14 @@ def main():
     training_args = TrainingArguments(
         output_dir=f"./runs/{run_name}",  # Output directory for model predictions and checkpoints
         learning_rate=5e-5,               # Learning rate
-        per_device_train_batch_size=4,    # Batch size per device during training
+        per_device_train_batch_size=16,    # Batch size per device during training
         per_device_eval_batch_size=4,     # Batch size for evaluation
         weight_decay=0.01,                # Strength of weight decay
         evaluation_strategy="steps",      # Evaluate every `eval_steps` steps
-        eval_steps=10,
+        eval_steps=20,
         save_total_limit=5,               # Limit the total amount of checkpoints
-        num_train_epochs=3,               # Total number of training epochs
-        max_steps=10,                     # Limit to x training steps
+        num_train_epochs=10,               # Total number of training epochs
+        # max_steps=10,                     # Limit to x training steps
     )
 
     # Set up Trainer

@@ -3,15 +3,13 @@
 Script for demo-ing pre-trained and saved HF models
 Author: Jakob Nordhagen
 
+Usage: python demo.py --name <name of run>
+
 """
 import argparse
-from transformers import GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArguments
-from datasets import load_dataset, Dataset
-import torch
-import torch.nn as nn
-from torch.nn import CrossEntropyLoss
-from typing import Any, Callable, Dict, List, Union
-from unsupervised_trainer import UnsupervisedTrainer
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+from datasets import load_dataset
+import random
 
 def main():
     # Get model name from args
@@ -21,56 +19,34 @@ def main():
     name = args.name
     model_path = f"saved_models/{name}"
 
+    # Load saved model and tokenizer
     model = GPT2LMHeadModel.from_pretrained(model_path)
     tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
 
-    # Ensure that the tokenizer does not split on spaces within tokens
     tokenizer.add_special_tokens({'pad_token': '[PAD]'})
     model.resize_token_embeddings(len(tokenizer))
+    model.eval()
+    
+    # Load dataset
+    dataset = load_dataset('hoskinson-center/proofnet', split='test')
 
-    # Dataset
-    test_dataset = load_dataset('hoskinson-center/proofnet')
+    while True: 
+        text = input("\nEnter a theorem statement:\n").strip()
 
-    # Preprocessing function to prepare inputs and labels
-    def preprocess_function(examples):
-        # Combine the "informal" and "formal" fields into a single input
-        # Format: "<informal> <sep> <formal>", where <sep> is a special token like <|endoftext|>
-        inputs = [examples["nl_statement"][i] + tokenizer.eos_token + examples["formal_statement"][i] for i in range(len(examples["nl_statement"]))]
-        model_inputs = tokenizer(inputs, max_length=512, padding="max_length", truncation=True, return_tensors="pt")
-        
-        # Labels are the input_ids with -100 assigned to tokens we don't want to include in the loss
-        # Here, we want to exclude the input part from the loss so it's only calculated on the "formal" part
-        labels = model_inputs.input_ids.clone()
-        labels[labels == tokenizer.pad_token_id] = -100  # Don't compute loss on padding tokens
-        model_inputs["labels"] = labels
-        return model_inputs
+        text += "<SEP>"
 
-    test_dataset = test_dataset.map(preprocess_function, batched=True, remove_columns=["nl_statement", "formal_statement"])
+        tokens = tokenizer(text, return_tensors="pt").to(device)
 
-    # Training arguments
-    training_args = TrainingArguments(
-        output_dir="./results",          # Output directory for model predictions and checkpoints
-        evaluation_strategy="epoch",     # Evaluate each `logging_steps`
-        learning_rate=5e-5,              # Learning rate
-        per_device_train_batch_size=4,   # Batch size per device during training
-        per_device_eval_batch_size=4,    # Batch size for evaluation
-        weight_decay=0.01,               # Strength of weight decay
-        save_total_limit=3,              # Limit the total amount of checkpoints
-        num_train_epochs=3,              # Total number of training epochs
-    )
+        output = model.generate(input_ids=tokens["input_ids"], attention_mask=tokens["attention_mask"], do_sample=False, max_new_tokens=150)
 
-    # Set up Trainer
-    trainer = UnsupervisedTrainer(
-        model=model, 
-        args=training_args,
-        train_dataset=test_dataset,
-        eval_dataset=test_dataset,
-        tokenizer=tokenizer
-    )
+        decoded_texts = tokenizer.batch_decode(output, skip_special_tokens=False)[0]
 
-    # Run eval
-    results = trainer.evaluate(test_dataset)
-    print(results)
+        decoded_texts = decoded_texts[len(text)+2:]
+
+        decoded_texts = decoded_texts.replace("<|endoftext|>", "")
+
+        print("\n\n" + decoded_texts)
+
 
 if __name__ == '__main__':
     main()
