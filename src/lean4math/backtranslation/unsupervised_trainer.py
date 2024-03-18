@@ -42,10 +42,13 @@ class UnsupervisedTrainer(Trainer):
         prompt_to_source = "Translate Lean code to text: "
         # prompt_to_target = "Translate text to Lean code: "
 
-        # Decode the input_ids to texts (note: inputs are only in target language)
+        # Decode the input_ids to text (note: inputs are only in target language)
         target_texts = self.tokenizer.batch_decode(inputs["input_ids"], skip_special_tokens=True)
 
+        # Translate in reverse (formal->informal) to generate synthetic IL examples
         source_translations = self.translate(target_texts, prompt_to_source)
+
+        # Concatenate pairs to follow the format <informal> <sep> <formal>
         new_input_texts = [source_translations[i] + self.tokenizer.eos_token + target_texts[i] for i in range(len(target_texts))]
         new_inputs = self.tokenizer(new_input_texts, max_length=512, padding="max_length", truncation=True, return_tensors="pt").to(self.model.device)
 
@@ -54,5 +57,5 @@ class UnsupervisedTrainer(Trainer):
         labels[labels == self.tokenizer.pad_token_id] = -100  # Don't compute loss on padding tokens
         new_inputs["labels"] = labels
 
-        # Call the Trainer training_step
+        # Call the Trainer training_step to resume training as usual
         return super().training_step(model, new_inputs)
