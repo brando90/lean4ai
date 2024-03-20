@@ -12,58 +12,57 @@ Original file is located at
 
 import os
 import wandb
-# from openai import OpenAI
+from openai import OpenAI
 import datasets
 from transformers import GPT2Tokenizer
 from datasets import load_dataset
 
 # Load the tokenizer for GPT-2
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-# client = OpenAI()
+client = OpenAI()
 
-# gpt_assistant_prompt = "You are an expert in the Lean formal math language."
-# gpt_user_prompt = """At the end of this explanation, I will give you 2 things. The first is a list of tuples that are the translations of entire proofs written in Lean, which we will denote the formal language, to plain English, also known as natural language, as tuples or pairs. This is not an exhaustive list, these are just examples of informalizations. I will then have a proof written in Lean represented as a string following the newline character after the list of pairs.
-# Give me the tuple pair of the proof I give you written in Lean and what you think their natural language equivalent is given your knowledge of Lean, formatted using LaTeX. Do not output anything  else, just the python tuple I requested. \n [("theorem exists_le_sylow {p : ℕ} {G : Type*} [group G] {P : subgroup G} \n (hP : is_p_group p P) : \n ∃
-# (Q : sylow p G), P ≤ Q :=", "Let $P$ be a $p$-subgroup of $G$. Then $P$ is
-# contained in a Sylow $p$-subgroup of $G$."),("theorem exists_eq_const_of_bounded
-# {E : Type u} [normed_group E] \n [normed_space ℂ E] {F : Type v} [normed_group
-# F] [normed_space ℂ F] \n {f : E → F} (hf : differentiable ℂ f) (hb :
-# metric.bounded (set.range f)) : \n ∃ (c : F), f = function.const E c :=", "Let
-# $E$ and $F$ be complex normed spaces and let $f:E\to F$. If $f$ is differentiable
-# and bounded, then $f$ is constant."), ("theorem subset_of_open_subset_is_open
-# (X : Type*) [topological_space X] \n (A : set X) (hA : ∀ x ∈ A, ∃ U : set X,
-# is_open U ∧ x ∈ U ∧ U ⊆ A): \n is_open A :=","Let $X$ be a topological space;
-# let $A$ be a subset of $X$. Suppose that for each $x\in A$ there is an open set
-# $U$ containing $x$ such that $U\subset A$. Then $A$ is open in $X$."), ("theorem
-# is_multiplicative.eq_iff_eq_on_prime_powers {R : Type*} \n
-# [comm_monoid_with_zero R] (f : nat.arithmetic_function R) \n
-# (hf : f.is_multiplicative) (g : nat.arithmetic_function R) \n
-# (hg : g.is_multiplicative) : \n
-# f = g ↔ ∀ (p i : ℕ), nat.prime p → f (p ^ i) = g (p ^ i) :=","Two multiplicative
-# functions $f, g:\mathbb{N}\to R$ are equal if and only if $f(p^i)=f(g^i)$ for
-# all primes $p$."), ("theorem abs_sum_leq_sum_abs (n : ℕ) (f : ℕ → ℂ) : \n
-# abs (∑ i in finset.range n, f i) ≤ ∑ i in finset.range n, abs (f i) :=","If $z_1, \\dots,
-# z_n$ are complex, then $|z_1 + z_2 + \\dots + z_n|\\leq |z_1| + |z_2| + \\dots
-# + |z_n|$."), ("theorem distinct_powers_of_infinite_order_element (G : Type*) [group G] (x : G) \n
-# (hx_inf : ∀ n : ℕ, x ^ n ≠ 1) : \n
-# ∀ m n : ℤ, m ≠ n → x ^ m ≠ x ^ n :=","If $x$ is an element of infinite order
-# in $G$, prove that the elements $x^n$, $n\\in\\mathbb{Z}$ are all distinct.")] \n
-# """
+gpt_assistant_prompt = "You are an expert in the Lean formal math language."
+gpt_user_prompt = """At the end of this explanation, I will give you 2 things. The first is a list of tuples that are the translations of entire proofs written in Lean, which we will denote the formal language, to plain English, also known as natural language, as tuples or pairs. This is not an exhaustive list, these are just examples of informalizations. I will then have a proof written in Lean represented as a string following the newline character after the list of pairs.
+Give me the tuple pair of the proof I give you written in Lean and what you think their natural language equivalent is given your knowledge of Lean, formatted using LaTeX. Do not output anything  else, just the python tuple I requested. \n [("theorem exists_le_sylow {p : ℕ} {G : Type*} [group G] {P : subgroup G} \n (hP : is_p_group p P) : \n ∃
+(Q : sylow p G), P ≤ Q :=", "Let $P$ be a $p$-subgroup of $G$. Then $P$ is
+contained in a Sylow $p$-subgroup of $G$."),("theorem exists_eq_const_of_bounded
+{E : Type u} [normed_group E] \n [normed_space ℂ E] {F : Type v} [normed_group
+F] [normed_space ℂ F] \n {f : E → F} (hf : differentiable ℂ f) (hb :
+metric.bounded (set.range f)) : \n ∃ (c : F), f = function.const E c :=", "Let
+$E$ and $F$ be complex normed spaces and let $f:E\to F$. If $f$ is differentiable
+and bounded, then $f$ is constant."), ("theorem subset_of_open_subset_is_open
+(X : Type*) [topological_space X] \n (A : set X) (hA : ∀ x ∈ A, ∃ U : set X,
+is_open U ∧ x ∈ U ∧ U ⊆ A): \n is_open A :=","Let $X$ be a topological space;
+let $A$ be a subset of $X$. Suppose that for each $x\in A$ there is an open set
+$U$ containing $x$ such that $U\subset A$. Then $A$ is open in $X$."), ("theorem
+is_multiplicative.eq_iff_eq_on_prime_powers {R : Type*} \n
+[comm_monoid_with_zero R] (f : nat.arithmetic_function R) \n
+(hf : f.is_multiplicative) (g : nat.arithmetic_function R) \n
+(hg : g.is_multiplicative) : \n
+f = g ↔ ∀ (p i : ℕ), nat.prime p → f (p ^ i) = g (p ^ i) :=","Two multiplicative
+functions $f, g:\mathbb{N}\to R$ are equal if and only if $f(p^i)=f(g^i)$ for
+all primes $p$."), ("theorem abs_sum_leq_sum_abs (n : ℕ) (f : ℕ → ℂ) : \n
+abs (∑ i in finset.range n, f i) ≤ ∑ i in finset.range n, abs (f i) :=","If $z_1, \\dots,
+z_n$ are complex, then $|z_1 + z_2 + \\dots + z_n|\\leq |z_1| + |z_2| + \\dots
++ |z_n|$."), ("theorem distinct_powers_of_infinite_order_element (G : Type*) [group G] (x : G) \n
+(hx_inf : ∀ n : ℕ, x ^ n ≠ 1) : \n
+∀ m n : ℤ, m ≠ n → x ^ m ≠ x ^ n :=","If $x$ is an element of infinite order
+in $G$, prove that the elements $x^n$, $n\\in\\mathbb{Z}$ are all distinct.")] \n
+"""
 
-# message=[{"role" : "assistant", "content": gpt_assistant_prompt}, {"role": "user", "content": gpt_user_prompt}]
-# temperature=0.2
-# max_tokens=256
-# frequency_penalty=0.0
+message=[{"role" : "assistant", "content": gpt_assistant_prompt}, {"role": "user", "content": gpt_user_prompt}]
+temperature=0.2
+max_tokens=256
+frequency_penalty=0.0
 
-
-# response = client.chat.completions.create(
-#     model="gpt-4",
-#     messages = message,
-#     temperature=temperature,
-#     max_tokens=max_tokens,
-#     frequency_penalty=frequency_penalty
-# )
-# print(response.choices[0].message.content)
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages = message,
+    temperature=temperature,
+    max_tokens=max_tokens,
+    frequency_penalty=frequency_penalty
+)
+print(response.choices[0].message.content)
 
 # Commented out IPython magic to ensure Python compatibility.
 # from google.colab import drive
@@ -76,16 +75,15 @@ import subprocess
 from typing import List
 
 # Clone the mathlib4 repository
-# repo_url = "https://github.com/leanprover-community/mathlib4"
+repo_url = "https://github.com/leanprover-community/mathlib4"
 clone_dir = "mathlib4_clone"
-# if not os.path.exists(clone_dir):
-#     subprocess.run(["git", "clone", repo_url, clone_dir])
+if not os.path.exists(clone_dir):
+    subprocess.run(["git", "clone", repo_url, clone_dir])
 
-# print("Cloned Repo")
+print("Cloned Repo")
 mathlib_dir = os.path.join(clone_dir, "Mathlib")
 
 # Function to extract theorems and proofs from a .lean file
-
 def extract_theorems_and_proofs(file_path: str) -> List[List[str]]:
     entire_file = ""
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -140,38 +138,38 @@ print(f"Total number of tokens in 'formal_statement': {total_formal_tokens}")
 
 ## UNCOMMENT UNDER HERE FOR GPT-4 INFORMALIZATIONS
 
-# gpt_assistant_prompt = "You are an expert in the Lean formal math language."
-# gpt_user_prompt = """At the end of this explanation, I will give you 2 things. The first is a list of tuples that are the translations of entire proofs written in Lean, which we will denote the formal language, to plain English, also known as natural language, as tuples or pairs. This is not an exhaustive list, these are just examples of informalizations. I will then have a proof written in Lean represented as a string following the newline character after the list of pairs.
-# Give me the tuple pair of the proof I give you written in Lean and what you think their natural language equivalent is given your knowledge of Lean, formatted using LaTeX. Do not output anything  else, just the python tuple I requested. When writing the theorem and proof, make it one long string literal without any newlines, instead put "\newline" in place. \n [("theorem exists_le_sylow {p : ℕ} {G : Type*} [group G] {P : subgroup G} \n (hP : is_p_group p P) : \n ∃
-# (Q : sylow p G), P ≤ Q :=", "Let $P$ be a $p$-subgroup of $G$. Then $P$ is
-# contained in a Sylow $p$-subgroup of $G$."),("theorem exists_eq_const_of_bounded
-# {E : Type u} [normed_group E] \n [normed_space ℂ E] {F : Type v} [normed_group
-# F] [normed_space ℂ F] \n {f : E → F} (hf : differentiable ℂ f) (hb :
-# metric.bounded (set.range f)) : \n ∃ (c : F), f = function.const E c :=", "Let
-# $E$ and $F$ be complex normed spaces and let $f:E\to F$. If $f$ is differentiable
-# and bounded, then $f$ is constant."), ("theorem subset_of_open_subset_is_open
-# (X : Type*) [topological_space X] \n (A : set X) (hA : ∀ x ∈ A, ∃ U : set X,
-# is_open U ∧ x ∈ U ∧ U ⊆ A): \n is_open A :=","Let $X$ be a topological space;
-# let $A$ be a subset of $X$. Suppose that for each $x\in A$ there is an open set
-# $U$ containing $x$ such that $U\subset A$. Then $A$ is open in $X$."), ("theorem
-# is_multiplicative.eq_iff_eq_on_prime_powers {R : Type*} \n
-# [comm_monoid_with_zero R] (f : nat.arithmetic_function R) \n
-# (hf : f.is_multiplicative) (g : nat.arithmetic_function R) \n
-# (hg : g.is_multiplicative) : \n
-# f = g ↔ ∀ (p i : ℕ), nat.prime p → f (p ^ i) = g (p ^ i) :=","Two multiplicative
-# functions $f, g:\mathbb{N}\to R$ are equal if and only if $f(p^i)=f(g^i)$ for
-# all primes $p$."), ("theorem abs_sum_leq_sum_abs (n : ℕ) (f : ℕ → ℂ) : \n
-# abs (∑ i in finset.range n, f i) ≤ ∑ i in finset.range n, abs (f i) :=","If $z_1, \\dots,
-# z_n$ are complex, then $|z_1 + z_2 + \\dots + z_n|\\leq |z_1| + |z_2| + \\dots
-# + |z_n|$."), ("theorem distinct_powers_of_infinite_order_element (G : Type*) [group G] (x : G) \n
-# (hx_inf : ∀ n : ℕ, x ^ n ≠ 1) : \n
-# ∀ m n : ℤ, m ≠ n → x ^ m ≠ x ^ n :=","If $x$ is an element of infinite order
-# in $G$, prove that the elements $x^n$, $n\\in\\mathbb{Z}$ are all distinct.")] \n
-# """
+gpt_assistant_prompt = "You are an expert in the Lean formal math language."
+gpt_user_prompt = """At the end of this explanation, I will give you 2 things. The first is a list of tuples that are the translations of entire proofs written in Lean, which we will denote the formal language, to plain English, also known as natural language, as tuples or pairs. This is not an exhaustive list, these are just examples of informalizations. I will then have a proof written in Lean represented as a string following the newline character after the list of pairs.
+Give me the tuple pair of the proof I give you written in Lean and what you think their natural language equivalent is given your knowledge of Lean, formatted using LaTeX. Do not output anything  else, just the python tuple I requested. When writing the theorem and proof, make it one long string literal without any newlines, instead put "\newline" in place. \n [("theorem exists_le_sylow {p : ℕ} {G : Type*} [group G] {P : subgroup G} \n (hP : is_p_group p P) : \n ∃
+(Q : sylow p G), P ≤ Q :=", "Let $P$ be a $p$-subgroup of $G$. Then $P$ is
+contained in a Sylow $p$-subgroup of $G$."),("theorem exists_eq_const_of_bounded
+{E : Type u} [normed_group E] \n [normed_space ℂ E] {F : Type v} [normed_group
+F] [normed_space ℂ F] \n {f : E → F} (hf : differentiable ℂ f) (hb :
+metric.bounded (set.range f)) : \n ∃ (c : F), f = function.const E c :=", "Let
+$E$ and $F$ be complex normed spaces and let $f:E\to F$. If $f$ is differentiable
+and bounded, then $f$ is constant."), ("theorem subset_of_open_subset_is_open
+(X : Type*) [topological_space X] \n (A : set X) (hA : ∀ x ∈ A, ∃ U : set X,
+is_open U ∧ x ∈ U ∧ U ⊆ A): \n is_open A :=","Let $X$ be a topological space;
+let $A$ be a subset of $X$. Suppose that for each $x\in A$ there is an open set
+$U$ containing $x$ such that $U\subset A$. Then $A$ is open in $X$."), ("theorem
+is_multiplicative.eq_iff_eq_on_prime_powers {R : Type*} \n
+[comm_monoid_with_zero R] (f : nat.arithmetic_function R) \n
+(hf : f.is_multiplicative) (g : nat.arithmetic_function R) \n
+(hg : g.is_multiplicative) : \n
+f = g ↔ ∀ (p i : ℕ), nat.prime p → f (p ^ i) = g (p ^ i) :=","Two multiplicative
+functions $f, g:\mathbb{N}\to R$ are equal if and only if $f(p^i)=f(g^i)$ for
+all primes $p$."), ("theorem abs_sum_leq_sum_abs (n : ℕ) (f : ℕ → ℂ) : \n
+abs (∑ i in finset.range n, f i) ≤ ∑ i in finset.range n, abs (f i) :=","If $z_1, \\dots,
+z_n$ are complex, then $|z_1 + z_2 + \\dots + z_n|\\leq |z_1| + |z_2| + \\dots
++ |z_n|$."), ("theorem distinct_powers_of_infinite_order_element (G : Type*) [group G] (x : G) \n
+(hx_inf : ∀ n : ℕ, x ^ n ≠ 1) : \n
+∀ m n : ℤ, m ≠ n → x ^ m ≠ x ^ n :=","If $x$ is an element of infinite order
+in $G$, prove that the elements $x^n$, $n\\in\\mathbb{Z}$ are all distinct.")] \n
+"""
 
-# import ast
+import ast
 
-# pairs = []
+pairs = []
 
 # for theorem in all_theorems[:10]:
 #   cur_user_prompt = gpt_user_prompt + '"'+ theorem + '"'
