@@ -1,27 +1,34 @@
 from datasets import Dataset, load_dataset
 import random
 
-dataset_path = "data/corpus.jsonl"
 
-def extract_theorem(example):
-    return {'code': [premise['code'] for premise in example['premises']]}
-    
-dataset = load_dataset('json', data_files={'train': dataset_path}, split='train')
-# unpacked_examples = [{'code': code} for example in dataset for code in example['code']]
-# unpacked_dataset = Dataset.from_dict({'code': [example['code'] for example in unpacked_examples]})
+def leandojo_dataset():
+    dataset_path = "data/corpus.jsonl"
 
-print(f'{dataset.shape=}')
-print(f'{dataset.column_names}')
+    dataset = load_dataset('json', data_files={'train': dataset_path}, split='train')
+    # unpacked_examples = [{'code': code} for example in dataset for code in example['code']]
+    # unpacked_dataset = Dataset.from_dict({'code': [example['code'] for example in unpacked_examples]})
 
-larger_dataset = [thm['code'] for lst in dataset['premises'] for thm in lst]
-print(len(larger_dataset))
+    print(f'{dataset.shape=}')
+    print(f'{dataset.column_names}')
 
-dataset = [thm['code'] for lst in dataset['premises'] for thm in lst if thm['code'].startswith('theorem')]
-print(len(dataset))
+    larger_dataset = [thm['code'] for lst in dataset['premises'] for thm in lst]
+    print(len(larger_dataset))
 
-dataset = Dataset.from_dict({'formal': dataset})
+    dataset = [thm['code'] for lst in dataset['premises'] for thm in lst if thm['code'].startswith('theorem')]
+    print(len(dataset))
 
-print(f'{dataset.shape=}')
-print(f'{dataset.column_names}')
+    dataset = Dataset.from_dict({'formal': dataset})
 
-print(dataset['formal'][7])
+    print(f'{dataset.shape=}')
+    print(f'{dataset.column_names}')
+
+    print(dataset['formal'][7])
+
+
+def test():
+    pass
+
+
+if __name__ == '__main__':
+    test()

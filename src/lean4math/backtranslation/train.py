@@ -4,7 +4,7 @@ Training script implementing backtranslation for autoformalization.
 Author: Jakob Nordhagen
 
 Usage: python train.py --name <name of run>
-Model saved to ./saved_models/<name>
+Model saved to ./backtranslation_models/<name>
 
 """
 import argparse
@@ -23,16 +23,18 @@ def main():
     # Get model name from args
     parser = argparse.ArgumentParser()
     parser.add_argument("--name", type=str) 
+    parser.add_argument("--model")
     args = parser.parse_args()
     run_name = args.name
 
     # Initialize model and tokenizer
-    model_name = 'gpt2'
-    model = GPT2LMHeadModel.from_pretrained(model_name, pad_token_id=50256)
-    tokenizer = GPT2Tokenizer.from_pretrained(model_name)
 
-    # tokenizer = AutoTokenizer.from_pretrained("google/gemma-2b")
-    # model = AutoModelForCausalLM.from_pretrained("google/gemma-2b")
+    # model_name = 'gpt2'
+    # model = GPT2LMHeadModel.from_pretrained(model_name, pad_token_id=50256)
+    # tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+
+    tokenizer = AutoTokenizer.from_pretrained("EleutherAI/llemma_7b")
+    model = AutoModelForCausalLM.from_pretrained("EleutherAI/llemma_7b")
 
     tokenizer.add_special_tokens({'pad_token': '[PAD]'})
     model.resize_token_embeddings(len(tokenizer))
@@ -52,15 +54,15 @@ def main():
     # Set train arguments
     training_args = TrainingArguments(
         output_dir=f"./runs/{run_name}",  # Output directory for model predictions and checkpoints
-        learning_rate=5e-5,               # Learning rate
-        per_device_train_batch_size=4,    # Batch size per device during training
-        per_device_eval_batch_size=4,     # Batch size for evaluation
+        learning_rate=1e-5,               # Learning rate
+        per_device_train_batch_size=2,    # Batch size per device during training
+        per_device_eval_batch_size=2,     # Batch size for evaluation
         weight_decay=0.01,                # Strength of weight decay
         evaluation_strategy="steps",      # Evaluate every `eval_steps` steps
         eval_steps=20,
         save_total_limit=5,               # Limit the total amount of checkpoints
         num_train_epochs=3,               # Total number of training epochs
-        max_steps=3,                   # Limit to x training steps
+        max_steps=10,                    # Limit to x training steps
     )
 
     # Set up Trainer
@@ -85,13 +87,13 @@ def main():
     # Evaluate the trained model on ProofNet test set
     results = trainer.evaluate(test_dataset)
     print(results)
-    model.save_pretrained(f"./saved_models/{run_name}")
+    model.save_pretrained(f"./backtranslation_models/{run_name}")
 
     hours, minutes, seconds = int(elapsed_time // 3600), int((elapsed_time % 3600) // 60), int(elapsed_time % 60)
 
     print(f"---------Finished training run {run_name}---------")
     print(f"Train time: {hours} hr, {minutes} min, {seconds} sec")
-    print(f"ProofNet eval loss: {results['eval_loss']}. Model saved to ./saved_models/{run_name}")
+    print(f"ProofNet eval loss: {results['eval_loss']}. Model saved to ./backtranslation_models/{run_name}")
 
 
 if __name__ == '__main__':
