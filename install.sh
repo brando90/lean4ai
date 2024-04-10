@@ -5,7 +5,8 @@ conda info -e
 # -- Activate conda
 conda update -n base -c defaults conda
 pip install --upgrade pip
-conda create -y -n lean4ai python=3.10.11
+# conda create -y -n lean4ai python=3.10.11
+conda create -y -n lean4ai python=3.9
 conda activate lean4ai
 #conda remove --name lean4ai --all
 
