@@ -1,14 +1,17 @@
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, TrainingArguments, Trainer
 from datasets import load_dataset, load_metric
+from datasets import load_dataset
+# import evaluate
 import os
 import numpy as np
 import torch
 
 torch.cuda.empty_cache()
 
-metric = load_metric('accuracy')
-
-def compute_metrics(eval_pred):
+def compute_metrics(eval_pred, 
+                    path: str = 'accuracy',  # todo: what t
+                    ):
+    metric = load_metric(path=path) 
     predictions, labels = eval_pred
     predictions = np.argmax(predictions, axis=1)
     print(predictions.shape, labels.shape)
