@@ -1,0 +1,4 @@
+[submodule "zipfit"]
+	path = zipfit
+	url = git@github.com:stair-lab/ZIP-FIT.git
+	branch = bm_dev
