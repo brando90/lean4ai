@@ -32,11 +32,17 @@ fi
 cd $HOME/lean4ai/ZIP-FIT
 pip install -e .
 ```
-Note: if you create a submodule and misname it you might have to change the name in three locations:
-1. The name of folder of the submodule
-2. The name of submodule in the .gitmodules
-3. The name of the submodule in .git/config
-to fix the name mismatches. 
+Note: if you create a submodule and misname it you might have to do this:
+```bash
+# Correcting a Misnamed Git Submodule
+# 1. Deinitialize the incorrect submodule
+git submodule deinit <incorrect_submodule_name>
+# 2. Remove the incorrect submodule directory
+rm -rf <incorrect_submodule_directory> 
+# Example: rm -rf zipfit
+# 3. Remove the incorrect submodule from Git's index
+git rm --cached <incorrect_submodule_directory>
+```
 
 Now install the project:
 ```bash
