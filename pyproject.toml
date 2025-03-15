@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lean4ai"
+version = "0.0.1"
+description = "Can Formal Methods Improve Language Models?"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache 2.0"}
+authors = [
+    {name = "Brando Miranda", email = "brando9@stanford.edu"},
+]
+dependencies = [
+    "dill",
+    "networkx>=2.5",
+    "scipy",
+    "scikit-learn",
+    "lark-parser",
+    "tensorboard",
+    "pandas",
+    "progressbar2",
+    "requests",
+    "aiohttp",
+    "numpy",
+    "plotly",
+    "wandb",
+    "matplotlib",
+    "twine",
+    "torch==2.1.2",
+    "transformers==4.39.2",
+    "datasets==2.18.0",
+    "vllm",
+    "nvidia-htop",
+]
+
+[project.urls]
+Homepage = "https://github.com/brando90/lean4ai"
+Repository = "https://github.com/brando90/lean4ai"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+namespaces = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+] 

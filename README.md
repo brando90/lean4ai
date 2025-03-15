@@ -1,44 +1,71 @@
-# Can Formal Methods Improve Language Models?
+# Can Lean4 (and thus Formal Methods) Improve Language Models (LMs)?
 
-lean4agi &amp; lean4math
+# Installation
 
-## Installation
-
-Create a conda env and make sure everything is up to date (please don't run commands blidly, read what you're doing and the output otherwise you won't be able to debug it):
+## 1. Create & Activate the lean4ai Conda Environment
 ```bash
-# -- Activate conda
-conda update -n base -c defaults conda
+cd $HOME
+conda create -y -n lean4ai python=3.10
 pip install --upgrade pip
-conda create -y -n lean4ai python=3.9
 conda activate lean4ai
 ```
-Install this library in editable mode (make sure you understand what editable mode is, google the command bellow! Also, make sure you read the comments in the `setup.py` so you understand why and how we are setting up this python project following roughly the python standards):
+
+## 2. Clone and Install lean4ai
 ```bash
+cd $HOME
+# Clone the lean4ai repository and initialize all submodules recursively
+git clone --recurse-submodules -b main git@github.com:brando90/lean4ai.git
 cd $HOME/lean4ai
-pip install -e . 
-# or pip install -e ~/lean4ai
+
+# Check if .gitmodules exists; if not, initialize and update submodules
+if [ ! -f .gitmodules ]; then # If .gitmodules is missing, add and update submodules recursively
+    cd $HOME/lean4ai
+    # Adds the ZIP-FIT submodule (creates/updates .gitmodules automatically)
+    git submodule add -b bm_dev git@github.com:stair-lab/ZIP-FIT.git 
+    # Reads .gitmodules and registers submodules in .git/config (does not clone/update them)
+    git submodule init  
+    # Fetches latest commits from remote for submodules, including nested ones
+    git submodule update --recursive --remote  
+fi
+
+# Install submodule
+cd $HOME/lean4ai/ZIP-FIT
+pip install -e .
 ```
-then make sure your install and gpu works + that you are using the version of python and binary/python you expect:
+Note: if you create a submodule and misname it you might have to change the name in three locations:
+1. The name of folder of the submodule
+2. The name of submodule in the .gitmodules
+3. The name of the submodule in .git/config
+to fix the name mismatches. 
+
+Now install the project:
 ```bash
-# see python you're using
+# Install the package in editable mode with all dependencies
+pip install -e ~/lean4ai
+```
+The installation uses `pyproject.toml` for modern Python packaging, which:
+- Installs all required dependencies automatically
+- Sets up the project in editable mode for development
+
+## 3. Verify Installation
+
+Run the following commands to verify your installation:
+
+```bash
+# 1. Check Python version and location
 which python
-# test pytorch & gpus
-python -c "import torch; print(torch.__version__); print(torch.version.cuda); print((torch.randn(2, 4).cuda() @ torch.randn(4, 1).cuda()))"
-python -c "import torch; print(torch.version.cuda); print((torch.randn(2, 4).cuda() @ torch.randn(4, 1).cuda()))"
-python -c "import torch; print(f'{torch.cuda.device_count()=}'); print(f'Device: {torch.cuda.get_device_name(0)=}')"
-# test python installation and project setup is working
-# python src/hello_world_snap.py
-# or python /lfs/skampere1/0/brando9/lean4ai/src/hello_world.py
-python $HOME/lean4ai/src/hello_world.py
+python --version 
+
+# 2. Verify the package is installed
+python -c "import lean4ai; print('lean4ai package successfully imported')"
+
+# 3. Test GPU
+python -c "import torch; print('GPU computation test:'); print(torch.randn(2, 4).cuda() @ torch.randn(4, 1).cuda())"
 ```
 
-For tips and more details see the [`snap cluster setup repo`](https://github.com/brando90/snap-cluster-setup) for detailed installatio tips for python, conda etc. and tutorial [with questions/assignments](https://docs.google.com/document/d/1k3d3_AOp-Y22L-GbgHivDqKe9r9LC5nscaIzbm3LWYc/edit?usp=sharing). 
+# Appendix
 
-## lean4agi
+### lean4agi
 LeanDojo lean4 dataset: https://zenodo.org/records/10114185
 
 Processed leam4 dataset: https://huggingface.co/datasets/akjadhav/leandojo-lean4-formal-informal-strings
-
-## lean4math
-
-Research journal: https://docs.google.com/document/d/1eZ9l-tQVUaWYq38pnB9xit6Z4noqZHh_6U7vX5IuY0Q/edit
