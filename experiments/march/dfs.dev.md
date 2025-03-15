@@ -39,20 +39,40 @@ repos=(
     "ultimate-utils"
 )
 
+# Function to format time in a readable way
+format_time() {
+    local seconds=$1
+    local minutes=$((seconds/60))
+    local remaining_seconds=$((seconds%60))
+    echo "${minutes}m ${remaining_seconds}s"
+}
+
 # Move each repo and create symlink
+echo "Starting repository moves at $(date)"
 for repo in "${repos[@]}"; do
     if [ -d ~/"$repo" ] && [ ! -L ~/"$repo" ]; then
         echo "Processing repository: $repo"
         echo "Moving $repo from ~/\"$repo\" to /dfs/scratch0/brando9/"
+        
+        # Get size before moving
+        size=$(du -sh ~/"$repo" 2>/dev/null | cut -f1)
+        
+        # Time the move operation
+        start_time=$(date +%s)
         mv ~/"$repo" /dfs/scratch0/brando9/
+        end_time=$(date +%s)
+        duration=$((end_time - start_time))
+        
         echo "Creating symlink for $repo"
         ln -s /dfs/scratch0/brando9/"$repo" ~/"$repo"
         echo "Successfully moved and linked $repo"
+        echo "Size: ${size}, Time taken: $(format_time $duration)"
         echo "------------------------"
     else
         echo "Skipping $repo (not found or already a symlink)"
     fi
 done
+echo "Finished repository moves at $(date)"
 
 # For keys (which is already in DFS)
 echo "Processing keys directory (special case)"
@@ -69,3 +89,9 @@ The commands are now simplified to:
 1. Move repos directly to `/dfs/scratch0/brando9/`
 2. Create symlinks from home to that DFS location
 3. Handle the keys directory separately since it's already in DFS
+
+The script now provides:
+- Start and end timestamps for the entire operation
+- Size of each repository being moved
+- Time taken for each move operation
+- Progress tracking with clear visual separators
