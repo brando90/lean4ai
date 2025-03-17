@@ -52,17 +52,15 @@ format_time() {
 echo "Starting repository moves at $(date)"
 for repo in "${repos[@]}"; do
     if [ -d ~/"$repo" ] && [ ! -L ~/"$repo" ]; then
-        echo "Processing repository: $repo"
-        echo "Moving $repo from ~/\"$repo\" to /dfs/scratch0/brando9/"
-        
+        #echo "Processing repository: $repo"
+        #echo "Moving $repo from ~/\"$repo\" to /dfs/scratch0/brando9/"
         # Get size before moving
-        size=$(du -sh ~/"$repo" 2>/dev/null | cut -f1)
-        
+        # size=$(du -sh ~/"$repo" 2>/dev/null | cut -f1)
         # Time the move operation
-        start_time=$(date +%s)
-        mv ~/"$repo" /dfs/scratch0/brando9/
-        end_time=$(date +%s)
-        duration=$((end_time - start_time))
+        # start_time=$(date +%s)
+        # mv ~/"$repo" /dfs/scratch0/brando9/
+        # end_time=$(date +%s)
+        # duration=$((end_time - start_time))
         
         echo "Creating symlink for $repo"
         ln -s /dfs/scratch0/brando9/"$repo" ~/"$repo"
