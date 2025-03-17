@@ -95,3 +95,9 @@ The script now provides:
 - Size of each repository being moved
 - Time taken for each move operation
 - Progress tracking with clear visual separators
+
+# Sym Link per Repo
+
+```bash
+ln -s /dfs/scratch0/brando9/beyond-scale-2-alignment-coeff ~/beyond-scale-2-alignment-coeff
+```

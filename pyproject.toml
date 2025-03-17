@@ -28,11 +28,13 @@ dependencies = [
     "wandb",
     "matplotlib",
     "twine",
-    "torch==2.1.2",
-    "transformers==4.39.2",
-    "datasets==2.18.0",
-    "vllm",
+    "torch",
+    "transformers",
+    "datasets",
     "nvidia-htop",
+    "lm_eval[vllm]",
+    "vllm==0.6.4.post1", 
+    "antlr4-python3-runtime==4.11", 
 ]
 
 [project.urls]
