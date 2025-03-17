@@ -37,6 +37,7 @@ repos=(
     "self-opt-data-gen"
     "SHED-Shapley-Based-Automated-Dataset-Refinement"
     "ultimate-utils"
+    "veribench"
 )
 
 # Function to format time in a readable way
