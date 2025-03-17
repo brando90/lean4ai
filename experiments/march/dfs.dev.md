@@ -39,6 +39,10 @@ repos=(
     "SHED-Shapley-Based-Automated-Dataset-Refinement"
     "ultimate-utils"
     "veribench"
+    "Putnam2024-Evals"
+    "putnam-axiom-preview-lm-evaluation-harness"
+    "dspy"
+    "ZIP-FIT"
 )
 
 # Function to format time in a readable way
