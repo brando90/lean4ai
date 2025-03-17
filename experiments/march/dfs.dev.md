@@ -26,6 +26,7 @@ ls -la ~/lean4ai
 ```bash
 # List of repos to symlink
 repos=(
+    "beyond-scale-language-data-diversity"
     "beyond-scale-2-alignment-coeff"
     "Compel"
     "KoyejoLab-Predictable-LLM-Evals"
