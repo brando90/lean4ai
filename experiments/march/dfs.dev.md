@@ -71,7 +71,7 @@ for repo in "${repos[@]}"; do
         echo "Skipping $repo (not found or already a symlink)"
     fi
 done
-echo "Finished repository moves at $(date)"
+echo "Finished"
 
 # For keys (which is already in DFS)
 echo "Processing keys directory (special case)"
@@ -81,7 +81,7 @@ echo "Successfully linked keys directory"
 
 # Verify all symlinks
 echo "Verifying all symlinks:"
-ls -la ~ | grep -E "beyond-scale|Compel|KoyejoLab|LESS|lean4ai|lm-evaluation|mathlib4|putnam|self-opt|SHED|ultimate-utils|keys"
+ls -la ~ | grep -E "beyond-scale|Compel|KoyejoLab|LESS|lean4ai|lm-evaluation|mathlib4|putnam|self-opt|SHED|ultimate-utils|keys|veribench"
 ```
 
 The commands are now simplified to:
