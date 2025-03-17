@@ -20,12 +20,12 @@ ln -s /dfs/scratch0/brando9/lean4ai ~/lean4ai
 ls -la ~/lean4ai
 ```
 
-## Moving All GitHub Repos to DFS
-
-1. Move each repo to DFS and create symlinks:
+## Just Creating Sym Links
 ```bash
-# List of repos to symlink
+#!/bin/bash
+
 repos=(
+    "beyond-scale-language-data-diversity"
     "beyond-scale-2-alignment-coeff"
     "Compel"
     "KoyejoLab-Predictable-LLM-Evals"
@@ -37,6 +37,49 @@ repos=(
     "self-opt-data-gen"
     "SHED-Shapley-Based-Automated-Dataset-Refinement"
     "ultimate-utils"
+    "veribench"
+    "Putnam2024-Evals"
+    "putnam-axiom-preview-lm-evaluation-harness"
+    "dspy"
+    "ZIP-FIT"
+)
+
+echo "Starting to create symlinks at $(date)"
+for repo in "${repos[@]}"; do
+    echo "Creating symlink for $repo"
+    # Remove any existing file/directory (use with caution)
+    rm -rf ~/"$repo"
+    # Create the symlink pointing to the DFS location
+    ln -s /dfs/scratch0/brando9/"$repo" ~/"$repo"
+    echo "Successfully linked $repo"
+    echo "------------------------"
+done
+echo "Finished creating symlinks at $(date)"
+```
+
+## Moving All GitHub Repos to DFS
+
+1. Move each repo to DFS and create symlinks:
+```bash
+# List of repos to symlink
+repos=(
+    "beyond-scale-language-data-diversity"
+    "beyond-scale-2-alignment-coeff"
+    "Compel"
+    "KoyejoLab-Predictable-LLM-Evals"
+    "LESS"
+    "lean4ai"
+    "lm-evaluation-harness"
+    "mathlib4"
+    "putnam-axiom"
+    "self-opt-data-gen"
+    "SHED-Shapley-Based-Automated-Dataset-Refinement"
+    "ultimate-utils"
+    "veribench"
+    "Putnam2024-Evals"
+    "putnam-axiom-preview-lm-evaluation-harness"
+    "dspy"
+    "ZIP-FIT"
 )
 
 # Function to format time in a readable way
@@ -51,17 +94,15 @@ format_time() {
 echo "Starting repository moves at $(date)"
 for repo in "${repos[@]}"; do
     if [ -d ~/"$repo" ] && [ ! -L ~/"$repo" ]; then
-        echo "Processing repository: $repo"
-        echo "Moving $repo from ~/\"$repo\" to /dfs/scratch0/brando9/"
-        
+        #echo "Processing repository: $repo"
+        #echo "Moving $repo from ~/\"$repo\" to /dfs/scratch0/brando9/"
         # Get size before moving
-        size=$(du -sh ~/"$repo" 2>/dev/null | cut -f1)
-        
+        # size=$(du -sh ~/"$repo" 2>/dev/null | cut -f1)
         # Time the move operation
-        start_time=$(date +%s)
-        mv ~/"$repo" /dfs/scratch0/brando9/
-        end_time=$(date +%s)
-        duration=$((end_time - start_time))
+        # start_time=$(date +%s)
+        # mv ~/"$repo" /dfs/scratch0/brando9/
+        # end_time=$(date +%s)
+        # duration=$((end_time - start_time))
         
         echo "Creating symlink for $repo"
         ln -s /dfs/scratch0/brando9/"$repo" ~/"$repo"
@@ -72,7 +113,7 @@ for repo in "${repos[@]}"; do
         echo "Skipping $repo (not found or already a symlink)"
     fi
 done
-echo "Finished repository moves at $(date)"
+echo "Finished"
 
 # For keys (which is already in DFS)
 echo "Processing keys directory (special case)"
@@ -82,7 +123,7 @@ echo "Successfully linked keys directory"
 
 # Verify all symlinks
 echo "Verifying all symlinks:"
-ls -la ~ | grep -E "beyond-scale|Compel|KoyejoLab|LESS|lean4ai|lm-evaluation|mathlib4|putnam|self-opt|SHED|ultimate-utils|keys"
+ls -la ~ | grep -E "beyond-scale|Compel|KoyejoLab|LESS|lean4ai|lm-evaluation|mathlib4|putnam|self-opt|SHED|ultimate-utils|keys|veribench"
 ```
 
 The commands are now simplified to:
