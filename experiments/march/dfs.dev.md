@@ -20,6 +20,43 @@ ln -s /dfs/scratch0/brando9/lean4ai ~/lean4ai
 ls -la ~/lean4ai
 ```
 
+## Just Creating Sym Links
+```bash
+#!/bin/bash
+
+repos=(
+    "beyond-scale-language-data-diversity"
+    "beyond-scale-2-alignment-coeff"
+    "Compel"
+    "KoyejoLab-Predictable-LLM-Evals"
+    "LESS"
+    "lean4ai"
+    "lm-evaluation-harness"
+    "mathlib4"
+    "putnam-axiom"
+    "self-opt-data-gen"
+    "SHED-Shapley-Based-Automated-Dataset-Refinement"
+    "ultimate-utils"
+    "veribench"
+    "Putnam2024-Evals"
+    "putnam-axiom-preview-lm-evaluation-harness"
+    "dspy"
+    "ZIP-FIT"
+)
+
+echo "Starting to create symlinks at $(date)"
+for repo in "${repos[@]}"; do
+    echo "Creating symlink for $repo"
+    # Remove any existing file/directory (use with caution)
+    rm -rf ~/"$repo"
+    # Create the symlink pointing to the DFS location
+    ln -s /dfs/scratch0/brando9/"$repo" ~/"$repo"
+    echo "Successfully linked $repo"
+    echo "------------------------"
+done
+echo "Finished creating symlinks at $(date)"
+```
+
 ## Moving All GitHub Repos to DFS
 
 1. Move each repo to DFS and create symlinks:
