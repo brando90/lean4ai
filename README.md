@@ -14,44 +14,24 @@ conda activate lean4ai
 ```bash
 cd $HOME
 # Clone the lean4ai repository and initialize all submodules recursively
-git clone --recurse-submodules -b main git@github.com:brando90/lean4ai.git
+git clone -b main git@github.com:brando90/lean4ai.git
 cd $HOME/lean4ai
-
-# Check if .gitmodules exists; if not, initialize and update submodules
-if [ ! -f .gitmodules ]; then # If .gitmodules is missing, add and update submodules recursively
-    cd $HOME/lean4ai
-    # Adds the ZIP-FIT submodule (creates/updates .gitmodules automatically)
-    git submodule add -b bm_dev git@github.com:stair-lab/ZIP-FIT.git 
-    # Reads .gitmodules and registers submodules in .git/config (does not clone/update them)
-    git submodule init  
-    # Fetches latest commits from remote for submodules, including nested ones
-    git submodule update --recursive --remote  
-fi
-
-# Install submodule
-cd $HOME/lean4ai/ZIP-FIT
 pip install -e .
-```
-Note: if you create a submodule and misname it you might have to do this:
-```bash
-# Correcting a Misnamed Git Submodule
-# 1. Deinitialize the incorrect submodule
-git submodule deinit <incorrect_submodule_name>
-# 2. Remove the incorrect submodule directory
-rm -rf <incorrect_submodule_directory> 
-# Example: rm -rf zipfit
-# 3. Remove the incorrect submodule from Git's index
-git rm --cached <incorrect_submodule_directory>
-```
-
-Now install the project:
-```bash
-# Install the package in editable mode with all dependencies
-pip install -e ~/lean4ai
 ```
 The installation uses `pyproject.toml` for modern Python packaging, which:
 - Installs all required dependencies automatically
 - Sets up the project in editable mode for development
+
+Now install ZIP-FIT to use pass @ k AF with Lean:
+```bash
+# Get ZIPFIT (for pass @ k for AF with Lean)
+cd $HOME
+# Clone the ZIP-FIT repository and check out the bm_dev branch
+git clone --recurse-submodules -b bm_dev git@github.com:stair-lab/ZIP-FIT.git 
+cd $HOME/ZIP-FIT 
+pip install -e .
+```
+Now to install the rest of ZIP-FIT follow the instructions here: https://github.com/stair-lab/ZIP-FIT/tree/bm_dev?tab=readme-ov-file#2-install-vllm--eleutherai-harness
 
 ## 3. Verify Installation
 
