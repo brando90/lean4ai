@@ -42,6 +42,7 @@ repos=(
     "putnam-axiom-preview-lm-evaluation-harness"
     "dspy"
     "ZIP-FIT"
+    "PyPantograph"
 )
 
 echo "Starting to create symlinks at $(date)"
@@ -80,6 +81,7 @@ repos=(
     "putnam-axiom-preview-lm-evaluation-harness"
     "dspy"
     "ZIP-FIT"
+    "PyPantograph"
 )
 
 # Function to format time in a readable way

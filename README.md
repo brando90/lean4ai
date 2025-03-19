@@ -6,8 +6,9 @@
 ```bash
 cd $HOME
 conda create -y -n lean4ai python=3.10
-pip install --upgrade pip
 conda activate lean4ai
+conda activate lean4ai
+pip install --upgrade pip
 ```
 
 ## 2. Clone and Install lean4ai
@@ -55,3 +56,29 @@ python -c "import torch; print('GPU computation test:'); print(torch.randn(2, 4)
 LeanDojo lean4 dataset: https://zenodo.org/records/10114185
 
 Processed leam4 dataset: https://huggingface.co/datasets/akjadhav/leandojo-lean4-formal-informal-strings
+
+
+## To deinitialize the ZIP-FIT git submodule
+
+```bash
+# 1) Change to the repository root
+cd ~/lean4ai
+
+# 2) Deinitialize the submodule (removes it from .git/config)
+git submodule deinit -f ZIP-FIT
+
+# 3) Remove the submodule from Git's index (this unregisters the submodule)
+git rm -f ZIP-FIT
+
+# 4) Remove the actual submodule directory from disk
+rm -rf ZIP-FIT/
+
+# 5) Delete leftover metadata for the submodule
+rm -rf .git/modules/ZIP-FIT
+
+# 6) Remove the entire .gitmodules file (if ZIP-FIT is your only submodule)
+rm -f .gitmodules
+
+# 7) Commit the changes so the repository no longer references the submodule
+git commit -am "Completely remove ZIP-FIT submodule"
+```
