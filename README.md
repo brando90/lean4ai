@@ -25,30 +25,33 @@ The installation uses `pyproject.toml` for modern Python packaging, which:
 
 Now install ZIP-FIT to use pass @ k AF with Lean:
 ```bash
-# Get ZIPFIT (for pass @ k for AF with Lean)
-cd $HOME
-# Clone the ZIP-FIT repository and check out the bm_dev branch
-git clone --recurse-submodules -b bm_dev git@github.com:stair-lab/ZIP-FIT.git 
-cd $HOME/ZIP-FIT 
-pip install -e .
+# Clone the ZIP-FIT repository (SSH) and recursively initialize any submodules
+git clone --recurse-submodules git@github.com:stair-lab/ZIP-FIT.git
+# Change directory into the newly cloned ZIP-FIT repo
+cd ZIP-FIT
+# Fetch the latest changes and branches from the remote
+git fetch origin
+# Show all local and remote branches
+git branch -a
+# Create and switch to the 'bm_dev' branch, tracking remote 'origin/bm_dev'
+git checkout -b bm_dev origin/bm_dev
+# Display branch details, including local/remote tracking and commit differences
+git branch -vv
+# Install ZIP-FIT in editable mode, so local changes are reflected immediately
+pip install -e ~/ZIP-FIT
+
+# Verify install
+pip list | grep zip_fit
+pip list | grep lm_eval
+pip list | grep vllm
+pip list | grep antlr4
+# Expected output:
+# zip_fit                           1.0.8         /lfs/ampere8/0/brando9/ZIP-FIT
+# lm_eval                           0.4.8
+# vllm                              0.6.4.post1
+# antlr4-python3-runtime            4.11.0 
 ```
-Now to install the rest of ZIP-FIT follow the instructions here: https://github.com/stair-lab/ZIP-FIT/tree/bm_dev?tab=readme-ov-file#2-install-vllm--eleutherai-harness
-
-## 3. Verify Installation
-
-Run the following commands to verify your installation:
-
-```bash
-# 1. Check Python version and location
-which python
-python --version 
-
-# 2. Verify the package is installed
-python -c "import lean4ai; print('lean4ai package successfully imported')"
-
-# 3. Test GPU
-python -c "import torch; print('GPU computation test:'); print(torch.randn(2, 4).cuda() @ torch.randn(4, 1).cuda())"
-```
+Now to install the rest of ZIP-FIT follow the instructions here: 
 
 # Appendix
 

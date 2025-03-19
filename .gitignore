@@ -165,3 +165,7 @@ src/lean4math/backtranslation/runs
 src/lean4math/backtranslation/backtranslation_models
 src/lean4math/backtranslation/finetune_models
 src/lean4math/backtranslation/logs
+
+# Python packaging metadata files (automatically generated)
+PKG-INFO
+SOURCES.txt
