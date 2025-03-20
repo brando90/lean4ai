@@ -16,8 +16,7 @@ pip install --upgrade pip
 cd $HOME
 # Clone the lean4ai repository and initialize all submodules recursively
 git clone -b main git@github.com:brando90/lean4ai.git
-cd $HOME/lean4ai
-pip install -e .
+pip install -e ~/lean4ai
 ```
 The installation uses `pyproject.toml` for modern Python packaging, which:
 - Installs all required dependencies automatically
