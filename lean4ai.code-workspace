@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../ZIP-FIT"
+		},
+		{
+			"path": "../self-opt-data-gen"
 		}
 	]
 }
