@@ -15,15 +15,15 @@ export model_name='AI4M/gemma2-2b-gpt4-more-dataset' # 1 epoch
 # export model_name='AI4M/gpt2-gpt4-more'
 
 export eval_batch_size=32
-export k=15 # the k specific the actualy metric for pass@k
+export k=50 # the k specific the actualy metric for pass@k
 export num_samples=${eval_batch_size} # the big N in pass@k - total number of completions generated
-export num_samples=5000 # the big N in pass@k - total number of completions generated
+export num_samples=300 # the big N in pass@k - total number of completions generated
 export eval_dataset='UDACA/proofnet-v3-lean4'
 export split_name='test'
 export prompt_fn_name='prompt_temp_fn_lean4_minif2f_val_v0'
 
-# export mode='dryrun'
-export mode='online'
+export mode='dryrun'
+# export mode='online'
 
 conda activate zip_fit
 # export CUDA_VISIBLE_DEVICES=0
