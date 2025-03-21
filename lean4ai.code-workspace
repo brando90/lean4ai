@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../self-opt-data-gen"
+		},
+		{
+			"path": "../PyPantograph"
 		}
 	]
 }
