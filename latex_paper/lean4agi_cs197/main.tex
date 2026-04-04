@@ -1,0 +1,305 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage[margin=1in]{geometry}
+
+\title{Enhancing LLMs for General Reasoning Through Interactive Theorem Prover Integration}
+
+\author{
+Ameya Jadhav \\
+Stanford University \\
+\texttt{ajadhav@stanford.edu} \\
+\and
+Shane Mion \\
+Stanford University \\
+\texttt{smion@stanford.edu} \\
+\and
+Rishi Padmanabhan \\
+Stanford University \\
+\texttt{riship1@stanford.edu}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This study introduces a method to improve Large Language Models' (LLMs) mathematical reasoning and autoformalization capabilities by incorporating formal proofs from Interactive Theorem Provers (ITPs) like Lean, Coq, and Isabelle into their training. The research explores fine-tuning a GPT-3.5 model with a dataset that pairs formal mathematical proofs and informal language proofs. The effectiveness of this approach is assessed using benchmarks such as the Massive Multitask Language Understanding (MMLU) benchmark and the Hendrycks MATH dataset. Initial results show modest improvements in LLMs' ability to generate informal proofs, suggesting the potential of formal proofs to advance LLMs' mathematical reasoning. The study highlights the necessity for further exploration in integrating a broader range of formal proofs and more sophisticated fine-tuning techniques to bolster LLMs' capabilities in formal mathematics and automated reasoning.
+\end{abstract}
+
+\section{Introduction}
+
+Enhancing the capabilities of (LLMs) in the realms of mathematical reasoning and autoformalization is essential for advancing the current state of artificial intelligence and automated theorem proving. The goal to enhance LLMs with a generative capacity for mathematical proofs is a necessity for the evolution of computational reasoning. Current LLM models demonstrate an impressive understanding over a large range of language tasks, yet their proficiency in deciphering and formulating the more rigorous and nuanced formal mathematics is not consistently up-to-par. This deficiency underscores a critical gap in the foundational understanding of mathematical logic and its structural nuances within contemporary models, a gap that existing methodologies have scarcely managed to bridge \cite{polu2022formal}.
+
+The challenge at hand encompasses the transformation of LLMs from mere processors of mathematical data to more complete tools capable of engaging with, understanding, and generating formal mathematical proofs. Traditional approaches to this problem have primarily revolved around direct training with mathematical datasets or integrating elementary problem-solving tasks. While these strategies have yielded small improvements in understanding model performance of different sizes, they fall short of addressing the complex semantic and logical frameworks that are core to formal mathematical proofs. Such methodologies, therefore, leave a large gap in the models' capacity for formal reasoning and the autoformalization of mathematical statements, highlighting the limitations of current patterns in achieving such comprehension and generation of formal mathematical content \cite{bansal2019holist}.
+
+In light of these challenges, our research proposes a paradigmatic shift through the direct leverage of verified proof libraries from Interactive Theorem Provers (ITPs) such as Lean, Coq, and Isabelle. We hypothesize that mining step-by-step formal proofs from these libraries and integrating them into the training corpus of LLMs can catalyze a profound enhancement in their ability to understand and generate formal mathematical proofs. This innovative approach is predicated on the potential of ITPs to provide a structured and rigorous foundation for learning, one that is meticulously aligned with the logical precision and semantic depth required for formal mathematics. Through this methodology, we aim to furnish LLMs with a robust framework for engaging with formal proofs, thereby surmounting the prevailing barriers in mathematical reasoning and autoformalization \cite{szegedy2020promising} \cite{wu2022autoformalization}.
+
+To address this gap, we have created a new pipeline strategy centered around the fine-tuning of a Mistral-7B (7 billion) parameter model. The main part of this process involves prompting the model to reinterpret formal mathematical statements into informal statements of ``top level machine learning research quality''. This plan seeks to form a bridge between the rigorous domain of formal proofs and the more intuitive, natural language processing capabilities of LLMs. The resultant dataset from our Mistral pipeline is represented in a structured JSON tree of formal and informal proofs and will be used to fine-tune several of our models (Mistral-7B, Gemma-7B, GPT-3.5) to measure improvements \cite{yang2023leandojo} \cite{jiang2023draft}.
+
+The evaluation of our methodology's effectiveness will be anchored in a comprehensive benchmarking strategy. We will employ the Massive Multitask Language Understanding (MMLU) benchmark to assess enhancements in general intelligence and mathematical reasoning, supplemented by the ProofNet benchmark for evaluating autoformalization skills. We will additionally test on different subsections of the Hendrycks MATH dataset. These benchmarks are specifically designed to measure the nuanced capabilities of LLMs in processing and generating mathematical content, thereby providing a holistic view of the models' proficiency in the post-enhancement landscape. Additionally, as a pre-screen check, we will manually trace through our generated dataset to see if it makes sense to a human first, to increase our confidence of having effective and correct data passed to our Mistral model. Through this multifaceted evaluation framework, we aim to test our hypothesis that formal proofs can significantly elevate LLMs' reasoning and understanding, allowing for new improvements in automated reasoning and theorem proving \cite{hendrycks2021measuring} \cite{polu2020generative}.
+
+Notwithstanding the promise of our approach, we acknowledge the inherent challenges in enabling LLMs to generate a diverse array of informal proofs from formal statements. The complexity and variations of mathematical proofs imply that a singular formal statement can engender multiple informal interpretations, posing a formidable challenge in ensuring the consistency and accuracy of the model's outputs. Addressing this challenge necessitates not only sophisticated model architecture and training methods but also a deeper understanding of the interplay between formal and informal mathematical reasoning.
+
+The implications of successfully navigating these challenges extend beyond the immediate advancements in LLM capabilities. By fine-tuning a model that improves upon understanding of formal mathematics, we hope to contribute to developments in automated theorem proving and artificial general intelligence. This research contains the potential to redefine the application of LLMs in formal mathematics, offering significant implications for a large range of fields reliant on mathematical reasoning and logic. Furthermore, it sets the stage for future explorations into the nuanced relationship between formal proofs and natural language processing, potentially sparking innovations in other areas of AI where formal reasoning plays a critical role \cite{wu2022autoformalization_arxiv} \cite{zheng2022minif2f}.
+
+In short, our research aims to form a stronger connection between LLMs and formal mathematics through methods that leverage the rigor and strictness of Interactive Theorem Provers (ITPs) and existing large language models' NLP capabilities. By enhancing LLMs' capacity to reason mathematically and autoformalize proofs, we aim to make advancements in automated reasoning, artificial general intelligence, and more.
+
+\section{Related Work}
+
+\subsection{Theme 1: Deep Learning and Neural Networks for Theorem Proving}
+
+Several studies explore using deep learning and neural networks for theorem proving, developing specialized environments like GamePad and HOList \cite{huang2019gamepad} \cite{bansal2019holist}, and applying techniques like generative language modeling and neural automated theorem proving \cite{polu2020generative} \cite{jiang2023draft}. However, these approaches assume fitting deep learning into traditional theorem proving frameworks \cite{li2021isarstep}. This research proposes enhancing large language models (LLMs) directly with formal mathematical proofs from interactive theorem provers, representing a shift toward independently advancing LLMs' formal reasoning abilities.
+
+\subsection{Theme 2: Formalizing and Mechanizing Mathematical Proofs}
+
+Converting informal proofs to formal versions is explored, with neural networks used for understanding mathematical context \cite{wu2022autoformalization}, leveraging datasets like Lean's proof library \cite{yang2023leandojo}, and utilizing meta-languages \cite{jiang2022thor} and elaboration models from proof assistants \cite{szegedy2020promising}. However, LLMs can reduce bottlenecks by utilizing their knowledge of informal proofs \cite{azerbayev2023llemma} and training on formal proofs to improve automated reasoning \cite{zheng2022minif2f}.
+
+\subsection{Theme 3: Advanced Machine Learning for Theorem Proving}
+
+Various methodologies integrate language models \cite{han2022proof}, self-supervised training \cite{wu2022autoformalization_arxiv}, learning inductive biases \cite{zheng2022minif2f}, curriculum learning \cite{polu2022formal}, and benchmarks like MATH \cite{hendrycks2021measuring} for enhancing mathematical reasoning and theorem proving. In contrast, this research directly leverages verified proofs from interactive theorem provers like Lean to enhance LLMs' reasoning, autoformalization abilities, and evaluation via comprehensive metrics like MATH, ProofNet, and MMLU.
+
+\section{Evaluation}
+
+\subsection{Thesis}
+
+Our research leverages verified proof libraries from ITP's such as Lean, Coq, and Isabelle to train LLMs in order to improve the model's informal reasoning abilities. By scraping step-by-step formal proofs from the Lean-Dojo-4 library and utilizing them to improve the informal reasoning abilities of LLMs, we aim to contribute towards bridging the gap between formal mathematics and LLM capabilities. This may be a step towards a more robust LLM with increased mathematical and logical understanding. We claim utilizing formal and informal proof pairs to train Large Language Models (LLMs) will result in an improvement in the LLM's deeper informal reasoning abilities.
+
+\section{Methodology and Evaluation}
+
+Our approach, leveraging the ITP Lean verified proof library aims to improve the informal reasoning abilities of LLMs by training them with a dataset of formal-informal proof pairs.
+
+Our two major steps in our methodology were 1) creating formal-informal proof pair datasets, and 2) fine-tuning LLM models to evaluate any improvements on informal reasoning abilities.
+
+\subsection{Methodology}
+
+\subsubsection{Dataset Creation}
+
+We constructed several datasets. We took the LeanDojo full proofs dataset and converted each entire proof into a formal proof statement following this format: formal = thm, proof state1, tactic1, proof state2, tactic2, Qed.
+
+We were able to use simple regex and other programming techniques to create these formal proof strings of each entire proof.
+
+Next, we created the corresponding informal proof (natural language version of each formal proof) using LLMs such as Mistral-7b and Claude-3, and prompt engineering. We were able to successfully convert each formal proof string to an entire informal proof in natural language with the use of these LLMs. Here's an example of a formal-informal proof pair that was generated with Claude-3. In our dataset, both the formal and informal proofs are strings, but we have added formatting to them here (boxed, bold, etc) for easy readability.
+
+\paragraph{Formal:}
+
+\begin{small}
+\begin{verbatim}
+Std.Range.numElems_stop_le_start
+start stop step : Nat
+h : {start := start, stop := stop,
+     step := step}.stop
+  <= {start := start, stop := stop,
+      step := step}.start
+|- numElems {start := start, stop := stop,
+   step := step} = 0
+simp [numElems]
+start stop step : Nat
+h : {start := start, stop := stop,
+     step := step}.stop
+  <= {start := start, stop := stop,
+      step := step}.start
+|- (if step = 0 then if stop <= start then 0
+    else stop
+    else (stop - start + step - 1) / step) = 0
+split <;> simp_all
+case inr
+start stop step : Nat
+h : stop <= start
+h' : ~step = 0
+|- (stop - start + step - 1) / step = 0
+apply Nat.div_eq_of_lt
+case inr.h
+start stop step : Nat
+h : stop <= start
+h' : ~step = 0
+|- stop - start + step - 1 < step
+simp [Nat.sub_eq_zero_of_le h]
+case inr.h
+start stop step : Nat
+h : stop <= start
+h' : ~step = 0
+|- step - 1 < step
+exact Nat.pred_lt h'
+Qed.
+\end{verbatim}
+\end{small}
+
+\paragraph{Informal (LLM generated):}
+
+\begin{quote}
+\textbf{Theorem:} For a range defined by start, stop, and step values, if the stop value is less than or equal to the start value, the number of elements in the range is zero.
+
+\textbf{Proof:} Let's consider a range characterized by three natural numbers: start, stop, and step. Our objective is to demonstrate that when the stop value is less than or equal to the start value, the range contains no elements, i.e., the number of elements in the range is zero.
+
+We begin by examining the definition of the numElems function, which calculates the number of elements in a range. This function checks two conditions:
+\begin{enumerate}
+\item If the step value is zero, it further checks if stop is less than or equal to start. If true, it returns zero; otherwise, it returns the stop value.
+\item If the step value is non-zero, it computes the number of elements using the formula: (stop - start + step - 1) / step.
+\end{enumerate}
+
+Given the condition that stop is less than or equal to start, we proceed with a case analysis:
+
+\textbf{Case 1: step = 0.} When the step value is zero, the numElems function directly checks if stop is less than or equal to start. Since this condition is already given, the function returns zero, indicating that the range contains no elements.
+
+\textbf{Case 2: step $\neq$ 0.} In this case, we need to prove that the formula (stop - start + step - 1) / step evaluates to zero when stop is less than or equal to start. We can simplify the numerator of the formula: Since stop is less than or equal to start, the term (stop - start) is either zero or negative. Adding (step - 1) to (stop - start) results in a value that is strictly less than step, as (step - 1) is always less than step for non-zero step values.
+
+Now, we have the simplified condition: (stop - start + step - 1) $<$ step. When dividing a positive value less than step by step, the result is always zero in natural number division.
+
+Therefore, (stop - start + step - 1) / step = 0. In both cases, we have shown that when the stop value is less than or equal to the start value, the numElems function returns zero, indicating that the range contains no elements. QED
+\end{quote}
+
+We created these datasets following the creation methodology as outlined before. We created two different datasets, ClaudeJson as well as MistralJson. This was because we wanted to match the parameter sizes between the model and the training data: Mistral with Mistral7B/Gemma7B, and Claude3 with GPT3-5.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Dataset} & \textbf{Used} & \textbf{Token Length} \\
+\midrule
+ClaudeJson & Claude-3 & 101,256 \\
+MistralJson & Mistral-7b & 250,991 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Training and Results}
+
+We used these two datasets to fine-tune open models to evaluate potential improvements in reasoning abilities.
+
+The key metric for evaluating our fine-tuned model was testing it on different categories of the Hendrycks MATH dataset. The Hendrycks MATH dataset contains a ``boxed'' result section after going through a sequence of mathematical formal reasoning steps to apply different equations and methods to obtain a numerical answer. We test our model's performance on obtaining a correct ``boxed'' result before and after fine-tuning, across different categories of the MATH dataset such as ``Counting and Probability'' or ``Intermediate Algebra''. This provides little to no ``wiggle room'' for the LLM when ``solving'' the problems in the given categories.
+
+In addition, we used the MMLU benchmark, useful for testing both Humanities, Social Sciences, and STEM questions. These are multiple choice questions, and so it was relatively easy to evaluate the correct answer for the questions.
+
+In order to evaluate training results, we utilized the TinyBenchmark method \cite{polo2024tinybenchmarks} of randomly choosing representative samples for MMLU training, rather than evaluating over the whole dataset (due to API cost restraints).
+
+\subsubsection{Gemma-7b}
+
+We fine-tuned a Gemma-7b model on our MistralJson dataset, because of the parameter similarity between these two models. We evaluated the performance of the Gemma-7b on the Hendrycks MATH dataset using boxed accuracy.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Hendrycks Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+Counting and probability & 42.9\% & 42.8\% \\
+Algebra & 40.0\% & 33.3\% \\
+\textbf{Geometry} & \textbf{69.2\%} & \textbf{76.9\%} \\
+\textbf{Intermediate algebra} & \textbf{7.6\%} & \textbf{38.5\%} \\
+\textbf{Number theory} & \textbf{38.5\%} & \textbf{53.9\%} \\
+\textbf{Pre-algebra} & \textbf{46.6\%} & \textbf{73.3\%} \\
+\bottomrule
+\end{tabular}
+\caption{Gemma-7b Hendrycks MATH results. Bold indicates improvement.}
+\end{table}
+
+We see improvement in four major categories. Algebra is the only category in which the fine-tuned model performed worse than the standard model. Improvements are seen in the higher level categories such as geometry, intermediate algebra, pre-algebra, and number theory.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{MMLU Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+\textbf{Humanities/Social Sciences} & \textbf{46.5\%} & \textbf{48.2\%} \\
+\textbf{STEM} & \textbf{35.9\%} & \textbf{38.4\%} \\
+\bottomrule
+\end{tabular}
+\caption{Gemma-7b MMLU results.}
+\end{table}
+
+There is a marked improvement in both the STEM and Humanities/Social Sciences category. It should be noted that we chose to combine the Humanities and Social Sciences questions when evaluating for ease of access---in the original MMLU dataset, these two are specifically separated.
+
+\subsubsection{Mistral-7b}
+
+We fine-tuned a Mistral-7b model on our MistralJson dataset, because of the parameter similarity between these two models. We evaluated the performance of the Mistral-7b on the Hendrycks MATH dataset using boxed accuracy.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Hendrycks Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+\textbf{Counting and probability} & \textbf{19.1\%} & \textbf{23.8\%} \\
+\textbf{Algebra} & \textbf{16.7\%} & \textbf{33.3\%} \\
+Geometry & 18.2\% & 9.1\% \\
+\textbf{Intermediate algebra} & \textbf{9.5\%} & \textbf{14.3\%} \\
+\textbf{Number theory} & \textbf{13.6\%} & \textbf{22.7\%} \\
+\textbf{Pre-algebra} & \textbf{23.8\%} & \textbf{28.6\%} \\
+\bottomrule
+\end{tabular}
+\caption{Mistral-7b Hendrycks MATH results. Bold indicates improvement.}
+\end{table}
+
+We see improvement in all categories except Geometry. Significant improvements are seen in the higher level categories such as intermediate algebra and number theory.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{MMLU Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+Humanities/Social Sciences & 41.5\% & 38.6\% \\
+\textbf{STEM} & \textbf{25.6\%} & \textbf{28.4\%} \\
+\bottomrule
+\end{tabular}
+\caption{Mistral-7b MMLU results.}
+\end{table}
+
+It is important to note that when training MMLU on Mistral-7B, we had several errors with the runtime instance, resulting in a truncated evaluation for the Humanities/Social Science section. While there is a marked improvement in the STEM category, the Humanities/Social Sciences had no improvement, and actually slightly had decreased accuracy.
+
+\subsubsection{GPT-3.5}
+
+We fine-tuned a GPT-3.5 model on our ClaudeJson dataset, because of the parameter similarity between these two models. We evaluated the performance of the GPT-3.5 on the Hendrycks MATH dataset using boxed accuracy.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Hendrycks Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+Counting and probability & 38.5\% & 34.6\% \\
+\textbf{Algebra} & \textbf{33.3\%} & \textbf{58.3\%} \\
+Geometry & 78.6\% & 42.9\% \\
+\textbf{Intermediate algebra} & \textbf{6.7\%} & \textbf{33.3\%} \\
+\textbf{Number theory} & \textbf{26.3\%} & \textbf{40.0\%} \\
+\textbf{Pre-algebra} & \textbf{66.7\%} & \textbf{83.3\%} \\
+\bottomrule
+\end{tabular}
+\caption{GPT-3.5 Hendrycks MATH results. Bold indicates improvement.}
+\end{table}
+
+We see improvement in four major categories. Geometry is the only category in which the fine-tuned model performed significantly worse than the standard model. Improvements are seen in the higher level categories such as intermediate algebra, pre-algebra, and number theory.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{MMLU Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+Humanities/Social Sciences & 43.2\% & 36.7\% \\
+\textbf{STEM} & \textbf{34.8\%} & \textbf{37.6\%} \\
+\bottomrule
+\end{tabular}
+\caption{GPT-3.5 MMLU results.}
+\end{table}
+
+While there is a marked improvement in the STEM category, the Humanities/Social Sciences had no improvement, and actually slightly had decreased accuracy.
+
+\section{Discussion}
+
+The results from our experiments do provide some evidence to show that models trained with formal/informal proof pairs can have better results when evaluating on mathematical data. However, there is mixed evidence to show increased improved performance on non-direct STEM applications.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
