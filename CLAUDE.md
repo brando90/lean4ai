@@ -1,5 +1,11 @@
 # CLAUDE.md — lean4ai
 
+Read `~/agents-config/INDEX_RULES.md` for all global rules, machine docs, and workflow routing.
+
+**Remote fallback:** If `~/agents-config/` is not available locally, fetch files from `https://raw.githubusercontent.com/brando90/agents-config/main/`.
+
+---
+
 ## Project
 
 Research repo for "Can Lean4 (and thus Formal Methods) Improve Language Models?" — Pantograph-based SFT scaling study targeting TMLR/NeurIPS 2026.
@@ -9,7 +15,7 @@ Research repo for "Can Lean4 (and thus Formal Methods) Improve Language Models?"
 - Python 3.10+, PyTorch, HuggingFace (transformers, peft, trl, datasets)
 - Lean 4 + Pantograph (PyPantograph)
 - vLLM for inference, lm_eval for benchmarks
-- SNAP cluster (Stanford): A100 80GB, SLURM
+- SNAP cluster (Stanford): A100 80GB — see `~/agents-config/machine/snap.md`
 
 ## Structure
 
@@ -25,16 +31,14 @@ pip install -e ~/lean4ai          # install in editable mode
 conda activate lean4ai            # activate env
 ```
 
-## Rules
+## Project-specific rules
 
-- **TLDR required:** End every response with a `## TLDR` section (1–3 sentences summarizing what happened).
-- **Work on `main` branch** unless told otherwise. Push directly to main.
-- **PRs:** When creating PRs, keep the body to 5–10 bullet point summary. Put details in an appendix section below.
-- **Commits:** Descriptive but concise. No empty commits.
-- **No unnecessary files:** Don't create READMEs, docs, or markdown unless explicitly asked.
-- **SNAP cluster paths:** Use `/lfs/ampere8/0/$USER/` for data, runs, results. Model cache at `$HF_HOME`.
+These supplement the global rules in `~/agents-config/INDEX_RULES.md`:
+
+- **SNAP cluster paths:** Use `/lfs/<hostname>/0/$USER/` for data, runs, results. Model cache at `$HF_HOME`. See `~/agents-config/machine/snap.md` for full filesystem layout.
 - **Typed Python:** Use type hints. No docstrings on every function. Keep code lean.
 - **No hardcoded paths** in scripts — always CLI args or env vars.
+- **Experiment structure:** Follow `~/agents-config/workflows/expts-and-results.md`. Each experiment subfolder gets a `claude_code.md` prompt.
 
 ## Conventions
 
@@ -42,3 +46,4 @@ conda activate lean4ai            # activate env
 - Seeds: 42, 43, 44
 - JSON targets for all training data
 - SLURM job naming: `{phase}_{scale}_{condition}_{seed}`
+- W&B entity: `brando-su`, project: `lean4ai-pantograph-sft`
