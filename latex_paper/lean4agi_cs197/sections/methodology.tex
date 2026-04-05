@@ -1,0 +1,221 @@
+\section{Methodology and Evaluation}
+
+Our approach, leveraging the ITP Lean verified proof library aims to improve the informal reasoning abilities of LLMs by training them with a dataset of formal-informal proof pairs.
+
+Our two major steps in our methodology were 1) creating formal-informal proof pair datasets, and 2) fine-tuning LLM models to evaluate any improvements on informal reasoning abilities.
+
+\subsection{Methodology}
+
+\subsubsection{Dataset Creation}
+
+We constructed several datasets. We took the LeanDojo full proofs dataset and converted each entire proof into a formal proof statement following this format: formal = thm, proof state1, tactic1, proof state2, tactic2, Qed.
+
+We were able to use simple regex and other programming techniques to create these formal proof strings of each entire proof.
+
+Next, we created the corresponding informal proof (natural language version of each formal proof) using LLMs such as Mistral-7b and Claude-3, and prompt engineering. We were able to successfully convert each formal proof string to an entire informal proof in natural language with the use of these LLMs. Here's an example of a formal-informal proof pair that was generated with Claude-3. In our dataset, both the formal and informal proofs are strings, but we have added formatting to them here (boxed, bold, etc) for easy readability.
+
+\paragraph{Formal:}
+
+\begin{small}
+\begin{verbatim}
+Std.Range.numElems_stop_le_start
+start stop step : Nat
+h : {start := start, stop := stop,
+     step := step}.stop
+  <= {start := start, stop := stop,
+      step := step}.start
+|- numElems {start := start, stop := stop,
+   step := step} = 0
+simp [numElems]
+start stop step : Nat
+h : {start := start, stop := stop,
+     step := step}.stop
+  <= {start := start, stop := stop,
+      step := step}.start
+|- (if step = 0 then if stop <= start then 0
+    else stop
+    else (stop - start + step - 1) / step) = 0
+split <;> simp_all
+case inr
+start stop step : Nat
+h : stop <= start
+h' : ~step = 0
+|- (stop - start + step - 1) / step = 0
+apply Nat.div_eq_of_lt
+case inr.h
+start stop step : Nat
+h : stop <= start
+h' : ~step = 0
+|- stop - start + step - 1 < step
+simp [Nat.sub_eq_zero_of_le h]
+case inr.h
+start stop step : Nat
+h : stop <= start
+h' : ~step = 0
+|- step - 1 < step
+exact Nat.pred_lt h'
+Qed.
+\end{verbatim}
+\end{small}
+
+\paragraph{Informal (LLM generated):}
+
+\begin{quote}
+\textbf{Theorem:} For a range defined by start, stop, and step values, if the stop value is less than or equal to the start value, the number of elements in the range is zero.
+
+\textbf{Proof:} Let's consider a range characterized by three natural numbers: start, stop, and step. Our objective is to demonstrate that when the stop value is less than or equal to the start value, the range contains no elements, i.e., the number of elements in the range is zero.
+
+We begin by examining the definition of the numElems function, which calculates the number of elements in a range. This function checks two conditions:
+\begin{enumerate}
+\item If the step value is zero, it further checks if stop is less than or equal to start. If true, it returns zero; otherwise, it returns the stop value.
+\item If the step value is non-zero, it computes the number of elements using the formula: (stop - start + step - 1) / step.
+\end{enumerate}
+
+Given the condition that stop is less than or equal to start, we proceed with a case analysis:
+
+\textbf{Case 1: step = 0.} When the step value is zero, the numElems function directly checks if stop is less than or equal to start. Since this condition is already given, the function returns zero, indicating that the range contains no elements.
+
+\textbf{Case 2: step $\neq$ 0.} In this case, we need to prove that the formula (stop - start + step - 1) / step evaluates to zero when stop is less than or equal to start. We can simplify the numerator of the formula: Since stop is less than or equal to start, the term (stop - start) is either zero or negative. Adding (step - 1) to (stop - start) results in a value that is strictly less than step, as (step - 1) is always less than step for non-zero step values.
+
+Now, we have the simplified condition: (stop - start + step - 1) $<$ step. When dividing a positive value less than step by step, the result is always zero in natural number division.
+
+Therefore, (stop - start + step - 1) / step = 0. In both cases, we have shown that when the stop value is less than or equal to the start value, the numElems function returns zero, indicating that the range contains no elements. QED
+\end{quote}
+
+We created these datasets following the creation methodology as outlined before. We created two different datasets, ClaudeJson as well as MistralJson. This was because we wanted to match the parameter sizes between the model and the training data: Mistral with Mistral7B/Gemma7B, and Claude3 with GPT3-5.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Dataset} & \textbf{Used} & \textbf{Token Length} \\
+\midrule
+ClaudeJson & Claude-3 & 101,256 \\
+MistralJson & Mistral-7b & 250,991 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Training and Results}
+
+We used these two datasets to fine-tune open models to evaluate potential improvements in reasoning abilities.
+
+The key metric for evaluating our fine-tuned model was testing it on different categories of the Hendrycks MATH dataset. The Hendrycks MATH dataset contains a ``boxed'' result section after going through a sequence of mathematical formal reasoning steps to apply different equations and methods to obtain a numerical answer. We test our model's performance on obtaining a correct ``boxed'' result before and after fine-tuning, across different categories of the MATH dataset such as ``Counting and Probability'' or ``Intermediate Algebra''. This provides little to no ``wiggle room'' for the LLM when ``solving'' the problems in the given categories.
+
+In addition, we used the MMLU benchmark, useful for testing both Humanities, Social Sciences, and STEM questions. These are multiple choice questions, and so it was relatively easy to evaluate the correct answer for the questions.
+
+In order to evaluate training results, we utilized the TinyBenchmark method \cite{polo2024tinybenchmarks} of randomly choosing representative samples for MMLU training, rather than evaluating over the whole dataset (due to API cost restraints).
+
+\subsubsection{Gemma-7b}
+
+We fine-tuned a Gemma-7b model on our MistralJson dataset, because of the parameter similarity between these two models. We evaluated the performance of the Gemma-7b on the Hendrycks MATH dataset using boxed accuracy.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Hendrycks Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+Counting and probability & 42.9\% & 42.8\% \\
+Algebra & 40.0\% & 33.3\% \\
+\textbf{Geometry} & \textbf{69.2\%} & \textbf{76.9\%} \\
+\textbf{Intermediate algebra} & \textbf{7.6\%} & \textbf{38.5\%} \\
+\textbf{Number theory} & \textbf{38.5\%} & \textbf{53.9\%} \\
+\textbf{Pre-algebra} & \textbf{46.6\%} & \textbf{73.3\%} \\
+\bottomrule
+\end{tabular}
+\caption{Gemma-7b Hendrycks MATH results. Bold indicates improvement.}
+\end{table}
+
+We see improvement in four major categories. Algebra is the only category in which the fine-tuned model performed worse than the standard model. Improvements are seen in the higher level categories such as geometry, intermediate algebra, pre-algebra, and number theory.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{MMLU Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+\textbf{Humanities/Social Sciences} & \textbf{46.5\%} & \textbf{48.2\%} \\
+\textbf{STEM} & \textbf{35.9\%} & \textbf{38.4\%} \\
+\bottomrule
+\end{tabular}
+\caption{Gemma-7b MMLU results.}
+\end{table}
+
+There is a marked improvement in both the STEM and Humanities/Social Sciences category. It should be noted that we chose to combine the Humanities and Social Sciences questions when evaluating for ease of access---in the original MMLU dataset, these two are specifically separated.
+
+\subsubsection{Mistral-7b}
+
+We fine-tuned a Mistral-7b model on our MistralJson dataset, because of the parameter similarity between these two models. We evaluated the performance of the Mistral-7b on the Hendrycks MATH dataset using boxed accuracy.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Hendrycks Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+\textbf{Counting and probability} & \textbf{19.1\%} & \textbf{23.8\%} \\
+\textbf{Algebra} & \textbf{16.7\%} & \textbf{33.3\%} \\
+Geometry & 18.2\% & 9.1\% \\
+\textbf{Intermediate algebra} & \textbf{9.5\%} & \textbf{14.3\%} \\
+\textbf{Number theory} & \textbf{13.6\%} & \textbf{22.7\%} \\
+\textbf{Pre-algebra} & \textbf{23.8\%} & \textbf{28.6\%} \\
+\bottomrule
+\end{tabular}
+\caption{Mistral-7b Hendrycks MATH results. Bold indicates improvement.}
+\end{table}
+
+We see improvement in all categories except Geometry. Significant improvements are seen in the higher level categories such as intermediate algebra and number theory.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{MMLU Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+Humanities/Social Sciences & 41.5\% & 38.6\% \\
+\textbf{STEM} & \textbf{25.6\%} & \textbf{28.4\%} \\
+\bottomrule
+\end{tabular}
+\caption{Mistral-7b MMLU results.}
+\end{table}
+
+It is important to note that when training MMLU on Mistral-7B, we had several errors with the runtime instance, resulting in a truncated evaluation for the Humanities/Social Science section. While there is a marked improvement in the STEM category, the Humanities/Social Sciences had no improvement, and actually slightly had decreased accuracy.
+
+\subsubsection{GPT-3.5}
+
+We fine-tuned a GPT-3.5 model on our ClaudeJson dataset, because of the parameter similarity between these two models. We evaluated the performance of the GPT-3.5 on the Hendrycks MATH dataset using boxed accuracy.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Hendrycks Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+Counting and probability & 38.5\% & 34.6\% \\
+\textbf{Algebra} & \textbf{33.3\%} & \textbf{58.3\%} \\
+Geometry & 78.6\% & 42.9\% \\
+\textbf{Intermediate algebra} & \textbf{6.7\%} & \textbf{33.3\%} \\
+\textbf{Number theory} & \textbf{26.3\%} & \textbf{40.0\%} \\
+\textbf{Pre-algebra} & \textbf{66.7\%} & \textbf{83.3\%} \\
+\bottomrule
+\end{tabular}
+\caption{GPT-3.5 Hendrycks MATH results. Bold indicates improvement.}
+\end{table}
+
+We see improvement in four major categories. Geometry is the only category in which the fine-tuned model performed significantly worse than the standard model. Improvements are seen in the higher level categories such as intermediate algebra, pre-algebra, and number theory.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{MMLU Category} & \textbf{Standard} & \textbf{Fine-tuned} \\
+\midrule
+Humanities/Social Sciences & 43.2\% & 36.7\% \\
+\textbf{STEM} & \textbf{34.8\%} & \textbf{37.6\%} \\
+\bottomrule
+\end{tabular}
+\caption{GPT-3.5 MMLU results.}
+\end{table}
+
+While there is a marked improvement in the STEM category, the Humanities/Social Sciences had no improvement, and actually slightly had decreased accuracy.

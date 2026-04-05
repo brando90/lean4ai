@@ -1,0 +1,47 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage[margin=1in]{geometry}
+
+\title{Enhancing LLMs for General Reasoning Through Interactive Theorem Prover Integration}
+
+\author{
+Ameya Jadhav \\
+Stanford University \\
+\texttt{ajadhav@stanford.edu} \\
+\and
+Shane Mion \\
+Stanford University \\
+\texttt{smion@stanford.edu} \\
+\and
+Rishi Padmanabhan \\
+Stanford University \\
+\texttt{riship1@stanford.edu}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This study introduces a method to improve Large Language Models' (LLMs) mathematical reasoning and autoformalization capabilities by incorporating formal proofs from Interactive Theorem Provers (ITPs) like Lean, Coq, and Isabelle into their training. The research explores fine-tuning a GPT-3.5 model with a dataset that pairs formal mathematical proofs and informal language proofs. The effectiveness of this approach is assessed using benchmarks such as the Massive Multitask Language Understanding (MMLU) benchmark and the Hendrycks MATH dataset. Initial results show modest improvements in LLMs' ability to generate informal proofs, suggesting the potential of formal proofs to advance LLMs' mathematical reasoning. The study highlights the necessity for further exploration in integrating a broader range of formal proofs and more sophisticated fine-tuning techniques to bolster LLMs' capabilities in formal mathematics and automated reasoning.
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/evaluation}
+\input{sections/methodology}
+\input{sections/discussion}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
