@@ -7,6 +7,7 @@ Usage: python train.py --name <name of run>
 Model saved to ./backtranslation_models/<name>
 
 """
+# backtranslaton/train.py
 import argparse
 import transformers
 from transformers import AutoTokenizer, AutoModelForCausalLM, GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArguments
@@ -29,12 +30,12 @@ def main():
 
     # Initialize model and tokenizer
 
-    # model_name = 'gpt2'
-    # model = GPT2LMHeadModel.from_pretrained(model_name, pad_token_id=50256)
-    # tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+    model_name = 'gpt2'
+    model = GPT2LMHeadModel.from_pretrained(model_name, pad_token_id=50256)
+    tokenizer = GPT2Tokenizer.from_pretrained(model_name)
 
-    tokenizer = AutoTokenizer.from_pretrained("EleutherAI/llemma_7b")
-    model = AutoModelForCausalLM.from_pretrained("EleutherAI/llemma_7b")
+    # tokenizer = AutoTokenizer.from_pretrained("EleutherAI/llemma_7b")
+    # model = AutoModelForCausalLM.from_pretrained("EleutherAI/llemma_7b")
 
     tokenizer.add_special_tokens({'pad_token': '[PAD]'})
     model.resize_token_embeddings(len(tokenizer))
