@@ -1,3 +1,5 @@
+# training/new_train.py
+
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, TrainingArguments, Trainer
 from datasets import load_dataset, load_metric
 from datasets import load_dataset
