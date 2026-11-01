@@ -1,0 +1,327 @@
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:35:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:39:31: warning: declaration uses `sorry`
+RT pilot_p060 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:43:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:48:8: warning: declaration uses `sorry`
+RT pilot_p061 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:52:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:57:49: warning: declaration uses `sorry`
+RT pilot_p063 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:61:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:64:31: warning: declaration uses `sorry`
+RT pilot_p064 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:68:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:69:8: warning: declaration uses `sorry`
+RT pilot_p065 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:73:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:77:53: warning: declaration uses `sorry`
+RT pilot_p066 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:81:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:85:8: warning: declaration uses `sorry`
+RT pilot_p067 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:89:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:91:8: warning: declaration uses `sorry`
+RT pilot_p069 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:95:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:98:8: warning: declaration uses `sorry`
+RT pilot_p070 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:102:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:105:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:106:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:106:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:106:0: error: unsolved goals
+𝕜 : Type ?u.4
+E : Type ?u.5
+ι : Type ?u.6
+inst : NontriviallyNormedField 𝕜
+inst_1 : AddCommGroup E
+inst_2 : _root_.Module 𝕜 E
+inst_3 : TopologicalSpace E
+p : SeminormFamily 𝕜 E ι
+q : Seminorm 𝕜 E
+h :
+  ∀ {𝕜 : Type ?u.1} {E : Type ?u.2} {ι : Type ?u.3} [inst : NontriviallyNormedField 𝕜] [inst_4 : AddCommGroup E]
+    [inst_5 : _root_.Module 𝕜 E] {p : SeminormFamily 𝕜 E ι} [t : TopologicalSpace E],
+    WithSeminorms p → ∀ (q : Seminorm 𝕜 E), Continuous ⇑q → ∃ s n, q ≤ (n + 1) • ∑ i ∈ s, p i
+hp : WithSeminorms p
+hq : Continuous[inst_3, _] ⇑q
+⊢ ∃ s C, ¬C = 0 ∧ q ≤ C • s.sum p
+
+𝕜 : Type ?u.1
+E : Type ?u.2
+ι : Type ?u.3
+inst : NontriviallyNormedField 𝕜
+inst_1 : AddCommGroup E
+inst_2 : _root_.Module 𝕜 E
+p : SeminormFamily 𝕜 E ι
+t : TopologicalSpace E
+q : Seminorm 𝕜 E
+h :
+  ∀ {𝕜 : Type ?u.4} {E : Type ?u.5} {ι : Type ?u.6} [inst : NontriviallyNormedField 𝕜] [inst_3 : AddCommGroup E]
+    [inst_4 : _root_.Module 𝕜 E] [inst_5 : TopologicalSpace E] (p : SeminormFamily 𝕜 E ι),
+    WithSeminorms p → ∀ (q : Seminorm 𝕜 E), Continuous ⇑q → ∃ s C, ¬C = 0 ∧ q ≤ C • s.sum p
+hp : WithSeminorms p
+hq : Continuous[t, _] ⇑q
+⊢ ∃ s n, q ≤ (n + 1) • ∑ i ∈ s, p i
+RT pilot_p071 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:109:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:112:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:113:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:113:0: error: simp_all made no progress
+RT pilot_p072 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:116:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:118:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:119:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:119:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:119:0: error: unsolved goals
+case mp
+h :
+  ∀ {R : Type ?u.1} {M : Type ?u.2} [inst : Semiring R] [inst_3 : AddCommMonoid M] [inst_4 : _root_.Module R M]
+    (p p' : Submodule R M), p ⊔ p' = ⊤ ↔ ∀ (m : M), ∃ u ∈ p, ∃ v ∈ p', m = u + v
+R : Type ?u.3
+M : Type ?u.4
+inst : Semiring R
+inst_1 : AddCommMonoid M
+inst_2 : _root_.Module R M
+p p' : Submodule R M
+a : p ⊔ p' = ⊤
+m : M
+⊢ ∃ u ∈ p, ∃ v ∈ p', u + v = m
+
+case mpr
+h :
+  ∀ {R : Type ?u.1} {M : Type ?u.2} [inst : Semiring R] [inst_3 : AddCommMonoid M] [inst_4 : _root_.Module R M]
+    (p p' : Submodule R M), p ⊔ p' = ⊤ ↔ ∀ (m : M), ∃ u ∈ p, ∃ v ∈ p', m = u + v
+R : Type ?u.3
+M : Type ?u.4
+inst : Semiring R
+inst_1 : AddCommMonoid M
+inst_2 : _root_.Module R M
+p p' : Submodule R M
+a : ∀ (m : M), ∃ u ∈ p, ∃ v ∈ p', u + v = m
+⊢ p ⊔ p' = ⊤
+
+case mp
+h :
+  ∀ {R : Type ?u.3} {M : Type ?u.4} [inst : Semiring R] [inst_3 : AddCommMonoid M] [inst_4 : _root_.Module R M]
+    (p p' : Submodule R M), p ⊔ p' = ⊤ ↔ ∀ (m : M), ∃ u ∈ p, ∃ v ∈ p', u + v = m
+R : Type ?u.1
+M : Type ?u.2
+inst : Semiring R
+inst_1 : AddCommMonoid M
+inst_2 : _root_.Module R M
+p p' : Submodule R M
+a : p ⊔ p' = ⊤
+m : M
+⊢ ∃ u ∈ p, ∃ v ∈ p', m = u + v
+
+case mpr
+h :
+  ∀ {R : Type ?u.3} {M : Type ?u.4} [inst : Semiring R] [inst_3 : AddCommMonoid M] [inst_4 : _root_.Module R M]
+    (p p' : Submodule R M), p ⊔ p' = ⊤ ↔ ∀ (m : M), ∃ u ∈ p, ∃ v ∈ p', u + v = m
+R : Type ?u.1
+M : Type ?u.2
+inst : Semiring R
+inst_1 : AddCommMonoid M
+inst_2 : _root_.Module R M
+p p' : Submodule R M
+a : ∀ (m : M), ∃ u ∈ p, ∃ v ∈ p', m = u + v
+⊢ p ⊔ p' = ⊤
+RT pilot_p073 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:122:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:124:8: warning: declaration uses `sorry`
+RT pilot_p074 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:128:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:130:31: warning: declaration uses `sorry`
+RT pilot_p075 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:134:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:135:8: warning: declaration uses `sorry`
+RT pilot_p076 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:139:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:141:8: warning: declaration uses `sorry`
+RT pilot_p077 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:145:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:148:8: warning: declaration uses `sorry`
+RT pilot_p078 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:152:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:154:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:155:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:155:0: error: simp_all made no progress
+RT pilot_p079 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:158:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:162:8: warning: declaration uses `sorry`
+RT pilot_p081 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:166:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:168:8: warning: declaration uses `sorry`
+RT pilot_p082 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:172:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:174:8: warning: declaration uses `sorry`
+RT pilot_p083 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:178:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:181:8: warning: declaration uses `sorry`
+RT pilot_p085 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:185:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:187:167: error(lean.invalidField): Invalid field `projectionL`: The environment does not contain `Submodule.IsTopCompl.projectionL`, so it is not possible to project the field `projectionL` from an expression
+  h
+of type `Submodule.IsTopCompl p q`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:188:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:188:0: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:188:0: error: unsolved goals
+R : Type ?u.3
+inst : Ring R
+M : Type ?u.4
+inst_1 : TopologicalSpace M
+inst_2 : AddCommGroup M
+inst_3 : _root_.Module R M
+p q : Submodule R M
+h_1 : Submodule.IsTopCompl p q
+x : M
+⊢ sorry () ∈ p
+RT pilot_p086 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:191:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:193:8: warning: declaration uses `sorry`
+RT pilot_p087 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:197:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:199:8: warning: declaration uses `sorry`
+RT pilot_p088 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:203:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:205:8: warning: declaration uses `sorry`
+RT pilot_p089 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:209:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:212:31: warning: declaration uses `sorry`
+RT pilot_p090 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:216:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:222:90: error: Function expected at
+  SSet.ι₀
+but this term has type
+  ?m.6 ⟶ ?m.6 ⊗ SSet.stdSimplex.obj { len := 1 }
+
+Note: Expected a function because this term is being applied to the argument
+  (TopCat.toSSet.obj X)
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:222:264: error: Application type mismatch: The argument
+  (ConcreteCategory.hom TopCat.ι₀) ?m.41
+has type
+  ↑(?m.39 ⊗ TopCat.I)
+but is expected to have type
+  ?m.37 ⟶ X ⊗ TopCat.I
+in the application
+  TopCat.toSSet.map ((ConcreteCategory.hom TopCat.ι₀) ?m.41)
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:223:0: error(lean.unknownIdentifier): Unknown constant `rt_p091`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:226:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:228:8: warning: declaration uses `sorry`
+RT pilot_p092 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:232:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:233:8: warning: declaration uses `sorry`
+RT pilot_p094 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:237:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:239:8: warning: declaration uses `sorry`
+RT pilot_p096 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:243:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:247:31: warning: declaration uses `sorry`
+RT pilot_p097 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:251:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:255:40: warning: declaration uses `sorry`
+RT pilot_p098 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:259:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:260:8: warning: declaration uses `sorry`
+RT pilot_p099 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:264:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:268:185: error: Type mismatch
+  (groupHomology.chainsIso₂ A).hom ≫ Limits.kernel.lift (groupHomology.d₁₀ A) (groupHomology.d₂₁ A) ⋯
+has type
+  (groupHomology.inhomogeneousChains A).X 2 ⟶ Limits.kernel (groupHomology.d₁₀ A)
+but is expected to have type
+  (groupHomology.inhomogeneousChains A).X 2 ⟶ ↧↥(groupHomology.cycles₁ A)
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:269:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:269:0: error: unsolved goals
+h :
+  ∀ {k G : Type ?u.1} [inst : CommRing k] [inst_1 : Group G] (A : Rep.{?u.1, ?u.1, ?u.1} k G),
+    CategoryTheory.CategoryStruct.comp (groupHomology.chainsIso₂ A).hom
+        (groupHomology.shortComplexH1 A).moduleCatLeftHomologyData.f' =
+      CategoryTheory.CategoryStruct.comp (groupHomology.chainsIso₂ A).hom
+        (groupHomology.shortComplexH1 A).moduleCatLeftHomologyData.f'
+⊢ sorry
+RT pilot_p100 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:272:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:274:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:275:0: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:275:0: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+RT pilot_p101 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:278:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:282:57: warning: declaration uses `sorry`
+RT pilot_p103 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:286:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:288:8: warning: declaration uses `sorry`
+RT pilot_p104 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:292:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:295:8: warning: declaration uses `sorry`
+RT pilot_p105 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:299:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:303:8: warning: declaration uses `sorry`
+RT pilot_p106 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:307:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:308:8: warning: declaration uses `sorry`
+RT pilot_p108 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:312:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:314:8: warning: declaration uses `sorry`
+RT pilot_p109 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:318:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:320:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:321:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:321:0: error: simp_all made no progress
+RT pilot_p111 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:324:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:326:8: warning: declaration uses `sorry`
+RT pilot_p112 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:330:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:333:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:334:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:334:0: error: simp_all made no progress
+RT pilot_p113 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:337:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:341:68: error: unknown universe level `u₄`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:342:0: error(lean.unknownIdentifier): Unknown constant `rt_p117`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:345:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:352:257: error: Type mismatch
+  W
+has type
+  (pullback f f).Opens
+but is expected to have type
+  Set (pullback ?m.33 ?m.34)
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:352:298: error(lean.invalidField): Invalid field `J`: The environment does not contain `CategoryTheory.Precoverage.ZeroHypercover.J`, so it is not possible to project the field `J` from an expression
+  𝒰
+of type
+  (Scheme.precoverage IsOpenImmersion).ZeroHypercover Y
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:352:278: error: Application type mismatch: The argument
+  f
+has type
+  X ⟶ Y
+but is expected to have type
+  ?m.31 ⟶ ?m.32
+in the application
+  @pullback (Type ?u.41) types ?m.30 ?m.31 ?m.32 ?m.33 f
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:353:0: error(lean.unknownIdentifier): Unknown constant `rt_p118`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:356:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:358:8: warning: declaration uses `sorry`
+RT pilot_p119 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:362:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:365:8: warning: declaration uses `sorry`
+RT pilot_p120 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:369:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_1.lean:371:8: warning: declaration uses `sorry`
+RT pilot_p121 tier1

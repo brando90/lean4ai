@@ -1,0 +1,55 @@
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:35:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:37:8: warning: declaration uses `sorry`
+RT pilot_p017 tier1
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:41:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:45:31: warning: declaration uses `sorry`
+RT pilot_p020 tier1
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:49:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:52:268: error(lean.invalidField): Invalid field `root`: The environment does not contain `CartanMatrix.Realisation.root`, so it is not possible to project the field `root` from an expression
+  rl
+of type
+  CartanMatrix.Realisation n R M N
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:53:0: error(lean.unknownIdentifier): Unknown constant `rt_p026`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:56:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:58:8: warning: declaration uses `sorry`
+RT pilot_p086 tier1
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:62:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:68:63: warning: declaration uses `sorry`
+RT pilot_p091 tier1
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:72:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:76:31: warning: declaration uses `sorry`
+RT pilot_p100 tier1
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:80:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:84:8: warning: declaration uses `sorry`
+RT pilot_p117 tier2
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:88:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:95:71: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:96:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (400000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:99:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:101:8: warning: declaration uses `sorry`
+RT pilot_p127 tier2
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:105:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:108:8: warning: declaration uses `sorry`
+RT pilot_p147 tier2
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:112:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:122:53: warning: declaration uses `sorry`
+RT pilot_p157 tier1
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:126:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:129:31: warning: declaration uses `sorry`
+RT pilot_p158 tier2
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:133:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:136:8: warning: declaration uses `sorry`
+RT pilot_p195 tier2
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:140:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:141:8: warning: declaration uses `sorry`
+RT pilot_p196 tier1
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:145:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:147:8: warning: declaration uses `sorry`
+RT pilot_p001 tier1
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:151:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r2_0.lean:154:8: warning: declaration uses `sorry`
+RT pilot_p228 tier1

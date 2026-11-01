@@ -1,0 +1,297 @@
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:35:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:37:8: warning: declaration uses `sorry`
+RT pilot_p123 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:41:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:43:8: warning: declaration uses `sorry`
+RT pilot_p124 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:47:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:51:8: warning: declaration uses `sorry`
+RT pilot_p125 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:55:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:57:77: error(lean.unknownIdentifier): Unknown constant `Setoid.IndexedPartition`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:58:0: warning: aesop: failed to prove the goal after exhaustive search.
+RT pilot_p127 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:61:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:63:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:64:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:64:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:64:0: error: unsolved goals
+case mp
+h :
+  ∀ {V : Type ?u.1} {G : SimpleGraph V} {u v : V},
+    G.IsEdgeReachable ⊤ u v ↔ ∀ ⦃s : Set (Sym2 V)⦄, s.Finite → (G.deleteEdges s).Reachable u v
+V : Type ?u.2
+G : SimpleGraph V
+u v : V
+a : G.IsEdgeReachable ⊤ u v
+s : Finset (Sym2 V)
+⊢ (G.deleteEdges ↑s).Reachable u v
+
+case mpr
+h :
+  ∀ {V : Type ?u.1} {G : SimpleGraph V} {u v : V},
+    G.IsEdgeReachable ⊤ u v ↔ ∀ ⦃s : Set (Sym2 V)⦄, s.Finite → (G.deleteEdges s).Reachable u v
+V : Type ?u.2
+G : SimpleGraph V
+u v : V
+a : ∀ (s : Finset (Sym2 V)), (G.deleteEdges ↑s).Reachable u v
+⊢ G.IsEdgeReachable ⊤ u v
+
+case mp
+h :
+  ∀ {V : Type ?u.2} (G : SimpleGraph V) (u v : V),
+    G.IsEdgeReachable ⊤ u v ↔ ∀ (s : Finset (Sym2 V)), (G.deleteEdges ↑s).Reachable u v
+V : Type ?u.1
+G : SimpleGraph V
+u v : V
+a : G.IsEdgeReachable ⊤ u v
+s : Set (Sym2 V)
+a_1 : s.Finite
+⊢ (G.deleteEdges s).Reachable u v
+
+case mpr
+h :
+  ∀ {V : Type ?u.2} (G : SimpleGraph V) (u v : V),
+    G.IsEdgeReachable ⊤ u v ↔ ∀ (s : Finset (Sym2 V)), (G.deleteEdges ↑s).Reachable u v
+V : Type ?u.1
+G : SimpleGraph V
+u v : V
+a : ∀ ⦃s : Set (Sym2 V)⦄, s.Finite → (G.deleteEdges s).Reachable u v
+⊢ G.IsEdgeReachable ⊤ u v
+RT pilot_p129 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:67:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:72:8: warning: declaration uses `sorry`
+RT pilot_p131 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:76:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:79:8: warning: declaration uses `sorry`
+RT pilot_p132 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:83:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:85:8: warning: declaration uses `sorry`
+RT pilot_p133 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:89:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:91:8: warning: declaration uses `sorry`
+RT pilot_p134 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:95:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:98:8: warning: declaration uses `sorry`
+RT pilot_p135 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:102:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:105:8: warning: declaration uses `sorry`
+RT pilot_p136 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:109:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:111:8: warning: declaration uses `sorry`
+RT pilot_p137 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:115:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:119:31: warning: declaration uses `sorry`
+RT pilot_p140 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:123:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:126:8: warning: declaration uses `sorry`
+RT pilot_p142 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:130:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:133:8: warning: declaration uses `sorry`
+RT pilot_p143 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:137:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:138:8: warning: declaration uses `sorry`
+RT pilot_p144 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:142:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:145:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:146:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:146:0: error: simp_all made no progress
+RT pilot_p145 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:149:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:151:8: warning: declaration uses `sorry`
+RT pilot_p146 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:155:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:158:171: error: Application type mismatch: The argument
+  f
+has type
+  RingHom.{u, v} R S
+but is expected to have type
+  RingHom.{max u v, max u v} ?m.11 ?m.12
+in the application
+  CommRingCat.ofHom f
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:159:0: error(lean.unknownIdentifier): Unknown constant `rt_p147`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:162:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:167:49: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:168:0: error: simp_all made no progress
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  function expected
+    Q✝
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:168:0: error: simp_all made no progress
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  function expected
+    Q✝
+RT pilot_p149 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:171:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:174:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:175:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:175:0: error: simp_all made no progress
+RT pilot_p150 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:178:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:180:8: warning: declaration uses `sorry`
+RT pilot_p151 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:184:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:187:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:188:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:188:0: error: simp_all made no progress
+RT pilot_p152 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:191:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:194:8: warning: declaration uses `sorry`
+RT pilot_p154 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:198:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:201:8: warning: declaration uses `sorry`
+RT pilot_p155 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:205:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:215:298: error(lean.unknownIdentifier): Unknown constant `CategoryTheory.CostructuredArrow.cocone`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:216:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:216:0: error: unsolved goals
+h :
+  ∀ {F : CategoryTheory.Functor LightProfiniteᵒᵖ (Type ?u.1)}
+    (hF :
+      (S : LightProfinite) →
+        CategoryTheory.Limits.IsColimit (F.mapCocone (CategoryTheory.Limits.coconeRightOpOfCone S.asLimitCone)))
+    (S : LightProfiniteᵒᵖ),
+    CategoryTheory.Limits.colimit.desc
+        ((CategoryTheory.CostructuredArrow.proj FintypeCat.toLightProfinite.op S).comp
+          (FintypeCat.toLightProfinite.op.comp F))
+        (LightProfinite.Extend.cocone F (Opposite.unop S)) =
+      CategoryTheory.Limits.colimit.desc
+        ((CategoryTheory.CostructuredArrow.proj FintypeCat.toLightProfinite.op S).comp
+          (FintypeCat.toLightProfinite.op.comp F))
+        (LightProfinite.Extend.cocone F (Opposite.unop S))
+⊢ sorry
+RT pilot_p157 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:219:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:222:141: error: expected token
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:223:0: error: simp_all made no progress
+RT pilot_p158 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:226:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:228:8: warning: declaration uses `sorry`
+RT pilot_p159 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:232:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:234:31: warning: declaration uses `sorry`
+RT pilot_p160 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:238:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:241:8: warning: declaration uses `sorry`
+RT pilot_p162 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:245:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:247:8: warning: declaration uses `sorry`
+RT pilot_p163 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:251:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:253:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:254:0: error: simp_all made no progress
+RT pilot_p164 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:257:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:262:8: warning: declaration uses `sorry`
+RT pilot_p165 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:266:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:269:8: warning: declaration uses `sorry`
+RT pilot_p166 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:273:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:276:8: warning: declaration uses `sorry`
+RT pilot_p167 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:280:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:284:8: warning: declaration uses `sorry`
+RT pilot_p168 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:288:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:291:8: warning: declaration uses `sorry`
+RT pilot_p169 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:295:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:301:8: warning: declaration uses `sorry`
+RT pilot_p170 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:305:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:308:31: warning: declaration uses `sorry`
+RT pilot_p171 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:312:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:315:31: warning: declaration uses `sorry`
+RT pilot_p173 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:319:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:322:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:322:8: warning: Overlapping instance parameters in `rt_p174`:
+
+⚠️ `[NontriviallyNormedField
+   𝕜]` and `[RCLike
+   𝕜]` can be used to infer conflicting versions of `[AddCommMagma
+   𝕜]`, `[AddSemigroup
+   𝕜]`, `[AddZero
+   𝕜]`, `[CommMagma
+   𝕜]`, `[Dist
+   𝕜]`, `[Distrib
+   𝕜]`, `[Div
+   𝕜]`, `[IntCast
+   𝕜]`, `[Inv
+   𝕜]`, `[MulOne
+   𝕜]`, `[MulZeroClass
+   𝕜]`, `[NNRatCast
+   𝕜]`, `[NPow
+   𝕜]`, `[NSMul
+   𝕜]`, `[NatCast
+   𝕜]`, `[Neg
+   𝕜]`, `[Norm 𝕜]`, `[RatCast 𝕜]`, `[Semigroup 𝕜]`, `[SemigroupWithZero 𝕜]`, `[Sub 𝕜]`, `[ZPow 𝕜]`, and `[ZSMul 𝕜]`.
+💡️ Of these, `[NontriviallyNormedField 𝕜]` may be removed.
+
+When a data-carrying type class has multiple potential instances coming from different instance parameters, then these potential instances are incompatible. This is an example of an "instance diamond", which leads to unexpected unification failures.
+
+Delete or combine some of your instance parameters to avoid this.
+
+Note: This linter can be disabled with `set_option linter.overlappingInstances false`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:323:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:323:0: error: unsolved goals
+𝕜 : Type
+E : Type ?u.2
+inst : NontriviallyNormedField 𝕜
+inst_1 : RCLike 𝕜
+inst_2 : NormedAddCommGroup E
+inst_3 : NormedSpace 𝕜 E
+inst_4 : NormedSpace ℝ E
+s : Set E
+hs : Convex ℝ s
+⊢ Convex ℝ s
+RT pilot_p174 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:326:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:328:8: warning: declaration uses `sorry`
+RT pilot_p175 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:332:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:334:8: warning: declaration uses `sorry`
+RT pilot_p176 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:338:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:342:31: warning: declaration uses `sorry`
+RT pilot_p178 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:346:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:347:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:348:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:348:0: error: simp_all made no progress
+RT pilot_p180 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:351:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:352:31: warning: declaration uses `sorry`
+RT pilot_p182 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:356:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:358:8: warning: declaration uses `sorry`
+RT pilot_p183 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:362:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:366:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:366:8: warning: Overlapping instance parameters in `rt_p184`:
+
+⚠️ `[IsDomain
+   S]` and `[IsDedekindDomain
+   S]` each imply `[Nontrivial S]`, `[IsLeftCancelMulZero S]`, and `[IsRightCancelMulZero S]`.
+💡️ Of these, `[IsDomain S]` may be removed.
+
+Note: This linter can be disabled with `set_option linter.overlappingInstances false`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:367:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:367:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (400000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:370:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:372:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:373:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:373:0: error: simp_all made no progress
+RT pilot_p185 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:376:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_2.lean:377:8: warning: declaration uses `sorry`
+RT pilot_p186 tier1

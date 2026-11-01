@@ -1,0 +1,542 @@
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:35:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:38:8: warning: declaration uses `sorry`
+RT pilot_p002 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:42:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:44:8: warning: declaration uses `sorry`
+RT pilot_p003 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:48:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:51:8: warning: declaration uses `sorry`
+RT pilot_p004 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:55:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:59:8: warning: declaration uses `sorry`
+RT pilot_p005 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:63:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:69:8: warning: declaration uses `sorry`
+RT pilot_p006 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:73:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:75:8: warning: declaration uses `sorry`
+RT pilot_p007 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:79:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:82:8: warning: declaration uses `sorry`
+RT pilot_p008 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:86:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:88:8: warning: declaration uses `sorry`
+RT pilot_p009 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:92:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:96:8: warning: declaration uses `sorry`
+RT pilot_p010 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:100:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:106:8: warning: declaration uses `sorry`
+RT pilot_p011 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:110:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:113:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:114:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:114:0: error: unsolved goals
+α : Type ?u.1
+inst : CommMonoidWithZero α
+inst_1 : NormalizationMonoid α
+inst_2 : UniqueFactorizationMonoid α
+a : α
+h :
+  ∀ {α : Type ?u.1} [inst : CommMonoidWithZero α] [inst_3 : StrongNormalizationMonoid α]
+    [inst_4 : UniqueFactorizationMonoid α] {a : α},
+    ¬a = 0 → (UniqueFactorizationMonoid.normalizedFactors a).prod = normalize a
+ha : ¬a = 0
+⊢ (UniqueFactorizationMonoid.normalizedFactors a).prod = normalize a
+RT pilot_p012 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:117:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:120:8: warning: declaration uses `sorry`
+RT pilot_p013 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:124:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:126:8: warning: declaration uses `sorry`
+RT pilot_p014 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:130:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:134:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:135:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:135:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:135:0: error: unsolved goals
+h :
+  ∀ {𝕜 : Type ?u.1} {α : Type ?u.2} {E : Type ?u.3} {m : MeasurableSpace α} {μ : MeasureTheory.Measure α}
+    [inst : NormedRing 𝕜] [inst_5 : NormedAddCommGroup E] [inst_6 : MulActionWithZero 𝕜 E] [IsBoundedSMul 𝕜 E]
+    {f : α → E} {φ : α → 𝕜} {p q r : ℝ≥0∞},
+    0 < r →
+      ∀ [hpqr : p.HolderTriple q r],
+        MeasureTheory.eLpNorm (φ • f) r μ ≤ MeasureTheory.eLpNorm φ p μ * MeasureTheory.eLpNorm f q μ
+α : Type ?u.4
+inst : MeasurableSpace α
+μ : MeasureTheory.Measure α
+𝕜 : Type ?u.5
+inst_1 : NormedRing 𝕜
+E : Type ?u.6
+inst_2 : NormedAddCommGroup E
+inst_3 : MulActionWithZero 𝕜 E
+inst_4 : IsBoundedSMul 𝕜 E
+f : α → E
+φ : α → 𝕜
+p q r : ℝ≥0∞
+hr : 0 < r
+hpqr : p⁻¹ + q⁻¹ = r⁻¹
+⊢ MeasureTheory.eLpNorm (φ • f) r μ ≤ MeasureTheory.eLpNorm φ p μ * MeasureTheory.eLpNorm f q μ
+
+𝕜 : Type ?u.1
+α : Type ?u.2
+E : Type ?u.3
+m : MeasurableSpace α
+μ : MeasureTheory.Measure α
+inst : NormedRing 𝕜
+inst_1 : NormedAddCommGroup E
+inst_2 : MulActionWithZero 𝕜 E
+f : α → E
+φ : α → 𝕜
+p q r : ℝ≥0∞
+h :
+  ∀ {α : Type ?u.4} [inst : MeasurableSpace α] {μ : MeasureTheory.Measure α} {𝕜 : Type ?u.5} [inst_4 : NormedRing 𝕜]
+    {E : Type ?u.6} [inst_5 : NormedAddCommGroup E] [inst_6 : MulActionWithZero 𝕜 E] [IsBoundedSMul 𝕜 E] (f : α → E)
+    (φ : α → 𝕜) {p q r : ℝ≥0∞},
+    0 < r →
+      p⁻¹ + q⁻¹ = r⁻¹ → MeasureTheory.eLpNorm (φ • f) r μ ≤ MeasureTheory.eLpNorm φ p μ * MeasureTheory.eLpNorm f q μ
+inst_3 : IsBoundedSMul 𝕜 E
+hr : 0 < r
+hpqr : p.HolderTriple q r
+⊢ MeasureTheory.eLpNorm (φ • f) r μ ≤ MeasureTheory.eLpNorm φ p μ * MeasureTheory.eLpNorm f q μ
+RT pilot_p015 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:138:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:139:8: warning: declaration uses `sorry`
+RT pilot_p016 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:143:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:145:102: error(lean.invalidField): Invalid field `exps`: The environment does not contain `Tactic.ComputeAsymptotics.Monomial.exps`, so it is not possible to project the field `exps` from an expression
+  t.inv
+of type
+  Tactic.ComputeAsymptotics.Monomial
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:145:118: error(lean.invalidField): Invalid field `exps`: The environment does not contain `Tactic.ComputeAsymptotics.Monomial.exps`, so it is not possible to project the field `exps` from an expression
+  t
+of type
+  Tactic.ComputeAsymptotics.Monomial
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:146:0: error(lean.unknownIdentifier): Unknown constant `rt_p017`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:149:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:151:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:152:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:152:0: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:152:0: error: unsolved goals
+n m : ℕ
+hm : m ≠ 0
+i : Fin n
+⊢ Finset.image (Fin.castAdd m) (Finset.Ioi i) = Finset.Ioo (Fin.castAdd m i) ⟨n, ⋯⟩
+RT pilot_p019 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:155:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:159:147: error(lean.unknownIdentifier): Unknown identifier `HasZeroMorphisms`
+
+Note: It is not possible to treat `HasZeroMorphisms` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:160:0: error(lean.unknownIdentifier): Unknown constant `rt_p020`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:163:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:164:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:165:0: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+RT pilot_p023 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:168:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:171:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:172:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:172:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:172:0: error: unsolved goals
+case mp.left
+R : Type ?u.4
+V : Type ?u.5
+P : Type ?u.6
+inst : Ring R
+inst_1 : PartialOrder R
+inst_3 : AddCommGroup V
+inst_4 : _root_.Module R V
+inst_5 : AddTorsor V P
+p : P
+l : List P
+ordered : List P → Prop := ⋯
+h :
+  ∀ {R : Type ?u.1} {V : Type ?u.2} {P : Type ?u.3} [inst : Ring R] [inst_6 : PartialOrder R] [inst_7 : AddCommGroup V]
+    [inst_8 : _root_.Module R V] [inst_9 : AddTorsor V P] [IsOrderedRing R] {p : P} {l : List P},
+    List.Sbtw R (p :: l) ↔ List.Pairwise (Sbtw R p) l ∧ List.Sbtw R l ∧ ¬l = [p]
+inst_2 : IsOrderedRing R
+left : ∀ (i j k : Fin (l.length + 1)), i < j → j < k → Wbtw R (p :: l)[↑i] (p :: l)[↑j] (p :: l)[↑k]
+left_1 : p ∉ l
+right : l.Nodup
+⊢ List.Pairwise (fun b c => Sbtw R p b c) l
+
+case mp.right.left
+R : Type ?u.4
+V : Type ?u.5
+P : Type ?u.6
+inst : Ring R
+inst_1 : PartialOrder R
+inst_3 : AddCommGroup V
+inst_4 : _root_.Module R V
+inst_5 : AddTorsor V P
+p : P
+l : List P
+ordered : List P → Prop :=
+  fun xs => (∀ (i j k : Fin xs.length), i < j → j < k → Wbtw R (xs.get i) (xs.get j) (xs.get k)) ∧ xs.Nodup
+h :
+  ∀ {R : Type ?u.1} {V : Type ?u.2} {P : Type ?u.3} [inst : Ring R] [inst_6 : PartialOrder R] [inst_7 : AddCommGroup V]
+    [inst_8 : _root_.Module R V] [inst_9 : AddTorsor V P] [IsOrderedRing R] {p : P} {l : List P},
+    List.Sbtw R (p :: l) ↔ List.Pairwise (Sbtw R p) l ∧ List.Sbtw R l ∧ ¬l = [p]
+inst_2 : IsOrderedRing R
+left : ∀ (i j k : Fin (l.length + 1)), i < j → j < k → Wbtw R (p :: l)[↑i] (p :: l)[↑j] (p :: l)[↑k]
+left_1 : p ∉ l
+right : l.Nodup
+i j k : Fin l.length
+a : i < j
+a_1 : j < k
+⊢ Wbtw R l[↑i] l[↑j] l[↑k]
+
+case mpr.left
+R : Type ?u.4
+V : Type ?u.5
+P : Type ?u.6
+inst : Ring R
+inst_1 : PartialOrder R
+inst_3 : AddCommGroup V
+inst_4 : _root_.Module R V
+inst_5 : AddTorsor V P
+p : P
+l : List P
+ordered : List P → Prop :=
+  fun xs => (∀ (i j k : Fin xs.length), i < j → j < k → Wbtw R (xs.get i) (xs.get j) (xs.get k)) ∧ xs.Nodup
+h :
+  ∀ {R : Type ?u.1} {V : Type ?u.2} {P : Type ?u.3} [inst : Ring R] [inst_6 : PartialOrder R] [inst_7 : AddCommGroup V]
+    [inst_8 : _root_.Module R V] [inst_9 : AddTorsor V P] [IsOrderedRing R] {p : P} {l : List P},
+    List.Sbtw R (p :: l) ↔ List.Pairwise (Sbtw R p) l ∧ List.Sbtw R l ∧ ¬l = [p]
+inst_2 : IsOrderedRing R
+left : List.Pairwise (fun b c => Sbtw R p b c) l
+right : ¬l = [p]
+left_1 : ∀ (i j k : Fin l.length), i < j → j < k → Wbtw R l[↑i] l[↑j] l[↑k]
+right_1 : l.Nodup
+i j k : Fin (l.length + 1)
+a : i < j
+a_1 : j < k
+⊢ Wbtw R (p :: l)[↑i] (p :: l)[↑j] (p :: l)[↑k]
+
+case mpr.right
+R : Type ?u.4
+V : Type ?u.5
+P : Type ?u.6
+inst : Ring R
+inst_1 : PartialOrder R
+inst_3 : AddCommGroup V
+inst_4 : _root_.Module R V
+inst_5 : AddTorsor V P
+p : P
+l : List P
+ordered : List P → Prop :=
+  fun xs => (∀ (i j k : Fin xs.length), i < j → j < k → Wbtw R (xs.get i) (xs.get j) (xs.get k)) ∧ xs.Nodup
+h :
+  ∀ {R : Type ?u.1} {V : Type ?u.2} {P : Type ?u.3} [inst : Ring R] [inst_6 : PartialOrder R] [inst_7 : AddCommGroup V]
+    [inst_8 : _root_.Module R V] [inst_9 : AddTorsor V P] [IsOrderedRing R] {p : P} {l : List P},
+    List.Sbtw R (p :: l) ↔ List.Pairwise (Sbtw R p) l ∧ List.Sbtw R l ∧ ¬l = [p]
+inst_2 : IsOrderedRing R
+left : List.Pairwise (fun b c => Sbtw R p b c) l
+right : ¬l = [p]
+left_1 : ∀ (i j k : Fin l.length), i < j → j < k → Wbtw R l[↑i] l[↑j] l[↑k]
+right_1 : l.Nodup
+a : p ∈ l
+⊢ False
+
+case mp.left
+R : Type ?u.1
+V : Type ?u.2
+P : Type ?u.3
+inst : Ring R
+inst_1 : PartialOrder R
+inst_2 : AddCommGroup V
+inst_3 : _root_.Module R V
+inst_4 : AddTorsor V P
+p : P
+l : List P
+h :
+  ∀ {R : Type ?u.4} {V : Type ?u.5} {P : Type ?u.6} [inst : Ring R] [inst_6 : PartialOrder R] [IsOrderedRing R]
+    [inst_8 : AddCommGroup V] [inst_9 : _root_.Module R V] [inst_10 : AddTorsor V P] (p : P) (l : List P),
+    (∀ (i j k : Fin (l.length + 1)), i < j → j < k → Wbtw R (p :: l)[↑i] (p :: l)[↑j] (p :: l)[↑k]) ∧ p ∉ l ∧ l.Nodup ↔
+      List.Pairwise (fun b c => Sbtw R p b c) l ∧
+        ((∀ (i j k : Fin l.length), i < j → j < k → Wbtw R l[↑i] l[↑j] l[↑k]) ∧ l.Nodup) ∧ ¬l = [p]
+inst_5 : IsOrderedRing R
+a : List.Sbtw R (p :: l)
+⊢ List.Pairwise (Sbtw R p) l
+
+case mp.right.left
+R : Type ?u.1
+V : Type ?u.2
+P : Type ?u.3
+inst : Ring R
+inst_1 : PartialOrder R
+inst_2 : AddCommGroup V
+inst_3 : _root_.Module R V
+inst_4 : AddTorsor V P
+p : P
+l : List P
+h :
+  ∀ {R : Type ?u.4} {V : Type ?u.5} {P : Type ?u.6} [inst : Ring R] [inst_6 : PartialOrder R] [IsOrderedRing R]
+    [inst_8 : AddCommGroup V] [inst_9 : _root_.Module R V] [inst_10 : AddTorsor V P] (p : P) (l : List P),
+    (∀ (i j k : Fin (l.length + 1)), i < j → j < k → Wbtw R (p :: l)[↑i] (p :: l)[↑j] (p :: l)[↑k]) ∧ p ∉ l ∧ l.Nodup ↔
+      List.Pairwise (fun b c => Sbtw R p b c) l ∧
+        ((∀ (i j k : Fin l.length), i < j → j < k → Wbtw R l[↑i] l[↑j] l[↑k]) ∧ l.Nodup) ∧ ¬l = [p]
+inst_5 : IsOrderedRing R
+a : List.Sbtw R (p :: l)
+⊢ List.Sbtw R l
+
+case mpr
+R : Type ?u.1
+V : Type ?u.2
+P : Type ?u.3
+inst : Ring R
+inst_1 : PartialOrder R
+inst_2 : AddCommGroup V
+inst_3 : _root_.Module R V
+inst_4 : AddTorsor V P
+p : P
+l : List P
+h :
+  ∀ {R : Type ?u.4} {V : Type ?u.5} {P : Type ?u.6} [inst : Ring R] [inst_6 : PartialOrder R] [IsOrderedRing R]
+    [inst_8 : AddCommGroup V] [inst_9 : _root_.Module R V] [inst_10 : AddTorsor V P] (p : P) (l : List P),
+    (∀ (i j k : Fin (l.length + 1)), i < j → j < k → Wbtw R (p :: l)[↑i] (p :: l)[↑j] (p :: l)[↑k]) ∧ p ∉ l ∧ l.Nodup ↔
+      List.Pairwise (fun b c => Sbtw R p b c) l ∧
+        ((∀ (i j k : Fin l.length), i < j → j < k → Wbtw R l[↑i] l[↑j] l[↑k]) ∧ l.Nodup) ∧ ¬l = [p]
+inst_5 : IsOrderedRing R
+left : List.Pairwise (Sbtw R p) l
+left_1 : List.Sbtw R l
+right : ¬l = [p]
+⊢ List.Sbtw R (p :: l)
+RT pilot_p024 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:175:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:178:268: error(lean.invalidField): Invalid field `v`: The environment does not contain `CartanMatrix.Realisation.v`, so it is not possible to project the field `v` from an expression
+  rl
+of type
+  CartanMatrix.Realisation n R M N
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:179:0: error(lean.unknownIdentifier): Unknown constant `rt_p026`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:182:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:186:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:187:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:187:0: error: simp_all made no progress
+RT pilot_p027 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:190:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:193:8: warning: declaration uses `sorry`
+RT pilot_p028 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:197:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:201:8: warning: declaration uses `sorry`
+RT pilot_p029 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:205:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:206:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:207:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:207:0: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:207:0: error: unsolved goals
+r : ℝ
+⊢ ∃ x, r = ↑x ∨ r = -↑x
+RT pilot_p030 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:210:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:214:31: warning: declaration uses `sorry`
+RT pilot_p031 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:218:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:222:50: warning: declaration uses `sorry`
+RT pilot_p032 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:226:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:229:8: warning: declaration uses `sorry`
+RT pilot_p033 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:233:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:235:8: warning: declaration uses `sorry`
+RT pilot_p034 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:239:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:243:8: warning: declaration uses `sorry`
+RT pilot_p036 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:247:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:249:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:250:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (400000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:253:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:257:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:258:0: error: simp_all made no progress
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:258:0: error: simp_all made no progress
+RT pilot_p038 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:261:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:264:8: warning: declaration uses `sorry`
+RT pilot_p039 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:268:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:269:8: warning: declaration uses `sorry`
+RT pilot_p040 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:273:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:275:8: warning: declaration uses `sorry`
+RT pilot_p041 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:279:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:281:8: warning: declaration uses `sorry`
+RT pilot_p042 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:285:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:289:8: warning: declaration uses `sorry`
+RT pilot_p043 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:293:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:297:53: warning: declaration uses `sorry`
+RT pilot_p044 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:301:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:303:8: warning: declaration uses `sorry`
+RT pilot_p045 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:307:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:311:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:312:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:312:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:312:0: error: unsolved goals
+α : Type ?u.3
+β : Type ?u.4
+inst : Preorder β
+r : α → α → Prop
+inst_1 : DecidableRel r
+s : β → β → Prop
+f : r ↪r s
+x y : β
+I J : Inclusion.Interval α
+h :
+  ∀ {α : Type ?u.1} {β : Type ?u.2} [inst : Preorder β] {r : α → α → Prop} {s : β → β → Prop} [inst_2 : DecidableRel r]
+    [Trans (fun x1 x2 => x1 ≤ x2) s s] [Trans s (fun x1 x2 => x1 ≤ x2) s] (f : r ↪r s) {x y : β}
+    {I J : Inclusion.Interval α},
+    (I.map ⇑f).lb ≤ ↑x →
+      ↑x ≤ (I.map ⇑f).ub → (J.map ⇑f).lb ≤ ↑y → ↑y ≤ (J.map ⇑f).ub → s x y ∈ Inclusion.Interval.orderRelFalse r I J
+hs₁ : ∀ (a b c : β), a ≤ b → s b c → s a c
+hs₂ : ∀ (a b c : β), s a b → b ≤ c → s a c
+left : (I.map ⇑f).lb ≤ ↑x
+right : ↑x ≤ (I.map ⇑f).ub
+left_1 : (J.map ⇑f).lb ≤ ↑y
+right_1 : ↑y ≤ (J.map ⇑f).ub
+⊢ s x y ∈ Inclusion.Interval.orderRelFalse r I J
+
+α : Type ?u.1
+β : Type ?u.2
+inst : Preorder β
+r : α → α → Prop
+s : β → β → Prop
+inst_1 : DecidableRel r
+inst_2 : Trans (fun x1 x2 => x1 ≤ x2) s s
+inst_3 : Trans s (fun x1 x2 => x1 ≤ x2) s
+f : r ↪r s
+x y : β
+I J : Inclusion.Interval α
+h :
+  ∀ {α : Type ?u.3} {β : Type ?u.4} [inst : Preorder β] (r : α → α → Prop) [inst_4 : DecidableRel r] (s : β → β → Prop),
+    (∀ (a b c : β), a ≤ b → s b c → s a c) →
+      (∀ (a b c : β), s a b → b ≤ c → s a c) →
+        ∀ (f : r ↪r s) (x y : β) (I J : Inclusion.Interval α),
+          (I.map ⇑f).lb ≤ ↑x →
+            ↑x ≤ (I.map ⇑f).ub →
+              (J.map ⇑f).lb ≤ ↑y → ↑y ≤ (J.map ⇑f).ub → s x y ∈ Inclusion.Interval.orderRelFalse r I J
+left : (I.map ⇑f).lb ≤ ↑x
+right : ↑x ≤ (I.map ⇑f).ub
+left_1 : (J.map ⇑f).lb ≤ ↑y
+right_1 : ↑y ≤ (J.map ⇑f).ub
+⊢ s x y ∈ Inclusion.Interval.orderRelFalse r I J
+RT pilot_p046 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:315:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:317:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:318:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:318:0: error: unsolved goals
+R : Type ?u.2
+inst : CommRing R
+n : ℤ
+hn : Even n
+⊢ (-1) ^ (n / 2).natAbs = ↑((-1) ^ (n / 2))
+RT pilot_p047 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:321:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:323:8: warning: declaration uses `sorry`
+RT pilot_p048 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:327:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:330:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:331:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:331:0: error: unsolved goals
+R : Type ?u.1
+A : Type ?u.2
+inst : CommRing R
+inst_1 : CommRing A
+inst_2 : Algebra R A
+a : A
+lit : ℕ
+h_1 : Mathlib.Meta.NormNum.IsInt a (Int.negOfNat lit)
+⊢ a = -↑lit
+RT pilot_p051 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:334:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:337:8: warning: declaration uses `sorry`
+RT pilot_p052 tier2
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:341:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:343:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:344:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:344:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:344:0: error: unsolved goals
+h :
+  ∀ {M : Type ?u.1} [inst : Monoid M] [inst_4 : Preorder M] [MulRightMono M] [MulLeftMono M] {l₁ l₂ : List M},
+    List.SublistForall₂ (fun x1 x2 => x1 ≤ x2) l₁ l₂ → (∀ a ∈ l₂, 1 ≤ a) → l₁.prod ≤ l₂.prod
+M : Type ?u.2
+inst : Monoid M
+inst_1 : Preorder M
+inst_2 : MulLeftMono M
+inst_3 : MulRightMono M
+l₁ l₂ : List M
+h₁ : ∀ a ∈ l₂, 1 ≤ a
+w : List M
+left : w.Sublist l₂
+right : List.Forall₂ (fun a b => a ≤ b) l₁ w
+⊢ l₁.prod ≤ l₂.prod
+
+M : Type ?u.1
+inst : Monoid M
+inst_1 : Preorder M
+l₁ l₂ : List M
+h :
+  ∀ {M : Type ?u.2} [inst : Monoid M] [inst_4 : Preorder M] [MulLeftMono M] [MulRightMono M] (l₁ l₂ x : List M),
+    x.Sublist l₂ → List.Forall₂ (fun a b => a ≤ b) l₁ x → (∀ a ∈ l₂, 1 ≤ a) → l₁.prod ≤ l₂.prod
+inst_2 : MulRightMono M
+inst_3 : MulLeftMono M
+h_1 : List.SublistForall₂ (fun x1 x2 => x1 ≤ x2) l₁ l₂
+h₁ : ∀ a ∈ l₂, 1 ≤ a
+⊢ l₁.prod ≤ l₂.prod
+RT pilot_p053 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:347:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:350:8: warning: declaration uses `sorry`
+RT pilot_p055 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:354:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:358:8: warning: declaration uses `sorry`
+RT pilot_p056 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:362:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:365:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:366:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:366:0: warning: aesop: failed to prove the goal after exhaustive search.
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:366:0: error: unsolved goals
+q : ℤ
+b' r : ℕ
+h :
+  ∀ {a b q m a' : ℤ} {b' r : ℕ},
+    Mathlib.Meta.NormNum.IsInt a a' →
+      Mathlib.Meta.NormNum.IsNat b b' → q * ↑b' = m → ↑r + m = a' → r < b' → Mathlib.Meta.NormNum.IsInt (a / b) q
+hlt : r < b'
+⊢ (↑r + q * ↑b') / ↑b' = q
+
+a b q : ℤ
+b' r : ℕ
+h : ∀ (a b q m a' : ℤ) (b' r : ℕ), a = a' → b = ↑b' → q * ↑b' = m → ↑r + m = a' → r < b' → a' / ↑b' = q
+hb : Mathlib.Meta.NormNum.IsNat b b'
+h₂ : r < b'
+ha : Mathlib.Meta.NormNum.IsInt a (↑r + q * ↑b')
+⊢ Mathlib.Meta.NormNum.IsInt (a / b) q
+RT pilot_p057 fail
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:369:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:371:8: warning: declaration uses `sorry`
+RT pilot_p058 tier1
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:375:8: warning: declaration uses `sorry`
+/var/lib/agent/scratch/AT-2380/rt/r1_0.lean:377:8: warning: declaration uses `sorry`
+RT pilot_p059 tier1
