@@ -20,9 +20,9 @@ Research repo for "Can Lean4 (and thus Formal Methods) Improve Language Models?"
 ## Structure
 
 - `src/lean4agi/` — original CS197 paper code (formal→informal, fine-tuning)
-- `src/lean4math/` — training, eval, backtranslation pipelines
 - `experiments/pantograph_sft_scaling_2026/` — current experiment plan (00–13 subfolders with Claude Code dispatch prompts)
 - `latex_paper/lean4agi_cs197/` — original paper LaTeX (section-split)
+- The Lean-ing on Quality paper (arXiv 2502.15795: backtranslation, training, dataset generation, `src/lean4math`) moved to https://github.com/brando90/agi4lean on 2026-11-01. The old tree is kept at tag/branch `archive/pre-agi4lean-split-2026-11-01`.
 
 ## Commands
 

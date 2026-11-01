@@ -55,6 +55,8 @@ Now to install the rest of ZIP-FIT follow the instructions here:
 # Appendix
 
 ### lean4agi
+The Lean-ing on Quality code (`src/lean4math`) now lives in https://github.com/brando90/agi4lean; the old tree is tagged `archive/pre-agi4lean-split-2026-11-01`.
+
 LeanDojo lean4 dataset: https://zenodo.org/records/10114185
 
 Processed lean4 dataset: https://huggingface.co/datasets/akjadhav/leandojo-lean4-formal-informal-strings
