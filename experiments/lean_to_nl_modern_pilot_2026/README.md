@@ -32,6 +32,6 @@ Pilot of 200 Lean-to-natural-language pairs on current Mathlib. Scale is NOT run
 
 ## Recommendation on scaling
 - Scale, but add a fidelity filter first: give the writer the surrounding file context (opens, variables, defs), then a Lean-side check that each natural-language statement round-trips (a different model re-formalises it and Lean proves it equivalent to the original), instead of an LLM reading.
-- Cost: this pilot was about 0.6M subagent tokens for 200 pairs (about 3k per pair, writer plus auditor). 20k pairs is about 60M tokens by the same recipe; get a price before running. Pre-filter compile failures (18% here) with the compile check before writing.
+- Cost: this pilot used about 1.1M subagent tokens in total (writers about 0.67M, auditors about 0.44M; includes 34 items redone after a compile-filter bug), about 5k tokens per kept pair. 20k pairs is about 100M tokens by the same recipe; get a price before running. Pre-filter compile failures (18% here) with the compile check before writing.
 - Source of Lean: take it from current Mathlib directly (264k theorems, names not in the 2023 benchmark first), not from the 2023 dump.
 - Decision needed before scaling: the experiment that matters is the downstream one (fine-tune on pairs, test natural-language math reasoning); the pilot only shows the data can be made.
