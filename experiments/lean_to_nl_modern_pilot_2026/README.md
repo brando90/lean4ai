@@ -13,7 +13,7 @@ Pilot of 200 Lean-to-natural-language pairs on current Mathlib. Scale is NOT run
 ## What ran
 1. `scripts/dump_old_names_and_candidates.lean` in a Mathlib v4.35.0 checkout (cache fetched, nothing rebuilt): old-name survival, theorem totals, and 6,307 candidates (theorems whose name hash mod 40 is 7), each with its pretty-printed signature (full names) and source line range.
 2. `scripts/select_candidates.py`: new-name theorems only, 3-30 source lines, stratified over 27 Mathlib areas, seed 2349, 299 drawn.
-3. `scripts/compile_check_statements.py`: each statement as `theorem pilot_pNNN ... := by sorry` in one file with `import Mathlib`, run with Lean v4.35.0. 245 of 299 compiled (81.9%); 54 failed (elaboration errors in the pretty-printed signature, e.g. stuck instances, lost coercions) and were dropped (`dropped_statements_failed_compile.json`). The first 200 compiling were kept, 200 of 200 re-checked in `compile_check_200.lean` / `.log`: 0 errors, 200 `sorry` warnings (the proof placeholder, expected).
+3. `scripts/compile_check_statements.py`: each statement as `theorem pilot_pNNN ... := by sorry` in one file with `import Mathlib`, run with Lean v4.35.0. 245 of 299 compiled (81.9%); 54 failed (elaboration errors in the pretty-printed signature, e.g. stuck instances, lost coercions) and were dropped (`dropped_statements_failed_compile.json`). The first 200 compiling were kept, 200 of 200 re-checked in `compile_check_200.lean` / `compile_check_200.txt`: 0 errors, 200 `sorry` warnings (the proof placeholder, expected).
 4. Natural-language writing: 12 ub9sc subagents (Claude), 17-20 items each, prompt = Prompt 1 of `experiments/pantograph_sft_scaling_2026/01_data_generation` (same 5 JSON keys) with the Mathlib source proof in place of a Pantograph trace. No Lean in the loop for the text.
 5. Independent audit: 12 other ub9sc subagents, same model, no access to the writers' context, each judged statement_ok and proof_ok from the Lean statement + Mathlib source + the text. This is an LLM reading, not a proof, and not a stronger or different model.
 
@@ -28,7 +28,7 @@ Pilot of 200 Lean-to-natural-language pairs on current Mathlib. Scale is NOT run
 ## Files
 - `pairs_all.jsonl`: 200 pairs (statement, source, theorem_in_words, proof, audit fields).
 - `pairs_audit_statement_ok.jsonl`: the 196 with audit statement_ok = yes.
-- `audit_summary.json`, `mathlib_v4.35.0_totals.txt`, `compile_check_200.*`.
+- `audit_summary.json`, `mathlib_v4.35.0_totals.txt`, `compile_check_200.lean`, `compile_check_200.txt`.
 
 ## Recommendation on scaling
 - Scale, but add a fidelity filter first: give the writer the surrounding file context (opens, variables, defs), then a Lean-side check that each natural-language statement round-trips (a different model re-formalises it and Lean proves it equivalent to the original), instead of an LLM reading.
