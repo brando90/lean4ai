@@ -47,3 +47,8 @@ These supplement the global rules in `~/agents-config/INDEX_RULES.md`:
 - JSON targets for all training data
 - SLURM job naming: `{phase}_{scale}_{condition}_{seed}`
 - W&B entity: `brando-su`, project: `lean4ai-pantograph-sft`
+
+## Old keys
+
+- Old keys that are revoked or outdated, found in the history or in files, are fine to ignore. Do not raise them as a problem or complaint.
+- Never print a key.
